@@ -15,6 +15,10 @@ public class FotoProducto {
     @Column(name="nombre")
     private String nombre;
 
+    @ManyToOne (cascade={CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn (name = "idProducto")
+    private FotoProducto producto;
+
     @Column (name = "archivo")
     @Basic(fetch = FetchType.LAZY)
     @Lob

@@ -5,7 +5,8 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
+@Entity
+@Table(name="productos")
 public class Producto {
 
 
@@ -38,10 +39,7 @@ public class Producto {
     @JoinColumn (name = "idUsuario")
     private Usuario usuario;
 
-    @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinTable(name="fotos_productos",
-            joinColumns={@JoinColumn(name="idProducto", referencedColumnName="idProducto")},
-            inverseJoinColumns={@JoinColumn(name="idFoto", referencedColumnName="idFoto")})
+    @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="producto")
     private List<FotoProducto> fotosProducto;
 
     public long getIdProducto() {

@@ -1,10 +1,9 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name="categorias")
 public class Categoria {
 
     @Id
@@ -28,5 +27,13 @@ public class Categoria {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "idCategoria=" + idCategoria +
+                ", categoria='" + categoria + '\'' +
+                '}';
     }
 }

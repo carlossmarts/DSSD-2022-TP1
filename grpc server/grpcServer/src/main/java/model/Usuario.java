@@ -3,6 +3,8 @@ package model;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +32,13 @@ public class Usuario {
     @Column(name="saldoBilletera")
     private double saldoBilletera;
 
-    @OneToMany(mappedBy="idUsuario" )
+    @OneToMany(mappedBy="usuario" )
     private List<Producto> productos;
 
-    @OneToMany(mappedBy="idComprador" )
+    @OneToMany(mappedBy="comprador" )
     private List<Venta> compras;
 
-    @OneToMany(mappedBy="idVendedor" )
+    @OneToMany(mappedBy="vendedor" )
     private List<Venta> ventas;
 
     public long getIdUsuario() {
