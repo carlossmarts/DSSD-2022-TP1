@@ -11,12 +11,13 @@ public class GRPCServer {
 		System.out.println("Iniciando servidor grpc");
 		
 		Server server = ServerBuilder.forPort(9000)
-//						.addService(new servicio())
+						.addService(new CategoriaService())
 						.build();
 		server.start();
 		
 		System.out.println("Servidor escuchando en puerto " + server.getPort());
 		
 		server.awaitTermination();
+		
 	}
 }

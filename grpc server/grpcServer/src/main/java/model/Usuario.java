@@ -1,7 +1,9 @@
 package model;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
@@ -45,65 +47,65 @@ public class Usuario {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getApellido() {
-        return apellido;
-    }
+	public String getApellido() {
+		return apellido;
+	}
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public String getDni() {
-        return dni;
-    }
+	public String getDni() {
+		return dni;
+	}
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getUsuario() {
-        return usuario;
-    }
+	public String getUsuario() {
+		return usuario;
+	}
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
-    public String getClave() {
-        return clave;
-    }
+	public String getClave() {
+		return clave;
+	}
 
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
 
-    public double getSaldoBilletera() {
-        return saldoBilletera;
-    }
+	public Double getSaldoBilletera() {
+		return saldoBilletera;
+	}
 
-    public void setSaldoBilletera(double saldoBilletera) {
-        this.saldoBilletera = saldoBilletera;
-    }
+	public void setSaldoBilletera(Double saldoBilletera) {
+		this.saldoBilletera = saldoBilletera;
+	}
 
     public List<Producto> getProductos() {
         return productos;
