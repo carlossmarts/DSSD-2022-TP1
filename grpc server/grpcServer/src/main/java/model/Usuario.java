@@ -1,131 +1,126 @@
 package model;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="usuarios")
+
 public class Usuario {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUsuario")
-    private long idUsuario;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@Column(name="idUsuario", unique = false)
+	private int idUsuario;
+	
+	@Column(name="nombre", nullable = true)
+	private String nombre;
+	
+	@Column(name="apellido", nullable = true)
+	private String apellido;
+	
+	@Column(name="dni", nullable = true)
+	private String dni;
+	
+	@Column(name="email", nullable = true)
+	private String email;
+	
+	@Column(name="usuario", nullable = true)
+	private String usuario;
+	
+	@Column(name="clave", nullable = true)
+	private String clave;
+	
+	@Column(name="saldoBilletera", nullable = true)
+	private Double saldoBilletera;
+	
+	public Usuario(int idUsuario, String nombre, String apellido, String dni, String email, String usuario,
+			String clave, Double saldoBilletera) {
+		super();
+		this.idUsuario = idUsuario;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.email = email;
+		this.usuario = usuario;
+		this.clave = clave;
+		this.saldoBilletera = saldoBilletera;
+	}
+	
+	public Usuario() {
+		super();
+	}
 
-    @Column(name="nombre")
-    private String nombre;
+	public int getIdUsuario() {
+		return idUsuario;
+	}
 
-    @Column(name="apellido")
-    private String apellido;
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-    @Column(name="dni")
-    private String dni;
+	public String getNombre() {
+		return nombre;
+	}
 
-    @Column(name="email")
-    private String email;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    @Column(name="usuario")
-    private String usuario;
+	public String getApellido() {
+		return apellido;
+	}
 
-    @Column(name="clave")
-    private String clave;
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    @Column(name="saldoBilletera")
-    private double saldoBilletera;
+	public String getDni() {
+		return dni;
+	}
 
-    @OneToMany(mappedBy="usuario" )
-    private List<Producto> productos;
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
-    @OneToMany(mappedBy="comprador" )
-    private List<Venta> compras;
+	public String getEmail() {
+		return email;
+	}
 
-    @OneToMany(mappedBy="vendedor" )
-    private List<Venta> ventas;
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public long getIdUsuario() {
-        return idUsuario;
-    }
+	public String getUsuario() {
+		return usuario;
+	}
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getClave() {
+		return clave;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
 
-    public String getApellido() {
-        return apellido;
-    }
+	public Double getSaldoBilletera() {
+		return saldoBilletera;
+	}
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+	public void setSaldoBilletera(Double saldoBilletera) {
+		this.saldoBilletera = saldoBilletera;
+	}
 
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-
-    public double getSaldoBilletera() {
-        return saldoBilletera;
-    }
-
-    public void setSaldoBilletera(double saldoBilletera) {
-        this.saldoBilletera = saldoBilletera;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public List<Venta> getCompras() {
-        return compras;
-    }
-
-    public void setCompras(List<Venta> compras) {
-        this.compras = compras;
-    }
-
-    public List<Venta> getVentas() {
-        return ventas;
-    }
-
-    public void setVentas(List<Venta> ventas) {
-        this.ventas = ventas;
-    }
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", email=" + email + ", usuario=" + usuario + ", clave=" + clave + ", saldoBilletera="
+				+ saldoBilletera + "]";
+	}
+	
 }
