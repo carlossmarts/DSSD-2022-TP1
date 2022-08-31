@@ -100,4 +100,18 @@ public class Venta {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return "Venta{" +
+                "idVenta=" + idVenta +
+                ", producto=" + producto.toString() +
+                ", vendedor=" + vendedor.toString() +
+                ", comprador=" + comprador.toString() +
+                ", nombre='" + nombre + '\'' +
+                ", ventascol='" + ventascol + '\'' +
+                ", cantidad=" + cantidad +
+                ", precio=" + precio +
+                '}';
+    }
 }

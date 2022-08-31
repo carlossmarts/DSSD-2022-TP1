@@ -113,4 +113,18 @@ public class Producto {
     public void setFotosProducto(List<FotoProducto> fotosProducto) {
         this.fotosProducto = fotosProducto;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + idProducto +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", cantidad=" + cantidad +
+                ", fechaFabricacion=" + fechaFabricacion +
+                ", categoria=" + categoria.toString() +
+                ", usuario=" + usuario.toString() +
+                '}';
+    }
 }

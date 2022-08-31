@@ -4,6 +4,9 @@ import model.Categoria;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +24,13 @@ public class CategoriaDAO {
         List<Categoria> categorias = new ArrayList<Categoria>();
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
-
-        String query = "SELECT c FROM Categoria c";
-        TypedQuery<Categoria> tq = em.createQuery(query, Categoria.class);
         try {
-            categorias = tq.getResultList();
+            CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+            CriteriaQuery<Categoria> query = criteriaBuilder.createQuery(Categoria.class);
+            Root<Categoria> root = query.from(Categoria.class);
+            categorias = em.createQuery(query).getResultList();
         } catch (Exception e) {
-            String msg = "Error de persistencia - Método GetAllTipoMedicamento: " + e.getMessage();
+            String msg = "CategoriaDAO(getAll) - Error de persistencia: " + e.getMessage();
             System.out.println(msg);
             throw new Exception(msg);
         } finally {
@@ -35,5 +38,22 @@ public class CategoriaDAO {
         }
 
         return categorias;
+    }
+
+    public Categoria getById(long id) throws Exception{
+        Categoria categoria = null;
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        try {
+            categoria = em.find(Categoria.class, id);
+        } catch (Exception e) {
+            String msg = "CategoriaDAO(getById) - Error de persistencia: " + e.getMessage();
+            System.out.println(msg);
+            throw new Exception(msg);
+        } finally {
+            em.close();
+        }
+
+        return categoria;
     }
 }

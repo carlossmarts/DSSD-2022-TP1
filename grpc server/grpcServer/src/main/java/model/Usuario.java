@@ -128,4 +128,18 @@ public class Usuario {
     public void setVentas(List<Venta> ventas) {
         this.ventas = ventas;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", dni='" + dni + '\'' +
+                ", email='" + email + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", clave='" + clave + '\'' +
+                ", saldoBilletera=" + saldoBilletera +
+                '}';
+    }
 }
