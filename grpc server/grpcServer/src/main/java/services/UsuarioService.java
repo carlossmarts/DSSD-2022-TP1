@@ -95,30 +95,30 @@ public class UsuarioService extends UsuarioImplBase {
 	} // end_updateUsuarioCargaSaldoRequest
 	
 	// METODO updateUsuarioCompraProductoRequest
-	@Override
-	public void updateUsuarioCompraProductoRequest(UpdateUsuarioCompraProductoRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
-		
-		int idUsuario = request.getIdUsuario();
-		int idProducto = request.getIdProducto();
-		
-		System.out.println("Llamada al servicio updateUsuarioCompraProductoRequest con idUsuario: "+ idUsuario + " y idProducto " + idProducto);
-		Usuario usuario = null;
-		ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
-		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
-
-		try {
-			usuario = UsuarioBO.getInstance().updateUsuarioCompraProducto(idUsuario, idProducto);
-		} // end_try
-		catch (Exception e) {
-			serverResponse.setCode(500);
-			serverResponse.setMsg(e.getMessage());
-		} // end_catch
-		
-		response.setResponse(serverResponse);
-		responseObserver.onNext(response.build());
-		responseObserver.onCompleted();
-		
-	} // updateUsuarioCompraProductoRequest
+//	@Override
+//	public void updateUsuarioCompraProductoRequest(UpdateUsuarioCompraProductoRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
+//
+//		int idUsuario = request.getIdUsuario();
+//		int idProducto = request.getIdProducto();
+//
+//		System.out.println("Llamada al servicio updateUsuarioCompraProductoRequest con idUsuario: "+ idUsuario + " y idProducto " + idProducto);
+//		Usuario usuario = null;
+//		ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+//		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
+//
+//		try {
+//			usuario = UsuarioBO.getInstance().updateUsuarioCompraProducto(idUsuario, idProducto);
+//		} // end_try
+//		catch (Exception e) {
+//			serverResponse.setCode(500);
+//			serverResponse.setMsg(e.getMessage());
+//		} // end_catch
+//
+//		response.setResponse(serverResponse);
+//		responseObserver.onNext(response.build());
+//		responseObserver.onCompleted();
+//
+//	} // updateUsuarioCompraProductoRequest
 	
 	// MAPEOS
 

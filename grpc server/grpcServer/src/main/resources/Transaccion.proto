@@ -6,8 +6,7 @@ option java_package = "grpc";
 /* METODOS PARA CONSUMIR */
 service TransaccionService{
 	rpc addTransaccion (TransaccionDTO) returns (ResTransaccionDTO);
-	rpc getAllComprasByUsuarioIdRequest (GetTransaccionesRequest) returns (LisTransaccionDTO);
-	rpc getAllVentasByUsuarioIdRequest (GetTransaccionesRequest) returns (LisTransaccionDTO);
+rpc getComprasOVentasByUsuarioRequest (GetTransaccionesRequest) returns (LisTransaccionDTO);
 }
 
 message Empty{
@@ -26,13 +25,14 @@ message TransaccionDTO{
 
 /* REQUESTS */
 message GetTransaccionesRequest{
-	string idUsuario = 1;
+	int32 idUsuario = 1;
+	string tipoUsuario = 2;
 }
 
 
 /* RESPONSES */
 message TransaccionServerResponse{
-	int32 code = 1;
+	int32 cod = 1;
 	string msg = 2;
 }
 message ResTransaccionDTO {

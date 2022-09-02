@@ -1370,14 +1370,19 @@ public final class Transaccion {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string idUsuario = 1;</code>
+     * <code>int32 idUsuario = 1;</code>
      */
-    java.lang.String getIdUsuario();
+    int getIdUsuario();
+
     /**
-     * <code>string idUsuario = 1;</code>
+     * <code>string tipoUsuario = 2;</code>
+     */
+    java.lang.String getTipoUsuario();
+    /**
+     * <code>string tipoUsuario = 2;</code>
      */
     com.google.protobuf.ByteString
-        getIdUsuarioBytes();
+        getTipoUsuarioBytes();
   }
   /**
    * <pre>
@@ -1396,7 +1401,8 @@ public final class Transaccion {
       super(builder);
     }
     private GetTransaccionesRequest() {
-      idUsuario_ = "";
+      idUsuario_ = 0;
+      tipoUsuario_ = "";
     }
 
     @java.lang.Override
@@ -1423,10 +1429,15 @@ public final class Transaccion {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+
+              idUsuario_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              idUsuario_ = s;
+              tipoUsuario_ = s;
               break;
             }
             default: {
@@ -1462,33 +1473,42 @@ public final class Transaccion {
     }
 
     public static final int IDUSUARIO_FIELD_NUMBER = 1;
-    private volatile java.lang.Object idUsuario_;
+    private int idUsuario_;
     /**
-     * <code>string idUsuario = 1;</code>
+     * <code>int32 idUsuario = 1;</code>
      */
-    public java.lang.String getIdUsuario() {
-      java.lang.Object ref = idUsuario_;
+    public int getIdUsuario() {
+      return idUsuario_;
+    }
+
+    public static final int TIPOUSUARIO_FIELD_NUMBER = 2;
+    private volatile java.lang.Object tipoUsuario_;
+    /**
+     * <code>string tipoUsuario = 2;</code>
+     */
+    public java.lang.String getTipoUsuario() {
+      java.lang.Object ref = tipoUsuario_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        idUsuario_ = s;
+        tipoUsuario_ = s;
         return s;
       }
     }
     /**
-     * <code>string idUsuario = 1;</code>
+     * <code>string tipoUsuario = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getIdUsuarioBytes() {
-      java.lang.Object ref = idUsuario_;
+        getTipoUsuarioBytes() {
+      java.lang.Object ref = tipoUsuario_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        idUsuario_ = b;
+        tipoUsuario_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1509,8 +1529,11 @@ public final class Transaccion {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdUsuarioBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, idUsuario_);
+      if (idUsuario_ != 0) {
+        output.writeInt32(1, idUsuario_);
+      }
+      if (!getTipoUsuarioBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, tipoUsuario_);
       }
       unknownFields.writeTo(output);
     }
@@ -1521,8 +1544,12 @@ public final class Transaccion {
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdUsuarioBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, idUsuario_);
+      if (idUsuario_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, idUsuario_);
+      }
+      if (!getTipoUsuarioBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, tipoUsuario_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1540,8 +1567,10 @@ public final class Transaccion {
       grpc.Transaccion.GetTransaccionesRequest other = (grpc.Transaccion.GetTransaccionesRequest) obj;
 
       boolean result = true;
-      result = result && getIdUsuario()
-          .equals(other.getIdUsuario());
+      result = result && (getIdUsuario()
+          == other.getIdUsuario());
+      result = result && getTipoUsuario()
+          .equals(other.getTipoUsuario());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1554,7 +1583,9 @@ public final class Transaccion {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + IDUSUARIO_FIELD_NUMBER;
-      hash = (53 * hash) + getIdUsuario().hashCode();
+      hash = (53 * hash) + getIdUsuario();
+      hash = (37 * hash) + TIPOUSUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getTipoUsuario().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1692,7 +1723,9 @@ public final class Transaccion {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        idUsuario_ = "";
+        idUsuario_ = 0;
+
+        tipoUsuario_ = "";
 
         return this;
       }
@@ -1721,6 +1754,7 @@ public final class Transaccion {
       public grpc.Transaccion.GetTransaccionesRequest buildPartial() {
         grpc.Transaccion.GetTransaccionesRequest result = new grpc.Transaccion.GetTransaccionesRequest(this);
         result.idUsuario_ = idUsuario_;
+        result.tipoUsuario_ = tipoUsuario_;
         onBuilt();
         return result;
       }
@@ -1769,8 +1803,11 @@ public final class Transaccion {
 
       public Builder mergeFrom(grpc.Transaccion.GetTransaccionesRequest other) {
         if (other == grpc.Transaccion.GetTransaccionesRequest.getDefaultInstance()) return this;
-        if (!other.getIdUsuario().isEmpty()) {
-          idUsuario_ = other.idUsuario_;
+        if (other.getIdUsuario() != 0) {
+          setIdUsuario(other.getIdUsuario());
+        }
+        if (!other.getTipoUsuario().isEmpty()) {
+          tipoUsuario_ = other.tipoUsuario_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1802,71 +1839,97 @@ public final class Transaccion {
         return this;
       }
 
-      private java.lang.Object idUsuario_ = "";
+      private int idUsuario_ ;
       /**
-       * <code>string idUsuario = 1;</code>
+       * <code>int32 idUsuario = 1;</code>
        */
-      public java.lang.String getIdUsuario() {
-        java.lang.Object ref = idUsuario_;
+      public int getIdUsuario() {
+        return idUsuario_;
+      }
+      /**
+       * <code>int32 idUsuario = 1;</code>
+       */
+      public Builder setIdUsuario(int value) {
+        
+        idUsuario_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 idUsuario = 1;</code>
+       */
+      public Builder clearIdUsuario() {
+        
+        idUsuario_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object tipoUsuario_ = "";
+      /**
+       * <code>string tipoUsuario = 2;</code>
+       */
+      public java.lang.String getTipoUsuario() {
+        java.lang.Object ref = tipoUsuario_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          idUsuario_ = s;
+          tipoUsuario_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string idUsuario = 1;</code>
+       * <code>string tipoUsuario = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getIdUsuarioBytes() {
-        java.lang.Object ref = idUsuario_;
+          getTipoUsuarioBytes() {
+        java.lang.Object ref = tipoUsuario_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          idUsuario_ = b;
+          tipoUsuario_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string idUsuario = 1;</code>
+       * <code>string tipoUsuario = 2;</code>
        */
-      public Builder setIdUsuario(
+      public Builder setTipoUsuario(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        idUsuario_ = value;
+        tipoUsuario_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string idUsuario = 1;</code>
+       * <code>string tipoUsuario = 2;</code>
        */
-      public Builder clearIdUsuario() {
+      public Builder clearTipoUsuario() {
         
-        idUsuario_ = getDefaultInstance().getIdUsuario();
+        tipoUsuario_ = getDefaultInstance().getTipoUsuario();
         onChanged();
         return this;
       }
       /**
-       * <code>string idUsuario = 1;</code>
+       * <code>string tipoUsuario = 2;</code>
        */
-      public Builder setIdUsuarioBytes(
+      public Builder setTipoUsuarioBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        idUsuario_ = value;
+        tipoUsuario_ = value;
         onChanged();
         return this;
       }
@@ -1928,9 +1991,9 @@ public final class Transaccion {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 code = 1;</code>
+     * <code>int32 cod = 1;</code>
      */
-    int getCode();
+    int getCod();
 
     /**
      * <code>string msg = 2;</code>
@@ -1959,7 +2022,7 @@ public final class Transaccion {
       super(builder);
     }
     private TransaccionServerResponse() {
-      code_ = 0;
+      cod_ = 0;
       msg_ = "";
     }
 
@@ -1989,7 +2052,7 @@ public final class Transaccion {
               break;
             case 8: {
 
-              code_ = input.readInt32();
+              cod_ = input.readInt32();
               break;
             }
             case 18: {
@@ -2030,13 +2093,13 @@ public final class Transaccion {
               grpc.Transaccion.TransaccionServerResponse.class, grpc.Transaccion.TransaccionServerResponse.Builder.class);
     }
 
-    public static final int CODE_FIELD_NUMBER = 1;
-    private int code_;
+    public static final int COD_FIELD_NUMBER = 1;
+    private int cod_;
     /**
-     * <code>int32 code = 1;</code>
+     * <code>int32 cod = 1;</code>
      */
-    public int getCode() {
-      return code_;
+    public int getCod() {
+      return cod_;
     }
 
     public static final int MSG_FIELD_NUMBER = 2;
@@ -2087,8 +2150,8 @@ public final class Transaccion {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (code_ != 0) {
-        output.writeInt32(1, code_);
+      if (cod_ != 0) {
+        output.writeInt32(1, cod_);
       }
       if (!getMsgBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msg_);
@@ -2102,9 +2165,9 @@ public final class Transaccion {
       if (size != -1) return size;
 
       size = 0;
-      if (code_ != 0) {
+      if (cod_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, code_);
+          .computeInt32Size(1, cod_);
       }
       if (!getMsgBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msg_);
@@ -2125,8 +2188,8 @@ public final class Transaccion {
       grpc.Transaccion.TransaccionServerResponse other = (grpc.Transaccion.TransaccionServerResponse) obj;
 
       boolean result = true;
-      result = result && (getCode()
-          == other.getCode());
+      result = result && (getCod()
+          == other.getCod());
       result = result && getMsg()
           .equals(other.getMsg());
       result = result && unknownFields.equals(other.unknownFields);
@@ -2140,8 +2203,8 @@ public final class Transaccion {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getCode();
+      hash = (37 * hash) + COD_FIELD_NUMBER;
+      hash = (53 * hash) + getCod();
       hash = (37 * hash) + MSG_FIELD_NUMBER;
       hash = (53 * hash) + getMsg().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -2281,7 +2344,7 @@ public final class Transaccion {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        code_ = 0;
+        cod_ = 0;
 
         msg_ = "";
 
@@ -2311,7 +2374,7 @@ public final class Transaccion {
       @java.lang.Override
       public grpc.Transaccion.TransaccionServerResponse buildPartial() {
         grpc.Transaccion.TransaccionServerResponse result = new grpc.Transaccion.TransaccionServerResponse(this);
-        result.code_ = code_;
+        result.cod_ = cod_;
         result.msg_ = msg_;
         onBuilt();
         return result;
@@ -2361,8 +2424,8 @@ public final class Transaccion {
 
       public Builder mergeFrom(grpc.Transaccion.TransaccionServerResponse other) {
         if (other == grpc.Transaccion.TransaccionServerResponse.getDefaultInstance()) return this;
-        if (other.getCode() != 0) {
-          setCode(other.getCode());
+        if (other.getCod() != 0) {
+          setCod(other.getCod());
         }
         if (!other.getMsg().isEmpty()) {
           msg_ = other.msg_;
@@ -2397,28 +2460,28 @@ public final class Transaccion {
         return this;
       }
 
-      private int code_ ;
+      private int cod_ ;
       /**
-       * <code>int32 code = 1;</code>
+       * <code>int32 cod = 1;</code>
        */
-      public int getCode() {
-        return code_;
+      public int getCod() {
+        return cod_;
       }
       /**
-       * <code>int32 code = 1;</code>
+       * <code>int32 cod = 1;</code>
        */
-      public Builder setCode(int value) {
+      public Builder setCod(int value) {
         
-        code_ = value;
+        cod_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 code = 1;</code>
+       * <code>int32 cod = 1;</code>
        */
-      public Builder clearCode() {
+      public Builder clearCod() {
         
-        code_ = 0;
+        cod_ = 0;
         onChanged();
         return this;
       }
@@ -4436,23 +4499,21 @@ public final class Transaccion {
       "cionDTO\022\025\n\ridTransaccion\030\001 \001(\005\022\022\n\nidProd" +
       "ucto\030\002 \001(\005\022\023\n\013idComprador\030\003 \001(\005\022\022\n\nidVen" +
       "dedor\030\004 \001(\005\022\016\n\006nombre\030\005 \001(\t\022\020\n\010cantidad\030" +
-      "\006 \001(\005\022\016\n\006precio\030\007 \001(\001\",\n\027GetTransaccione" +
-      "sRequest\022\021\n\tidUsuario\030\001 \001(\t\"6\n\031Transacci" +
-      "onServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 " +
-      "\001(\t\"\241\001\n\021ResTransaccionDTO\022\022\n\nidProducto\030" +
-      "\001 \001(\005\022\023\n\013idComprador\030\002 \001(\005\022\030\n\020cantidadRe" +
-      "stante\030\003 \001(\005\022\025\n\rsaldoRestante\030\004 \001(\001\0222\n\016s" +
-      "erverResponse\030\005 \001(\0132\032.TransaccionServerR" +
-      "esponse\"o\n\021LisTransaccionDTO\022&\n\rtransacc" +
-      "iones\030\001 \003(\0132\017.TransaccionDTO\0222\n\016serverRe" +
-      "sponse\030\002 \001(\0132\032.TransaccionServerResponse" +
-      "2\354\001\n\022TransaccionService\0225\n\016addTransaccio" +
-      "n\022\017.TransaccionDTO\032\022.ResTransaccionDTO\022O" +
-      "\n\037getAllComprasByUsuarioIdRequest\022\030.GetT" +
-      "ransaccionesRequest\032\022.LisTransaccionDTO\022" +
-      "N\n\036getAllVentasByUsuarioIdRequest\022\030.GetT" +
-      "ransaccionesRequest\032\022.LisTransaccionDTOB" +
-      "\006\n\004grpcb\006proto3"
+      "\006 \001(\005\022\016\n\006precio\030\007 \001(\001\"A\n\027GetTransaccione" +
+      "sRequest\022\021\n\tidUsuario\030\001 \001(\005\022\023\n\013tipoUsuar" +
+      "io\030\002 \001(\t\"5\n\031TransaccionServerResponse\022\013\n" +
+      "\003cod\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"\241\001\n\021ResTransacci" +
+      "onDTO\022\022\n\nidProducto\030\001 \001(\005\022\023\n\013idComprador" +
+      "\030\002 \001(\005\022\030\n\020cantidadRestante\030\003 \001(\005\022\025\n\rsald" +
+      "oRestante\030\004 \001(\001\0222\n\016serverResponse\030\005 \001(\0132" +
+      "\032.TransaccionServerResponse\"o\n\021LisTransa" +
+      "ccionDTO\022&\n\rtransacciones\030\001 \003(\0132\017.Transa" +
+      "ccionDTO\0222\n\016serverResponse\030\002 \001(\0132\032.Trans" +
+      "accionServerResponse2\236\001\n\022TransaccionServ" +
+      "ice\0225\n\016addTransaccion\022\017.TransaccionDTO\032\022" +
+      ".ResTransaccionDTO\022Q\n!getComprasOVentasB" +
+      "yUsuarioRequest\022\030.GetTransaccionesReques" +
+      "t\032\022.LisTransaccionDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4483,13 +4544,13 @@ public final class Transaccion {
     internal_static_GetTransaccionesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetTransaccionesRequest_descriptor,
-        new java.lang.String[] { "IdUsuario", });
+        new java.lang.String[] { "IdUsuario", "TipoUsuario", });
     internal_static_TransaccionServerResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_TransaccionServerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransaccionServerResponse_descriptor,
-        new java.lang.String[] { "Code", "Msg", });
+        new java.lang.String[] { "Cod", "Msg", });
     internal_static_ResTransaccionDTO_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_ResTransaccionDTO_fieldAccessorTable = new

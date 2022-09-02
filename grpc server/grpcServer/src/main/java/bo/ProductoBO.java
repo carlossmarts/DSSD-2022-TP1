@@ -2,6 +2,7 @@ package bo;
 import dao.CategoriaDAO;
 import dao.ProductoDAO;
 import grpc.Producto.*;
+import grpc.Transaccion;
 import model.Categoria;
 import model.FotoProducto;
 import model.Producto;
@@ -33,6 +34,10 @@ public class ProductoBO {
         return ProductoDAO.getInstance().getAll();
     }
 
+    public Producto getById (int id) throws Exception {
+        return productoDAO.getById(id);
+    }
+
     public List<Producto> getByFilter(int idCategoria, String nombreLike, double precioDesde, double precioHasta, String fechaDesde, String fechaHasta) throws Exception{
         //conversion de los parametros
         Categoria categoria = idCategoria == 0 ? null : categoriaDAO.getById(idCategoria);
@@ -55,8 +60,13 @@ public class ProductoBO {
         }
         persisted.setFotosProducto(fotos);
         return persisted;
-//        return productoDAO.saveOrUpdateProducto(mapProductoToEntity(productoDTO));
+    }
 
+    public Producto vender (Producto p, int vendidos ) throws Exception{
+        Producto actual = getById(p.getIdProducto());
+        actual.setCantidad(actual.getCantidad() - vendidos);
+        Producto modif = productoDAO.saveOrUpdateProducto(actual);
+        return modif;
     }
 
     private Producto mapProductoToEntity (ProductoDTO dto) throws Exception{

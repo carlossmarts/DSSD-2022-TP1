@@ -72,18 +72,14 @@ public class UsuarioBO {
 	} // end_updateUsuarioCargaSaldo
 	
 	// METODO updateUsuarioCompraProducto
-	public Usuario updateUsuarioCompraProducto(int idUsuario, int idProducto) throws Exception{
+	public Usuario updateUsuarioCompraProducto(Usuario comprador, Producto producto) throws Exception{
 		boolean actualizado = false;
 		double nuevoSaldo = 0;
-		Usuario usuario = null;
-		Producto producto = null;  // ASUMIMOS QUE SE LLAMA ASI
 		try{
-			usuario = UsuarioDAO.getInstance().getUsuarioById(idUsuario);
-			producto = ProductoDAO.getInstance().getById(idProducto);
-			nuevoSaldo = usuario.getSaldoBilletera() - producto.getPrecio();
-			actualizado = UsuarioDAO.getInstance().updateUsuarioSaldo(idUsuario, nuevoSaldo);
+			nuevoSaldo = comprador.getSaldoBilletera() - producto.getPrecio();
+			actualizado = UsuarioDAO.getInstance().updateUsuarioSaldo(comprador.getIdUsuario(), nuevoSaldo);
 			if(actualizado) {
-				return UsuarioDAO.getInstance().getUsuarioById(idUsuario); // DEVUELVE USUARIO
+				return UsuarioDAO.getInstance().getUsuarioById(comprador.getIdUsuario()); // DEVUELVE USUARIO
 			} // end_if
 			else{
 				return null;

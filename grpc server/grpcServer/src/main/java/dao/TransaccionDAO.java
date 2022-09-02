@@ -1,12 +1,13 @@
 package dao;
 
-import grpc.Transaccion;
+import model.Transaccion;
 import model.Categoria;
 import model.Producto;
 import model.Usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -41,20 +42,27 @@ public class TransaccionDAO {
         } finally {
             em.close();
         }
-
         return entity;
     }
 
-    public List<Transaccion> getByIdComprador(int idComprador) throws Exception{
+    public List<Transaccion> getByIdUsuario(int idUsuario, String tipoUsuario) throws Exception{
         List<Transaccion> transacciones = new ArrayList<Transaccion>();
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
         try {
-           
+            String query = "SELECT t FROM Transaccion t " +
+                    "join fetch t.comprador c " +
+                    "join fetch t.vendedor v " +
+                    "join fetch t.producto p ";
+            query += tipoUsuario.equals("vendedor") ? "WHERE v.idUsuario = :idUsuario" : "WHERE c.idUsuario = :idUsuario";
+
+            TypedQuery<Transaccion> tq = em.createQuery(query, Transaccion.class);
+            tq.setParameter("idUsuario", idUsuario);
+
+            transacciones = tq.getResultList();
         } catch (Exception e) {
-            String msg = "Error de persistencia - Método GetAllProducto: " + e.getMessage();
-            System.out.println(msg);
-            throw new Exception(msg);
+            System.out.println("Error: " + e.getMessage());
+            throw new Exception("error de persistencia en método getByIdComprador");
         } finally {
             em.close();
         }

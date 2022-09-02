@@ -11,7 +11,7 @@ public class Transaccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTransaccion")
-    private long idTransaccion;
+    private int idTransaccion;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idProducto")
@@ -37,11 +37,11 @@ public class Transaccion {
     @Column(name = "precio")
     private double precio;
 
-    public long getIdVenta() {
+    public int getIdTransaccion() {
         return idTransaccion;
     }
 
-    public void setIdVenta(long idTransaccion) {
+    public void setIdTransaccion(int idTransaccion) {
         this.idTransaccion = idTransaccion;
     }
 
