@@ -1365,8 +1365,566 @@ public final class Transaccion {
 
   }
 
-  public interface ServerResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ServerResponse)
+  public interface GetTransaccionesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GetTransaccionesRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string idUsuario = 1;</code>
+     */
+    java.lang.String getIdUsuario();
+    /**
+     * <code>string idUsuario = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getIdUsuarioBytes();
+  }
+  /**
+   * <pre>
+   * REQUESTS 
+   * </pre>
+   *
+   * Protobuf type {@code GetTransaccionesRequest}
+   */
+  public  static final class GetTransaccionesRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:GetTransaccionesRequest)
+      GetTransaccionesRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetTransaccionesRequest.newBuilder() to construct.
+    private GetTransaccionesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetTransaccionesRequest() {
+      idUsuario_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetTransaccionesRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              idUsuario_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return grpc.Transaccion.internal_static_GetTransaccionesRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return grpc.Transaccion.internal_static_GetTransaccionesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              grpc.Transaccion.GetTransaccionesRequest.class, grpc.Transaccion.GetTransaccionesRequest.Builder.class);
+    }
+
+    public static final int IDUSUARIO_FIELD_NUMBER = 1;
+    private volatile java.lang.Object idUsuario_;
+    /**
+     * <code>string idUsuario = 1;</code>
+     */
+    public java.lang.String getIdUsuario() {
+      java.lang.Object ref = idUsuario_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        idUsuario_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string idUsuario = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdUsuarioBytes() {
+      java.lang.Object ref = idUsuario_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        idUsuario_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getIdUsuarioBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, idUsuario_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getIdUsuarioBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, idUsuario_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof grpc.Transaccion.GetTransaccionesRequest)) {
+        return super.equals(obj);
+      }
+      grpc.Transaccion.GetTransaccionesRequest other = (grpc.Transaccion.GetTransaccionesRequest) obj;
+
+      boolean result = true;
+      result = result && getIdUsuario()
+          .equals(other.getIdUsuario());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + IDUSUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getIdUsuario().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static grpc.Transaccion.GetTransaccionesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(grpc.Transaccion.GetTransaccionesRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * REQUESTS 
+     * </pre>
+     *
+     * Protobuf type {@code GetTransaccionesRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:GetTransaccionesRequest)
+        grpc.Transaccion.GetTransaccionesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return grpc.Transaccion.internal_static_GetTransaccionesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return grpc.Transaccion.internal_static_GetTransaccionesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                grpc.Transaccion.GetTransaccionesRequest.class, grpc.Transaccion.GetTransaccionesRequest.Builder.class);
+      }
+
+      // Construct using grpc.Transaccion.GetTransaccionesRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        idUsuario_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return grpc.Transaccion.internal_static_GetTransaccionesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public grpc.Transaccion.GetTransaccionesRequest getDefaultInstanceForType() {
+        return grpc.Transaccion.GetTransaccionesRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public grpc.Transaccion.GetTransaccionesRequest build() {
+        grpc.Transaccion.GetTransaccionesRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public grpc.Transaccion.GetTransaccionesRequest buildPartial() {
+        grpc.Transaccion.GetTransaccionesRequest result = new grpc.Transaccion.GetTransaccionesRequest(this);
+        result.idUsuario_ = idUsuario_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof grpc.Transaccion.GetTransaccionesRequest) {
+          return mergeFrom((grpc.Transaccion.GetTransaccionesRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(grpc.Transaccion.GetTransaccionesRequest other) {
+        if (other == grpc.Transaccion.GetTransaccionesRequest.getDefaultInstance()) return this;
+        if (!other.getIdUsuario().isEmpty()) {
+          idUsuario_ = other.idUsuario_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        grpc.Transaccion.GetTransaccionesRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (grpc.Transaccion.GetTransaccionesRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object idUsuario_ = "";
+      /**
+       * <code>string idUsuario = 1;</code>
+       */
+      public java.lang.String getIdUsuario() {
+        java.lang.Object ref = idUsuario_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          idUsuario_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string idUsuario = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIdUsuarioBytes() {
+        java.lang.Object ref = idUsuario_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          idUsuario_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string idUsuario = 1;</code>
+       */
+      public Builder setIdUsuario(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        idUsuario_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string idUsuario = 1;</code>
+       */
+      public Builder clearIdUsuario() {
+        
+        idUsuario_ = getDefaultInstance().getIdUsuario();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string idUsuario = 1;</code>
+       */
+      public Builder setIdUsuarioBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        idUsuario_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:GetTransaccionesRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:GetTransaccionesRequest)
+    private static final grpc.Transaccion.GetTransaccionesRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new grpc.Transaccion.GetTransaccionesRequest();
+    }
+
+    public static grpc.Transaccion.GetTransaccionesRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetTransaccionesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GetTransaccionesRequest>() {
+      @java.lang.Override
+      public GetTransaccionesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetTransaccionesRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetTransaccionesRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetTransaccionesRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public grpc.Transaccion.GetTransaccionesRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TransaccionServerResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:TransaccionServerResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1386,21 +1944,21 @@ public final class Transaccion {
   }
   /**
    * <pre>
-   * RESPUESTA 
+   * RESPONSES 
    * </pre>
    *
-   * Protobuf type {@code ServerResponse}
+   * Protobuf type {@code TransaccionServerResponse}
    */
-  public  static final class ServerResponse extends
+  public  static final class TransaccionServerResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ServerResponse)
-      ServerResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:TransaccionServerResponse)
+      TransaccionServerResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ServerResponse.newBuilder() to construct.
-    private ServerResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use TransaccionServerResponse.newBuilder() to construct.
+    private TransaccionServerResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ServerResponse() {
+    private TransaccionServerResponse() {
       code_ = 0;
       msg_ = "";
     }
@@ -1410,7 +1968,7 @@ public final class Transaccion {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ServerResponse(
+    private TransaccionServerResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1461,15 +2019,15 @@ public final class Transaccion {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return grpc.Transaccion.internal_static_ServerResponse_descriptor;
+      return grpc.Transaccion.internal_static_TransaccionServerResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return grpc.Transaccion.internal_static_ServerResponse_fieldAccessorTable
+      return grpc.Transaccion.internal_static_TransaccionServerResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              grpc.Transaccion.ServerResponse.class, grpc.Transaccion.ServerResponse.Builder.class);
+              grpc.Transaccion.TransaccionServerResponse.class, grpc.Transaccion.TransaccionServerResponse.Builder.class);
     }
 
     public static final int CODE_FIELD_NUMBER = 1;
@@ -1561,10 +2119,10 @@ public final class Transaccion {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof grpc.Transaccion.ServerResponse)) {
+      if (!(obj instanceof grpc.Transaccion.TransaccionServerResponse)) {
         return super.equals(obj);
       }
-      grpc.Transaccion.ServerResponse other = (grpc.Transaccion.ServerResponse) obj;
+      grpc.Transaccion.TransaccionServerResponse other = (grpc.Transaccion.TransaccionServerResponse) obj;
 
       boolean result = true;
       result = result && (getCode()
@@ -1591,69 +2149,69 @@ public final class Transaccion {
       return hash;
     }
 
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(byte[] data)
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(java.io.InputStream input)
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static grpc.Transaccion.ServerResponse parseDelimitedFrom(java.io.InputStream input)
+    public static grpc.Transaccion.TransaccionServerResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static grpc.Transaccion.ServerResponse parseDelimitedFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static grpc.Transaccion.ServerResponse parseFrom(
+    public static grpc.Transaccion.TransaccionServerResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1666,7 +2224,7 @@ public final class Transaccion {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(grpc.Transaccion.ServerResponse prototype) {
+    public static Builder newBuilder(grpc.Transaccion.TransaccionServerResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1683,29 +2241,29 @@ public final class Transaccion {
     }
     /**
      * <pre>
-     * RESPUESTA 
+     * RESPONSES 
      * </pre>
      *
-     * Protobuf type {@code ServerResponse}
+     * Protobuf type {@code TransaccionServerResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ServerResponse)
-        grpc.Transaccion.ServerResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:TransaccionServerResponse)
+        grpc.Transaccion.TransaccionServerResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return grpc.Transaccion.internal_static_ServerResponse_descriptor;
+        return grpc.Transaccion.internal_static_TransaccionServerResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return grpc.Transaccion.internal_static_ServerResponse_fieldAccessorTable
+        return grpc.Transaccion.internal_static_TransaccionServerResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                grpc.Transaccion.ServerResponse.class, grpc.Transaccion.ServerResponse.Builder.class);
+                grpc.Transaccion.TransaccionServerResponse.class, grpc.Transaccion.TransaccionServerResponse.Builder.class);
       }
 
-      // Construct using grpc.Transaccion.ServerResponse.newBuilder()
+      // Construct using grpc.Transaccion.TransaccionServerResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1733,17 +2291,17 @@ public final class Transaccion {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return grpc.Transaccion.internal_static_ServerResponse_descriptor;
+        return grpc.Transaccion.internal_static_TransaccionServerResponse_descriptor;
       }
 
       @java.lang.Override
-      public grpc.Transaccion.ServerResponse getDefaultInstanceForType() {
-        return grpc.Transaccion.ServerResponse.getDefaultInstance();
+      public grpc.Transaccion.TransaccionServerResponse getDefaultInstanceForType() {
+        return grpc.Transaccion.TransaccionServerResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public grpc.Transaccion.ServerResponse build() {
-        grpc.Transaccion.ServerResponse result = buildPartial();
+      public grpc.Transaccion.TransaccionServerResponse build() {
+        grpc.Transaccion.TransaccionServerResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1751,8 +2309,8 @@ public final class Transaccion {
       }
 
       @java.lang.Override
-      public grpc.Transaccion.ServerResponse buildPartial() {
-        grpc.Transaccion.ServerResponse result = new grpc.Transaccion.ServerResponse(this);
+      public grpc.Transaccion.TransaccionServerResponse buildPartial() {
+        grpc.Transaccion.TransaccionServerResponse result = new grpc.Transaccion.TransaccionServerResponse(this);
         result.code_ = code_;
         result.msg_ = msg_;
         onBuilt();
@@ -1793,16 +2351,16 @@ public final class Transaccion {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.Transaccion.ServerResponse) {
-          return mergeFrom((grpc.Transaccion.ServerResponse)other);
+        if (other instanceof grpc.Transaccion.TransaccionServerResponse) {
+          return mergeFrom((grpc.Transaccion.TransaccionServerResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(grpc.Transaccion.ServerResponse other) {
-        if (other == grpc.Transaccion.ServerResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(grpc.Transaccion.TransaccionServerResponse other) {
+        if (other == grpc.Transaccion.TransaccionServerResponse.getDefaultInstance()) return this;
         if (other.getCode() != 0) {
           setCode(other.getCode());
         }
@@ -1825,11 +2383,11 @@ public final class Transaccion {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        grpc.Transaccion.ServerResponse parsedMessage = null;
+        grpc.Transaccion.TransaccionServerResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.Transaccion.ServerResponse) e.getUnfinishedMessage();
+          parsedMessage = (grpc.Transaccion.TransaccionServerResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1946,41 +2504,41 @@ public final class Transaccion {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ServerResponse)
+      // @@protoc_insertion_point(builder_scope:TransaccionServerResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:ServerResponse)
-    private static final grpc.Transaccion.ServerResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:TransaccionServerResponse)
+    private static final grpc.Transaccion.TransaccionServerResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new grpc.Transaccion.ServerResponse();
+      DEFAULT_INSTANCE = new grpc.Transaccion.TransaccionServerResponse();
     }
 
-    public static grpc.Transaccion.ServerResponse getDefaultInstance() {
+    public static grpc.Transaccion.TransaccionServerResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ServerResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ServerResponse>() {
+    private static final com.google.protobuf.Parser<TransaccionServerResponse>
+        PARSER = new com.google.protobuf.AbstractParser<TransaccionServerResponse>() {
       @java.lang.Override
-      public ServerResponse parsePartialFrom(
+      public TransaccionServerResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ServerResponse(input, extensionRegistry);
+        return new TransaccionServerResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ServerResponse> parser() {
+    public static com.google.protobuf.Parser<TransaccionServerResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ServerResponse> getParserForType() {
+    public com.google.protobuf.Parser<TransaccionServerResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public grpc.Transaccion.ServerResponse getDefaultInstanceForType() {
+    public grpc.Transaccion.TransaccionServerResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2011,17 +2569,17 @@ public final class Transaccion {
     double getSaldoRestante();
 
     /**
-     * <code>.ServerResponse serverResponse = 5;</code>
+     * <code>.TransaccionServerResponse serverResponse = 5;</code>
      */
     boolean hasServerResponse();
     /**
-     * <code>.ServerResponse serverResponse = 5;</code>
+     * <code>.TransaccionServerResponse serverResponse = 5;</code>
      */
-    grpc.Transaccion.ServerResponse getServerResponse();
+    grpc.Transaccion.TransaccionServerResponse getServerResponse();
     /**
-     * <code>.ServerResponse serverResponse = 5;</code>
+     * <code>.TransaccionServerResponse serverResponse = 5;</code>
      */
-    grpc.Transaccion.ServerResponseOrBuilder getServerResponseOrBuilder();
+    grpc.Transaccion.TransaccionServerResponseOrBuilder getServerResponseOrBuilder();
   }
   /**
    * Protobuf type {@code ResTransaccionDTO}
@@ -2087,11 +2645,11 @@ public final class Transaccion {
               break;
             }
             case 42: {
-              grpc.Transaccion.ServerResponse.Builder subBuilder = null;
+              grpc.Transaccion.TransaccionServerResponse.Builder subBuilder = null;
               if (serverResponse_ != null) {
                 subBuilder = serverResponse_.toBuilder();
               }
-              serverResponse_ = input.readMessage(grpc.Transaccion.ServerResponse.parser(), extensionRegistry);
+              serverResponse_ = input.readMessage(grpc.Transaccion.TransaccionServerResponse.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(serverResponse_);
                 serverResponse_ = subBuilder.buildPartial();
@@ -2168,23 +2726,23 @@ public final class Transaccion {
     }
 
     public static final int SERVERRESPONSE_FIELD_NUMBER = 5;
-    private grpc.Transaccion.ServerResponse serverResponse_;
+    private grpc.Transaccion.TransaccionServerResponse serverResponse_;
     /**
-     * <code>.ServerResponse serverResponse = 5;</code>
+     * <code>.TransaccionServerResponse serverResponse = 5;</code>
      */
     public boolean hasServerResponse() {
       return serverResponse_ != null;
     }
     /**
-     * <code>.ServerResponse serverResponse = 5;</code>
+     * <code>.TransaccionServerResponse serverResponse = 5;</code>
      */
-    public grpc.Transaccion.ServerResponse getServerResponse() {
-      return serverResponse_ == null ? grpc.Transaccion.ServerResponse.getDefaultInstance() : serverResponse_;
+    public grpc.Transaccion.TransaccionServerResponse getServerResponse() {
+      return serverResponse_ == null ? grpc.Transaccion.TransaccionServerResponse.getDefaultInstance() : serverResponse_;
     }
     /**
-     * <code>.ServerResponse serverResponse = 5;</code>
+     * <code>.TransaccionServerResponse serverResponse = 5;</code>
      */
-    public grpc.Transaccion.ServerResponseOrBuilder getServerResponseOrBuilder() {
+    public grpc.Transaccion.TransaccionServerResponseOrBuilder getServerResponseOrBuilder() {
       return getServerResponse();
     }
 
@@ -2679,29 +3237,29 @@ public final class Transaccion {
         return this;
       }
 
-      private grpc.Transaccion.ServerResponse serverResponse_ = null;
+      private grpc.Transaccion.TransaccionServerResponse serverResponse_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          grpc.Transaccion.ServerResponse, grpc.Transaccion.ServerResponse.Builder, grpc.Transaccion.ServerResponseOrBuilder> serverResponseBuilder_;
+          grpc.Transaccion.TransaccionServerResponse, grpc.Transaccion.TransaccionServerResponse.Builder, grpc.Transaccion.TransaccionServerResponseOrBuilder> serverResponseBuilder_;
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
       public boolean hasServerResponse() {
         return serverResponseBuilder_ != null || serverResponse_ != null;
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
-      public grpc.Transaccion.ServerResponse getServerResponse() {
+      public grpc.Transaccion.TransaccionServerResponse getServerResponse() {
         if (serverResponseBuilder_ == null) {
-          return serverResponse_ == null ? grpc.Transaccion.ServerResponse.getDefaultInstance() : serverResponse_;
+          return serverResponse_ == null ? grpc.Transaccion.TransaccionServerResponse.getDefaultInstance() : serverResponse_;
         } else {
           return serverResponseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
-      public Builder setServerResponse(grpc.Transaccion.ServerResponse value) {
+      public Builder setServerResponse(grpc.Transaccion.TransaccionServerResponse value) {
         if (serverResponseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2715,10 +3273,10 @@ public final class Transaccion {
         return this;
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
       public Builder setServerResponse(
-          grpc.Transaccion.ServerResponse.Builder builderForValue) {
+          grpc.Transaccion.TransaccionServerResponse.Builder builderForValue) {
         if (serverResponseBuilder_ == null) {
           serverResponse_ = builderForValue.build();
           onChanged();
@@ -2729,13 +3287,13 @@ public final class Transaccion {
         return this;
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
-      public Builder mergeServerResponse(grpc.Transaccion.ServerResponse value) {
+      public Builder mergeServerResponse(grpc.Transaccion.TransaccionServerResponse value) {
         if (serverResponseBuilder_ == null) {
           if (serverResponse_ != null) {
             serverResponse_ =
-              grpc.Transaccion.ServerResponse.newBuilder(serverResponse_).mergeFrom(value).buildPartial();
+              grpc.Transaccion.TransaccionServerResponse.newBuilder(serverResponse_).mergeFrom(value).buildPartial();
           } else {
             serverResponse_ = value;
           }
@@ -2747,7 +3305,7 @@ public final class Transaccion {
         return this;
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
       public Builder clearServerResponse() {
         if (serverResponseBuilder_ == null) {
@@ -2761,33 +3319,33 @@ public final class Transaccion {
         return this;
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
-      public grpc.Transaccion.ServerResponse.Builder getServerResponseBuilder() {
+      public grpc.Transaccion.TransaccionServerResponse.Builder getServerResponseBuilder() {
         
         onChanged();
         return getServerResponseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
-      public grpc.Transaccion.ServerResponseOrBuilder getServerResponseOrBuilder() {
+      public grpc.Transaccion.TransaccionServerResponseOrBuilder getServerResponseOrBuilder() {
         if (serverResponseBuilder_ != null) {
           return serverResponseBuilder_.getMessageOrBuilder();
         } else {
           return serverResponse_ == null ?
-              grpc.Transaccion.ServerResponse.getDefaultInstance() : serverResponse_;
+              grpc.Transaccion.TransaccionServerResponse.getDefaultInstance() : serverResponse_;
         }
       }
       /**
-       * <code>.ServerResponse serverResponse = 5;</code>
+       * <code>.TransaccionServerResponse serverResponse = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          grpc.Transaccion.ServerResponse, grpc.Transaccion.ServerResponse.Builder, grpc.Transaccion.ServerResponseOrBuilder> 
+          grpc.Transaccion.TransaccionServerResponse, grpc.Transaccion.TransaccionServerResponse.Builder, grpc.Transaccion.TransaccionServerResponseOrBuilder> 
           getServerResponseFieldBuilder() {
         if (serverResponseBuilder_ == null) {
           serverResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              grpc.Transaccion.ServerResponse, grpc.Transaccion.ServerResponse.Builder, grpc.Transaccion.ServerResponseOrBuilder>(
+              grpc.Transaccion.TransaccionServerResponse, grpc.Transaccion.TransaccionServerResponse.Builder, grpc.Transaccion.TransaccionServerResponseOrBuilder>(
                   getServerResponse(),
                   getParentForChildren(),
                   isClean());
@@ -2848,1122 +3406,6 @@ public final class Transaccion {
 
   }
 
-  public interface GetAllComprasByUsuarioIdRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetAllComprasByUsuarioIdRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    java.lang.String getIdUsuario();
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIdUsuarioBytes();
-  }
-  /**
-   * <pre>
-   * RECIBE PEDIDO DE LISTADO DE REGISTROS DE COMPRA CON ID USUARIO 
-   * </pre>
-   *
-   * Protobuf type {@code GetAllComprasByUsuarioIdRequest}
-   */
-  public  static final class GetAllComprasByUsuarioIdRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetAllComprasByUsuarioIdRequest)
-      GetAllComprasByUsuarioIdRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GetAllComprasByUsuarioIdRequest.newBuilder() to construct.
-    private GetAllComprasByUsuarioIdRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GetAllComprasByUsuarioIdRequest() {
-      idUsuario_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GetAllComprasByUsuarioIdRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              idUsuario_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.Transaccion.internal_static_GetAllComprasByUsuarioIdRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.Transaccion.internal_static_GetAllComprasByUsuarioIdRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.Transaccion.GetAllComprasByUsuarioIdRequest.class, grpc.Transaccion.GetAllComprasByUsuarioIdRequest.Builder.class);
-    }
-
-    public static final int IDUSUARIO_FIELD_NUMBER = 1;
-    private volatile java.lang.Object idUsuario_;
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    public java.lang.String getIdUsuario() {
-      java.lang.Object ref = idUsuario_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        idUsuario_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIdUsuarioBytes() {
-      java.lang.Object ref = idUsuario_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        idUsuario_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getIdUsuarioBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, idUsuario_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getIdUsuarioBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, idUsuario_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.Transaccion.GetAllComprasByUsuarioIdRequest)) {
-        return super.equals(obj);
-      }
-      grpc.Transaccion.GetAllComprasByUsuarioIdRequest other = (grpc.Transaccion.GetAllComprasByUsuarioIdRequest) obj;
-
-      boolean result = true;
-      result = result && getIdUsuario()
-          .equals(other.getIdUsuario());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + IDUSUARIO_FIELD_NUMBER;
-      hash = (53 * hash) + getIdUsuario().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.Transaccion.GetAllComprasByUsuarioIdRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * RECIBE PEDIDO DE LISTADO DE REGISTROS DE COMPRA CON ID USUARIO 
-     * </pre>
-     *
-     * Protobuf type {@code GetAllComprasByUsuarioIdRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetAllComprasByUsuarioIdRequest)
-        grpc.Transaccion.GetAllComprasByUsuarioIdRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.Transaccion.internal_static_GetAllComprasByUsuarioIdRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.Transaccion.internal_static_GetAllComprasByUsuarioIdRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.Transaccion.GetAllComprasByUsuarioIdRequest.class, grpc.Transaccion.GetAllComprasByUsuarioIdRequest.Builder.class);
-      }
-
-      // Construct using grpc.Transaccion.GetAllComprasByUsuarioIdRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        idUsuario_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.Transaccion.internal_static_GetAllComprasByUsuarioIdRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.Transaccion.GetAllComprasByUsuarioIdRequest getDefaultInstanceForType() {
-        return grpc.Transaccion.GetAllComprasByUsuarioIdRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.Transaccion.GetAllComprasByUsuarioIdRequest build() {
-        grpc.Transaccion.GetAllComprasByUsuarioIdRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.Transaccion.GetAllComprasByUsuarioIdRequest buildPartial() {
-        grpc.Transaccion.GetAllComprasByUsuarioIdRequest result = new grpc.Transaccion.GetAllComprasByUsuarioIdRequest(this);
-        result.idUsuario_ = idUsuario_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.Transaccion.GetAllComprasByUsuarioIdRequest) {
-          return mergeFrom((grpc.Transaccion.GetAllComprasByUsuarioIdRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.Transaccion.GetAllComprasByUsuarioIdRequest other) {
-        if (other == grpc.Transaccion.GetAllComprasByUsuarioIdRequest.getDefaultInstance()) return this;
-        if (!other.getIdUsuario().isEmpty()) {
-          idUsuario_ = other.idUsuario_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.Transaccion.GetAllComprasByUsuarioIdRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.Transaccion.GetAllComprasByUsuarioIdRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object idUsuario_ = "";
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public java.lang.String getIdUsuario() {
-        java.lang.Object ref = idUsuario_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          idUsuario_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIdUsuarioBytes() {
-        java.lang.Object ref = idUsuario_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          idUsuario_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public Builder setIdUsuario(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        idUsuario_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public Builder clearIdUsuario() {
-        
-        idUsuario_ = getDefaultInstance().getIdUsuario();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public Builder setIdUsuarioBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        idUsuario_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:GetAllComprasByUsuarioIdRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:GetAllComprasByUsuarioIdRequest)
-    private static final grpc.Transaccion.GetAllComprasByUsuarioIdRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.Transaccion.GetAllComprasByUsuarioIdRequest();
-    }
-
-    public static grpc.Transaccion.GetAllComprasByUsuarioIdRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GetAllComprasByUsuarioIdRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetAllComprasByUsuarioIdRequest>() {
-      @java.lang.Override
-      public GetAllComprasByUsuarioIdRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetAllComprasByUsuarioIdRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetAllComprasByUsuarioIdRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetAllComprasByUsuarioIdRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.Transaccion.GetAllComprasByUsuarioIdRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface GetAllVentasByUsuarioIdRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GetAllVentasByUsuarioIdRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    java.lang.String getIdUsuario();
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIdUsuarioBytes();
-  }
-  /**
-   * <pre>
-   * RECIBE PEDIDO DE LISTADO DE REGISTROS DE VENTA CON ID USUARIO 
-   * </pre>
-   *
-   * Protobuf type {@code GetAllVentasByUsuarioIdRequest}
-   */
-  public  static final class GetAllVentasByUsuarioIdRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GetAllVentasByUsuarioIdRequest)
-      GetAllVentasByUsuarioIdRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use GetAllVentasByUsuarioIdRequest.newBuilder() to construct.
-    private GetAllVentasByUsuarioIdRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private GetAllVentasByUsuarioIdRequest() {
-      idUsuario_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private GetAllVentasByUsuarioIdRequest(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              idUsuario_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.Transaccion.internal_static_GetAllVentasByUsuarioIdRequest_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.Transaccion.internal_static_GetAllVentasByUsuarioIdRequest_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.Transaccion.GetAllVentasByUsuarioIdRequest.class, grpc.Transaccion.GetAllVentasByUsuarioIdRequest.Builder.class);
-    }
-
-    public static final int IDUSUARIO_FIELD_NUMBER = 1;
-    private volatile java.lang.Object idUsuario_;
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    public java.lang.String getIdUsuario() {
-      java.lang.Object ref = idUsuario_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        idUsuario_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string idUsuario = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIdUsuarioBytes() {
-      java.lang.Object ref = idUsuario_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        idUsuario_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getIdUsuarioBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, idUsuario_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getIdUsuarioBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, idUsuario_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.Transaccion.GetAllVentasByUsuarioIdRequest)) {
-        return super.equals(obj);
-      }
-      grpc.Transaccion.GetAllVentasByUsuarioIdRequest other = (grpc.Transaccion.GetAllVentasByUsuarioIdRequest) obj;
-
-      boolean result = true;
-      result = result && getIdUsuario()
-          .equals(other.getIdUsuario());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + IDUSUARIO_FIELD_NUMBER;
-      hash = (53 * hash) + getIdUsuario().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.Transaccion.GetAllVentasByUsuarioIdRequest prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * RECIBE PEDIDO DE LISTADO DE REGISTROS DE VENTA CON ID USUARIO 
-     * </pre>
-     *
-     * Protobuf type {@code GetAllVentasByUsuarioIdRequest}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GetAllVentasByUsuarioIdRequest)
-        grpc.Transaccion.GetAllVentasByUsuarioIdRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.Transaccion.internal_static_GetAllVentasByUsuarioIdRequest_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.Transaccion.internal_static_GetAllVentasByUsuarioIdRequest_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.Transaccion.GetAllVentasByUsuarioIdRequest.class, grpc.Transaccion.GetAllVentasByUsuarioIdRequest.Builder.class);
-      }
-
-      // Construct using grpc.Transaccion.GetAllVentasByUsuarioIdRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        idUsuario_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.Transaccion.internal_static_GetAllVentasByUsuarioIdRequest_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.Transaccion.GetAllVentasByUsuarioIdRequest getDefaultInstanceForType() {
-        return grpc.Transaccion.GetAllVentasByUsuarioIdRequest.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.Transaccion.GetAllVentasByUsuarioIdRequest build() {
-        grpc.Transaccion.GetAllVentasByUsuarioIdRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.Transaccion.GetAllVentasByUsuarioIdRequest buildPartial() {
-        grpc.Transaccion.GetAllVentasByUsuarioIdRequest result = new grpc.Transaccion.GetAllVentasByUsuarioIdRequest(this);
-        result.idUsuario_ = idUsuario_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.Transaccion.GetAllVentasByUsuarioIdRequest) {
-          return mergeFrom((grpc.Transaccion.GetAllVentasByUsuarioIdRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.Transaccion.GetAllVentasByUsuarioIdRequest other) {
-        if (other == grpc.Transaccion.GetAllVentasByUsuarioIdRequest.getDefaultInstance()) return this;
-        if (!other.getIdUsuario().isEmpty()) {
-          idUsuario_ = other.idUsuario_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.Transaccion.GetAllVentasByUsuarioIdRequest parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.Transaccion.GetAllVentasByUsuarioIdRequest) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object idUsuario_ = "";
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public java.lang.String getIdUsuario() {
-        java.lang.Object ref = idUsuario_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          idUsuario_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIdUsuarioBytes() {
-        java.lang.Object ref = idUsuario_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          idUsuario_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public Builder setIdUsuario(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        idUsuario_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public Builder clearIdUsuario() {
-        
-        idUsuario_ = getDefaultInstance().getIdUsuario();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string idUsuario = 1;</code>
-       */
-      public Builder setIdUsuarioBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        idUsuario_ = value;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:GetAllVentasByUsuarioIdRequest)
-    }
-
-    // @@protoc_insertion_point(class_scope:GetAllVentasByUsuarioIdRequest)
-    private static final grpc.Transaccion.GetAllVentasByUsuarioIdRequest DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.Transaccion.GetAllVentasByUsuarioIdRequest();
-    }
-
-    public static grpc.Transaccion.GetAllVentasByUsuarioIdRequest getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<GetAllVentasByUsuarioIdRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetAllVentasByUsuarioIdRequest>() {
-      @java.lang.Override
-      public GetAllVentasByUsuarioIdRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetAllVentasByUsuarioIdRequest(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<GetAllVentasByUsuarioIdRequest> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<GetAllVentasByUsuarioIdRequest> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.Transaccion.GetAllVentasByUsuarioIdRequest getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface LisTransaccionDTOOrBuilder extends
       // @@protoc_insertion_point(interface_extends:LisTransaccionDTO)
       com.google.protobuf.MessageOrBuilder {
@@ -3993,17 +3435,17 @@ public final class Transaccion {
         int index);
 
     /**
-     * <code>.ServerResponse response = 2;</code>
+     * <code>.TransaccionServerResponse serverResponse = 2;</code>
      */
-    boolean hasResponse();
+    boolean hasServerResponse();
     /**
-     * <code>.ServerResponse response = 2;</code>
+     * <code>.TransaccionServerResponse serverResponse = 2;</code>
      */
-    grpc.Transaccion.ServerResponse getResponse();
+    grpc.Transaccion.TransaccionServerResponse getServerResponse();
     /**
-     * <code>.ServerResponse response = 2;</code>
+     * <code>.TransaccionServerResponse serverResponse = 2;</code>
      */
-    grpc.Transaccion.ServerResponseOrBuilder getResponseOrBuilder();
+    grpc.Transaccion.TransaccionServerResponseOrBuilder getServerResponseOrBuilder();
   }
   /**
    * <pre>
@@ -4059,14 +3501,14 @@ public final class Transaccion {
               break;
             }
             case 18: {
-              grpc.Transaccion.ServerResponse.Builder subBuilder = null;
-              if (response_ != null) {
-                subBuilder = response_.toBuilder();
+              grpc.Transaccion.TransaccionServerResponse.Builder subBuilder = null;
+              if (serverResponse_ != null) {
+                subBuilder = serverResponse_.toBuilder();
               }
-              response_ = input.readMessage(grpc.Transaccion.ServerResponse.parser(), extensionRegistry);
+              serverResponse_ = input.readMessage(grpc.Transaccion.TransaccionServerResponse.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(response_);
-                response_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(serverResponse_);
+                serverResponse_ = subBuilder.buildPartial();
               }
 
               break;
@@ -4142,25 +3584,25 @@ public final class Transaccion {
       return transacciones_.get(index);
     }
 
-    public static final int RESPONSE_FIELD_NUMBER = 2;
-    private grpc.Transaccion.ServerResponse response_;
+    public static final int SERVERRESPONSE_FIELD_NUMBER = 2;
+    private grpc.Transaccion.TransaccionServerResponse serverResponse_;
     /**
-     * <code>.ServerResponse response = 2;</code>
+     * <code>.TransaccionServerResponse serverResponse = 2;</code>
      */
-    public boolean hasResponse() {
-      return response_ != null;
+    public boolean hasServerResponse() {
+      return serverResponse_ != null;
     }
     /**
-     * <code>.ServerResponse response = 2;</code>
+     * <code>.TransaccionServerResponse serverResponse = 2;</code>
      */
-    public grpc.Transaccion.ServerResponse getResponse() {
-      return response_ == null ? grpc.Transaccion.ServerResponse.getDefaultInstance() : response_;
+    public grpc.Transaccion.TransaccionServerResponse getServerResponse() {
+      return serverResponse_ == null ? grpc.Transaccion.TransaccionServerResponse.getDefaultInstance() : serverResponse_;
     }
     /**
-     * <code>.ServerResponse response = 2;</code>
+     * <code>.TransaccionServerResponse serverResponse = 2;</code>
      */
-    public grpc.Transaccion.ServerResponseOrBuilder getResponseOrBuilder() {
-      return getResponse();
+    public grpc.Transaccion.TransaccionServerResponseOrBuilder getServerResponseOrBuilder() {
+      return getServerResponse();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4180,8 +3622,8 @@ public final class Transaccion {
       for (int i = 0; i < transacciones_.size(); i++) {
         output.writeMessage(1, transacciones_.get(i));
       }
-      if (response_ != null) {
-        output.writeMessage(2, getResponse());
+      if (serverResponse_ != null) {
+        output.writeMessage(2, getServerResponse());
       }
       unknownFields.writeTo(output);
     }
@@ -4196,9 +3638,9 @@ public final class Transaccion {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, transacciones_.get(i));
       }
-      if (response_ != null) {
+      if (serverResponse_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getResponse());
+          .computeMessageSize(2, getServerResponse());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4218,10 +3660,10 @@ public final class Transaccion {
       boolean result = true;
       result = result && getTransaccionesList()
           .equals(other.getTransaccionesList());
-      result = result && (hasResponse() == other.hasResponse());
-      if (hasResponse()) {
-        result = result && getResponse()
-            .equals(other.getResponse());
+      result = result && (hasServerResponse() == other.hasServerResponse());
+      if (hasServerResponse()) {
+        result = result && getServerResponse()
+            .equals(other.getServerResponse());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -4238,9 +3680,9 @@ public final class Transaccion {
         hash = (37 * hash) + TRANSACCIONES_FIELD_NUMBER;
         hash = (53 * hash) + getTransaccionesList().hashCode();
       }
-      if (hasResponse()) {
-        hash = (37 * hash) + RESPONSE_FIELD_NUMBER;
-        hash = (53 * hash) + getResponse().hashCode();
+      if (hasServerResponse()) {
+        hash = (37 * hash) + SERVERRESPONSE_FIELD_NUMBER;
+        hash = (53 * hash) + getServerResponse().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4386,11 +3828,11 @@ public final class Transaccion {
         } else {
           transaccionesBuilder_.clear();
         }
-        if (responseBuilder_ == null) {
-          response_ = null;
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
         } else {
-          response_ = null;
-          responseBuilder_ = null;
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
         }
         return this;
       }
@@ -4429,10 +3871,10 @@ public final class Transaccion {
         } else {
           result.transacciones_ = transaccionesBuilder_.build();
         }
-        if (responseBuilder_ == null) {
-          result.response_ = response_;
+        if (serverResponseBuilder_ == null) {
+          result.serverResponse_ = serverResponse_;
         } else {
-          result.response_ = responseBuilder_.build();
+          result.serverResponse_ = serverResponseBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -4509,8 +3951,8 @@ public final class Transaccion {
             }
           }
         }
-        if (other.hasResponse()) {
-          mergeResponse(other.getResponse());
+        if (other.hasServerResponse()) {
+          mergeServerResponse(other.getServerResponse());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4782,121 +4224,121 @@ public final class Transaccion {
         return transaccionesBuilder_;
       }
 
-      private grpc.Transaccion.ServerResponse response_ = null;
+      private grpc.Transaccion.TransaccionServerResponse serverResponse_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          grpc.Transaccion.ServerResponse, grpc.Transaccion.ServerResponse.Builder, grpc.Transaccion.ServerResponseOrBuilder> responseBuilder_;
+          grpc.Transaccion.TransaccionServerResponse, grpc.Transaccion.TransaccionServerResponse.Builder, grpc.Transaccion.TransaccionServerResponseOrBuilder> serverResponseBuilder_;
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public boolean hasResponse() {
-        return responseBuilder_ != null || response_ != null;
+      public boolean hasServerResponse() {
+        return serverResponseBuilder_ != null || serverResponse_ != null;
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public grpc.Transaccion.ServerResponse getResponse() {
-        if (responseBuilder_ == null) {
-          return response_ == null ? grpc.Transaccion.ServerResponse.getDefaultInstance() : response_;
+      public grpc.Transaccion.TransaccionServerResponse getServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          return serverResponse_ == null ? grpc.Transaccion.TransaccionServerResponse.getDefaultInstance() : serverResponse_;
         } else {
-          return responseBuilder_.getMessage();
+          return serverResponseBuilder_.getMessage();
         }
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public Builder setResponse(grpc.Transaccion.ServerResponse value) {
-        if (responseBuilder_ == null) {
+      public Builder setServerResponse(grpc.Transaccion.TransaccionServerResponse value) {
+        if (serverResponseBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          response_ = value;
+          serverResponse_ = value;
           onChanged();
         } else {
-          responseBuilder_.setMessage(value);
+          serverResponseBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public Builder setResponse(
-          grpc.Transaccion.ServerResponse.Builder builderForValue) {
-        if (responseBuilder_ == null) {
-          response_ = builderForValue.build();
+      public Builder setServerResponse(
+          grpc.Transaccion.TransaccionServerResponse.Builder builderForValue) {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = builderForValue.build();
           onChanged();
         } else {
-          responseBuilder_.setMessage(builderForValue.build());
+          serverResponseBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public Builder mergeResponse(grpc.Transaccion.ServerResponse value) {
-        if (responseBuilder_ == null) {
-          if (response_ != null) {
-            response_ =
-              grpc.Transaccion.ServerResponse.newBuilder(response_).mergeFrom(value).buildPartial();
+      public Builder mergeServerResponse(grpc.Transaccion.TransaccionServerResponse value) {
+        if (serverResponseBuilder_ == null) {
+          if (serverResponse_ != null) {
+            serverResponse_ =
+              grpc.Transaccion.TransaccionServerResponse.newBuilder(serverResponse_).mergeFrom(value).buildPartial();
           } else {
-            response_ = value;
+            serverResponse_ = value;
           }
           onChanged();
         } else {
-          responseBuilder_.mergeFrom(value);
+          serverResponseBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public Builder clearResponse() {
-        if (responseBuilder_ == null) {
-          response_ = null;
+      public Builder clearServerResponse() {
+        if (serverResponseBuilder_ == null) {
+          serverResponse_ = null;
           onChanged();
         } else {
-          response_ = null;
-          responseBuilder_ = null;
+          serverResponse_ = null;
+          serverResponseBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public grpc.Transaccion.ServerResponse.Builder getResponseBuilder() {
+      public grpc.Transaccion.TransaccionServerResponse.Builder getServerResponseBuilder() {
         
         onChanged();
-        return getResponseFieldBuilder().getBuilder();
+        return getServerResponseFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
-      public grpc.Transaccion.ServerResponseOrBuilder getResponseOrBuilder() {
-        if (responseBuilder_ != null) {
-          return responseBuilder_.getMessageOrBuilder();
+      public grpc.Transaccion.TransaccionServerResponseOrBuilder getServerResponseOrBuilder() {
+        if (serverResponseBuilder_ != null) {
+          return serverResponseBuilder_.getMessageOrBuilder();
         } else {
-          return response_ == null ?
-              grpc.Transaccion.ServerResponse.getDefaultInstance() : response_;
+          return serverResponse_ == null ?
+              grpc.Transaccion.TransaccionServerResponse.getDefaultInstance() : serverResponse_;
         }
       }
       /**
-       * <code>.ServerResponse response = 2;</code>
+       * <code>.TransaccionServerResponse serverResponse = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          grpc.Transaccion.ServerResponse, grpc.Transaccion.ServerResponse.Builder, grpc.Transaccion.ServerResponseOrBuilder> 
-          getResponseFieldBuilder() {
-        if (responseBuilder_ == null) {
-          responseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              grpc.Transaccion.ServerResponse, grpc.Transaccion.ServerResponse.Builder, grpc.Transaccion.ServerResponseOrBuilder>(
-                  getResponse(),
+          grpc.Transaccion.TransaccionServerResponse, grpc.Transaccion.TransaccionServerResponse.Builder, grpc.Transaccion.TransaccionServerResponseOrBuilder> 
+          getServerResponseFieldBuilder() {
+        if (serverResponseBuilder_ == null) {
+          serverResponseBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              grpc.Transaccion.TransaccionServerResponse, grpc.Transaccion.TransaccionServerResponse.Builder, grpc.Transaccion.TransaccionServerResponseOrBuilder>(
+                  getServerResponse(),
                   getParentForChildren(),
                   isClean());
-          response_ = null;
+          serverResponse_ = null;
         }
-        return responseBuilder_;
+        return serverResponseBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4962,25 +4404,20 @@ public final class Transaccion {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TransaccionDTO_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ServerResponse_descriptor;
+    internal_static_GetTransaccionesRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ServerResponse_fieldAccessorTable;
+      internal_static_GetTransaccionesRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_TransaccionServerResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_TransaccionServerResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ResTransaccionDTO_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ResTransaccionDTO_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetAllComprasByUsuarioIdRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetAllComprasByUsuarioIdRequest_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetAllVentasByUsuarioIdRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetAllVentasByUsuarioIdRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_LisTransaccionDTO_descriptor;
   private static final 
@@ -4999,24 +4436,23 @@ public final class Transaccion {
       "cionDTO\022\025\n\ridTransaccion\030\001 \001(\005\022\022\n\nidProd" +
       "ucto\030\002 \001(\005\022\023\n\013idComprador\030\003 \001(\005\022\022\n\nidVen" +
       "dedor\030\004 \001(\005\022\016\n\006nombre\030\005 \001(\t\022\020\n\010cantidad\030" +
-      "\006 \001(\005\022\016\n\006precio\030\007 \001(\001\"+\n\016ServerResponse\022" +
-      "\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"\226\001\n\021ResTransa" +
-      "ccionDTO\022\022\n\nidProducto\030\001 \001(\005\022\023\n\013idCompra" +
-      "dor\030\002 \001(\005\022\030\n\020cantidadRestante\030\003 \001(\005\022\025\n\rs" +
-      "aldoRestante\030\004 \001(\001\022\'\n\016serverResponse\030\005 \001" +
-      "(\0132\017.ServerResponse\"4\n\037GetAllComprasByUs" +
-      "uarioIdRequest\022\021\n\tidUsuario\030\001 \001(\t\"3\n\036Get" +
-      "AllVentasByUsuarioIdRequest\022\021\n\tidUsuario" +
-      "\030\001 \001(\t\"^\n\021LisTransaccionDTO\022&\n\rtransacci" +
-      "ones\030\001 \003(\0132\017.TransaccionDTO\022!\n\010response\030" +
-      "\002 \001(\0132\017.ServerResponse2\370\001\n\022TransaccionSe" +
-      "rvice\0222\n\016addTransaccion\022\017.TransaccionDTO" +
-      "\032\017.ServerResponse\022W\n\037getAllComprasByUsua" +
-      "rioIdRequest\022 .GetAllComprasByUsuarioIdR" +
-      "equest\032\022.LisTransaccionDTO\022U\n\036getAllVent" +
-      "asByUsuarioIdRequest\022\037.GetAllVentasByUsu" +
-      "arioIdRequest\032\022.LisTransaccionDTOB\006\n\004grp" +
-      "cb\006proto3"
+      "\006 \001(\005\022\016\n\006precio\030\007 \001(\001\",\n\027GetTransaccione" +
+      "sRequest\022\021\n\tidUsuario\030\001 \001(\t\"6\n\031Transacci" +
+      "onServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 " +
+      "\001(\t\"\241\001\n\021ResTransaccionDTO\022\022\n\nidProducto\030" +
+      "\001 \001(\005\022\023\n\013idComprador\030\002 \001(\005\022\030\n\020cantidadRe" +
+      "stante\030\003 \001(\005\022\025\n\rsaldoRestante\030\004 \001(\001\0222\n\016s" +
+      "erverResponse\030\005 \001(\0132\032.TransaccionServerR" +
+      "esponse\"o\n\021LisTransaccionDTO\022&\n\rtransacc" +
+      "iones\030\001 \003(\0132\017.TransaccionDTO\0222\n\016serverRe" +
+      "sponse\030\002 \001(\0132\032.TransaccionServerResponse" +
+      "2\354\001\n\022TransaccionService\0225\n\016addTransaccio" +
+      "n\022\017.TransaccionDTO\032\022.ResTransaccionDTO\022O" +
+      "\n\037getAllComprasByUsuarioIdRequest\022\030.GetT" +
+      "ransaccionesRequest\032\022.LisTransaccionDTO\022" +
+      "N\n\036getAllVentasByUsuarioIdRequest\022\030.GetT" +
+      "ransaccionesRequest\032\022.LisTransaccionDTOB" +
+      "\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5042,36 +4478,30 @@ public final class Transaccion {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TransaccionDTO_descriptor,
         new java.lang.String[] { "IdTransaccion", "IdProducto", "IdComprador", "IdVendedor", "Nombre", "Cantidad", "Precio", });
-    internal_static_ServerResponse_descriptor =
+    internal_static_GetTransaccionesRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_ServerResponse_fieldAccessorTable = new
+    internal_static_GetTransaccionesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ServerResponse_descriptor,
+        internal_static_GetTransaccionesRequest_descriptor,
+        new java.lang.String[] { "IdUsuario", });
+    internal_static_TransaccionServerResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_TransaccionServerResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_TransaccionServerResponse_descriptor,
         new java.lang.String[] { "Code", "Msg", });
     internal_static_ResTransaccionDTO_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_ResTransaccionDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResTransaccionDTO_descriptor,
         new java.lang.String[] { "IdProducto", "IdComprador", "CantidadRestante", "SaldoRestante", "ServerResponse", });
-    internal_static_GetAllComprasByUsuarioIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_GetAllComprasByUsuarioIdRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetAllComprasByUsuarioIdRequest_descriptor,
-        new java.lang.String[] { "IdUsuario", });
-    internal_static_GetAllVentasByUsuarioIdRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_GetAllVentasByUsuarioIdRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetAllVentasByUsuarioIdRequest_descriptor,
-        new java.lang.String[] { "IdUsuario", });
     internal_static_LisTransaccionDTO_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_LisTransaccionDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LisTransaccionDTO_descriptor,
-        new java.lang.String[] { "Transacciones", "Response", });
+        new java.lang.String[] { "Transacciones", "ServerResponse", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

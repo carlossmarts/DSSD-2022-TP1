@@ -1,18 +1,22 @@
 package bo;
 
-import grpc.Product.*;
+import grpc.Producto;
+import grpc.Producto.*;
 import grpc.Transaccion;
 
-public class VentaBO {
+public class TransaccioBO {
 
-    public static VentaBO instancia;
+    public static TransaccioBO instancia;
 
-    public static VentaBO getInstance() {
+    public static TransaccioBO getInstance() {
         if(instancia == null) {
-            instancia = new VentaBO();
+            instancia = new TransaccioBO();
         }
         return instancia;
     }
+
+    public ProductoBO productoBO = ProductoBO.getInstance();
+    public UsuarioBO usuarioBO = UsuarioBO.getInstance();
 
     //Retorna el dto prorque sino tendria que retornar el comprador y el producto para la cantidad y saldo restante en capa service
     public Transaccion.ResTransaccionDTO.Builder venderProducto(int idProducto, int idComprador, int idCantidad){

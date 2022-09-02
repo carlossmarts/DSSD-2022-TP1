@@ -1,8 +1,7 @@
 package test;
 
 import bo.ProductoBO;
-import grpc.Product;
-import grpc.Product.*;
+import grpc.Producto.*;
 import model.Producto;
 
 public class TestProductoBO {

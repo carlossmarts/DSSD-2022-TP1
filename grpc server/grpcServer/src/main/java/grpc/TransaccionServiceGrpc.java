@@ -31,21 +31,21 @@ public final class TransaccionServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<grpc.Transaccion.TransaccionDTO,
-      grpc.Transaccion.ServerResponse> getAddTransaccionMethod;
+      grpc.Transaccion.ResTransaccionDTO> getAddTransaccionMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addTransaccion",
       requestType = grpc.Transaccion.TransaccionDTO.class,
-      responseType = grpc.Transaccion.ServerResponse.class,
+      responseType = grpc.Transaccion.ResTransaccionDTO.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<grpc.Transaccion.TransaccionDTO,
-      grpc.Transaccion.ServerResponse> getAddTransaccionMethod() {
-    io.grpc.MethodDescriptor<grpc.Transaccion.TransaccionDTO, grpc.Transaccion.ServerResponse> getAddTransaccionMethod;
+      grpc.Transaccion.ResTransaccionDTO> getAddTransaccionMethod() {
+    io.grpc.MethodDescriptor<grpc.Transaccion.TransaccionDTO, grpc.Transaccion.ResTransaccionDTO> getAddTransaccionMethod;
     if ((getAddTransaccionMethod = TransaccionServiceGrpc.getAddTransaccionMethod) == null) {
       synchronized (TransaccionServiceGrpc.class) {
         if ((getAddTransaccionMethod = TransaccionServiceGrpc.getAddTransaccionMethod) == null) {
           TransaccionServiceGrpc.getAddTransaccionMethod = getAddTransaccionMethod = 
-              io.grpc.MethodDescriptor.<grpc.Transaccion.TransaccionDTO, grpc.Transaccion.ServerResponse>newBuilder()
+              io.grpc.MethodDescriptor.<grpc.Transaccion.TransaccionDTO, grpc.Transaccion.ResTransaccionDTO>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "TransaccionService", "addTransaccion"))
@@ -53,7 +53,7 @@ public final class TransaccionServiceGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   grpc.Transaccion.TransaccionDTO.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.Transaccion.ServerResponse.getDefaultInstance()))
+                  grpc.Transaccion.ResTransaccionDTO.getDefaultInstance()))
                   .setSchemaDescriptor(new TransaccionServiceMethodDescriptorSupplier("addTransaccion"))
                   .build();
           }
@@ -62,28 +62,28 @@ public final class TransaccionServiceGrpc {
      return getAddTransaccionMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.Transaccion.GetAllComprasByUsuarioIdRequest,
+  private static volatile io.grpc.MethodDescriptor<grpc.Transaccion.GetTransaccionesRequest,
       grpc.Transaccion.LisTransaccionDTO> getGetAllComprasByUsuarioIdRequestMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getAllComprasByUsuarioIdRequest",
-      requestType = grpc.Transaccion.GetAllComprasByUsuarioIdRequest.class,
+      requestType = grpc.Transaccion.GetTransaccionesRequest.class,
       responseType = grpc.Transaccion.LisTransaccionDTO.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.Transaccion.GetAllComprasByUsuarioIdRequest,
+  public static io.grpc.MethodDescriptor<grpc.Transaccion.GetTransaccionesRequest,
       grpc.Transaccion.LisTransaccionDTO> getGetAllComprasByUsuarioIdRequestMethod() {
-    io.grpc.MethodDescriptor<grpc.Transaccion.GetAllComprasByUsuarioIdRequest, grpc.Transaccion.LisTransaccionDTO> getGetAllComprasByUsuarioIdRequestMethod;
+    io.grpc.MethodDescriptor<grpc.Transaccion.GetTransaccionesRequest, grpc.Transaccion.LisTransaccionDTO> getGetAllComprasByUsuarioIdRequestMethod;
     if ((getGetAllComprasByUsuarioIdRequestMethod = TransaccionServiceGrpc.getGetAllComprasByUsuarioIdRequestMethod) == null) {
       synchronized (TransaccionServiceGrpc.class) {
         if ((getGetAllComprasByUsuarioIdRequestMethod = TransaccionServiceGrpc.getGetAllComprasByUsuarioIdRequestMethod) == null) {
           TransaccionServiceGrpc.getGetAllComprasByUsuarioIdRequestMethod = getGetAllComprasByUsuarioIdRequestMethod = 
-              io.grpc.MethodDescriptor.<grpc.Transaccion.GetAllComprasByUsuarioIdRequest, grpc.Transaccion.LisTransaccionDTO>newBuilder()
+              io.grpc.MethodDescriptor.<grpc.Transaccion.GetTransaccionesRequest, grpc.Transaccion.LisTransaccionDTO>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "TransaccionService", "getAllComprasByUsuarioIdRequest"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.Transaccion.GetAllComprasByUsuarioIdRequest.getDefaultInstance()))
+                  grpc.Transaccion.GetTransaccionesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   grpc.Transaccion.LisTransaccionDTO.getDefaultInstance()))
                   .setSchemaDescriptor(new TransaccionServiceMethodDescriptorSupplier("getAllComprasByUsuarioIdRequest"))
@@ -94,28 +94,28 @@ public final class TransaccionServiceGrpc {
      return getGetAllComprasByUsuarioIdRequestMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.Transaccion.GetAllVentasByUsuarioIdRequest,
+  private static volatile io.grpc.MethodDescriptor<grpc.Transaccion.GetTransaccionesRequest,
       grpc.Transaccion.LisTransaccionDTO> getGetAllVentasByUsuarioIdRequestMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getAllVentasByUsuarioIdRequest",
-      requestType = grpc.Transaccion.GetAllVentasByUsuarioIdRequest.class,
+      requestType = grpc.Transaccion.GetTransaccionesRequest.class,
       responseType = grpc.Transaccion.LisTransaccionDTO.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.Transaccion.GetAllVentasByUsuarioIdRequest,
+  public static io.grpc.MethodDescriptor<grpc.Transaccion.GetTransaccionesRequest,
       grpc.Transaccion.LisTransaccionDTO> getGetAllVentasByUsuarioIdRequestMethod() {
-    io.grpc.MethodDescriptor<grpc.Transaccion.GetAllVentasByUsuarioIdRequest, grpc.Transaccion.LisTransaccionDTO> getGetAllVentasByUsuarioIdRequestMethod;
+    io.grpc.MethodDescriptor<grpc.Transaccion.GetTransaccionesRequest, grpc.Transaccion.LisTransaccionDTO> getGetAllVentasByUsuarioIdRequestMethod;
     if ((getGetAllVentasByUsuarioIdRequestMethod = TransaccionServiceGrpc.getGetAllVentasByUsuarioIdRequestMethod) == null) {
       synchronized (TransaccionServiceGrpc.class) {
         if ((getGetAllVentasByUsuarioIdRequestMethod = TransaccionServiceGrpc.getGetAllVentasByUsuarioIdRequestMethod) == null) {
           TransaccionServiceGrpc.getGetAllVentasByUsuarioIdRequestMethod = getGetAllVentasByUsuarioIdRequestMethod = 
-              io.grpc.MethodDescriptor.<grpc.Transaccion.GetAllVentasByUsuarioIdRequest, grpc.Transaccion.LisTransaccionDTO>newBuilder()
+              io.grpc.MethodDescriptor.<grpc.Transaccion.GetTransaccionesRequest, grpc.Transaccion.LisTransaccionDTO>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "TransaccionService", "getAllVentasByUsuarioIdRequest"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.Transaccion.GetAllVentasByUsuarioIdRequest.getDefaultInstance()))
+                  grpc.Transaccion.GetTransaccionesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   grpc.Transaccion.LisTransaccionDTO.getDefaultInstance()))
                   .setSchemaDescriptor(new TransaccionServiceMethodDescriptorSupplier("getAllVentasByUsuarioIdRequest"))
@@ -159,20 +159,20 @@ public final class TransaccionServiceGrpc {
     /**
      */
     public void addTransaccion(grpc.Transaccion.TransaccionDTO request,
-        io.grpc.stub.StreamObserver<grpc.Transaccion.ServerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<grpc.Transaccion.ResTransaccionDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getAddTransaccionMethod(), responseObserver);
     }
 
     /**
      */
-    public void getAllComprasByUsuarioIdRequest(grpc.Transaccion.GetAllComprasByUsuarioIdRequest request,
+    public void getAllComprasByUsuarioIdRequest(grpc.Transaccion.GetTransaccionesRequest request,
         io.grpc.stub.StreamObserver<grpc.Transaccion.LisTransaccionDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllComprasByUsuarioIdRequestMethod(), responseObserver);
     }
 
     /**
      */
-    public void getAllVentasByUsuarioIdRequest(grpc.Transaccion.GetAllVentasByUsuarioIdRequest request,
+    public void getAllVentasByUsuarioIdRequest(grpc.Transaccion.GetTransaccionesRequest request,
         io.grpc.stub.StreamObserver<grpc.Transaccion.LisTransaccionDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllVentasByUsuarioIdRequestMethod(), responseObserver);
     }
@@ -184,20 +184,20 @@ public final class TransaccionServiceGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 grpc.Transaccion.TransaccionDTO,
-                grpc.Transaccion.ServerResponse>(
+                grpc.Transaccion.ResTransaccionDTO>(
                   this, METHODID_ADD_TRANSACCION)))
           .addMethod(
             getGetAllComprasByUsuarioIdRequestMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                grpc.Transaccion.GetAllComprasByUsuarioIdRequest,
+                grpc.Transaccion.GetTransaccionesRequest,
                 grpc.Transaccion.LisTransaccionDTO>(
                   this, METHODID_GET_ALL_COMPRAS_BY_USUARIO_ID_REQUEST)))
           .addMethod(
             getGetAllVentasByUsuarioIdRequestMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                grpc.Transaccion.GetAllVentasByUsuarioIdRequest,
+                grpc.Transaccion.GetTransaccionesRequest,
                 grpc.Transaccion.LisTransaccionDTO>(
                   this, METHODID_GET_ALL_VENTAS_BY_USUARIO_ID_REQUEST)))
           .build();
@@ -228,14 +228,14 @@ public final class TransaccionServiceGrpc {
     /**
      */
     public void addTransaccion(grpc.Transaccion.TransaccionDTO request,
-        io.grpc.stub.StreamObserver<grpc.Transaccion.ServerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<grpc.Transaccion.ResTransaccionDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddTransaccionMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getAllComprasByUsuarioIdRequest(grpc.Transaccion.GetAllComprasByUsuarioIdRequest request,
+    public void getAllComprasByUsuarioIdRequest(grpc.Transaccion.GetTransaccionesRequest request,
         io.grpc.stub.StreamObserver<grpc.Transaccion.LisTransaccionDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetAllComprasByUsuarioIdRequestMethod(), getCallOptions()), request, responseObserver);
@@ -243,7 +243,7 @@ public final class TransaccionServiceGrpc {
 
     /**
      */
-    public void getAllVentasByUsuarioIdRequest(grpc.Transaccion.GetAllVentasByUsuarioIdRequest request,
+    public void getAllVentasByUsuarioIdRequest(grpc.Transaccion.GetTransaccionesRequest request,
         io.grpc.stub.StreamObserver<grpc.Transaccion.LisTransaccionDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetAllVentasByUsuarioIdRequestMethod(), getCallOptions()), request, responseObserver);
@@ -273,21 +273,21 @@ public final class TransaccionServiceGrpc {
 
     /**
      */
-    public grpc.Transaccion.ServerResponse addTransaccion(grpc.Transaccion.TransaccionDTO request) {
+    public grpc.Transaccion.ResTransaccionDTO addTransaccion(grpc.Transaccion.TransaccionDTO request) {
       return blockingUnaryCall(
           getChannel(), getAddTransaccionMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public grpc.Transaccion.LisTransaccionDTO getAllComprasByUsuarioIdRequest(grpc.Transaccion.GetAllComprasByUsuarioIdRequest request) {
+    public grpc.Transaccion.LisTransaccionDTO getAllComprasByUsuarioIdRequest(grpc.Transaccion.GetTransaccionesRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetAllComprasByUsuarioIdRequestMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public grpc.Transaccion.LisTransaccionDTO getAllVentasByUsuarioIdRequest(grpc.Transaccion.GetAllVentasByUsuarioIdRequest request) {
+    public grpc.Transaccion.LisTransaccionDTO getAllVentasByUsuarioIdRequest(grpc.Transaccion.GetTransaccionesRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetAllVentasByUsuarioIdRequestMethod(), getCallOptions(), request);
     }
@@ -316,7 +316,7 @@ public final class TransaccionServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.Transaccion.ServerResponse> addTransaccion(
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Transaccion.ResTransaccionDTO> addTransaccion(
         grpc.Transaccion.TransaccionDTO request) {
       return futureUnaryCall(
           getChannel().newCall(getAddTransaccionMethod(), getCallOptions()), request);
@@ -325,7 +325,7 @@ public final class TransaccionServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Transaccion.LisTransaccionDTO> getAllComprasByUsuarioIdRequest(
-        grpc.Transaccion.GetAllComprasByUsuarioIdRequest request) {
+        grpc.Transaccion.GetTransaccionesRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetAllComprasByUsuarioIdRequestMethod(), getCallOptions()), request);
     }
@@ -333,7 +333,7 @@ public final class TransaccionServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Transaccion.LisTransaccionDTO> getAllVentasByUsuarioIdRequest(
-        grpc.Transaccion.GetAllVentasByUsuarioIdRequest request) {
+        grpc.Transaccion.GetTransaccionesRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetAllVentasByUsuarioIdRequestMethod(), getCallOptions()), request);
     }
@@ -362,14 +362,14 @@ public final class TransaccionServiceGrpc {
       switch (methodId) {
         case METHODID_ADD_TRANSACCION:
           serviceImpl.addTransaccion((grpc.Transaccion.TransaccionDTO) request,
-              (io.grpc.stub.StreamObserver<grpc.Transaccion.ServerResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<grpc.Transaccion.ResTransaccionDTO>) responseObserver);
           break;
         case METHODID_GET_ALL_COMPRAS_BY_USUARIO_ID_REQUEST:
-          serviceImpl.getAllComprasByUsuarioIdRequest((grpc.Transaccion.GetAllComprasByUsuarioIdRequest) request,
+          serviceImpl.getAllComprasByUsuarioIdRequest((grpc.Transaccion.GetTransaccionesRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Transaccion.LisTransaccionDTO>) responseObserver);
           break;
         case METHODID_GET_ALL_VENTAS_BY_USUARIO_ID_REQUEST:
-          serviceImpl.getAllVentasByUsuarioIdRequest((grpc.Transaccion.GetAllVentasByUsuarioIdRequest) request,
+          serviceImpl.getAllVentasByUsuarioIdRequest((grpc.Transaccion.GetTransaccionesRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Transaccion.LisTransaccionDTO>) responseObserver);
           break;
         default:

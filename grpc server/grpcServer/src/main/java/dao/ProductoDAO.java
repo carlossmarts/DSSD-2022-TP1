@@ -1,6 +1,5 @@
 package dao;
 
-import grpc.Product;
 import model.Categoria;
 import model.FotoProducto;
 import model.Producto;

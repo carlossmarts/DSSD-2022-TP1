@@ -5,7 +5,7 @@ import bo.ProductoBO;
 import java.util.Base64;
 
 import dao.CategoriaDAO;
-import grpc.Product.*;
+import grpc.Producto.*;
 import grpc.ProductoServiceGrpc.*;
 import io.grpc.stub.StreamObserver;
 import model.Categoria;
@@ -23,7 +23,7 @@ public class ProductoService extends ProductoServiceImplBase {
     @Override
     public void addProducto(ProductoDTO request, StreamObserver<ResProductoDTO> responseObserver) {
         ResProductoDTO.Builder response = ResProductoDTO.newBuilder();
-        ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+        ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
         try {
             Producto producto = productoBO.agregarProducto(request);
             response.setProducto(mapProductoToDTO(producto));
@@ -33,7 +33,7 @@ public class ProductoService extends ProductoServiceImplBase {
             serverResponse.setCod(500);
             serverResponse.setMsg(e.getMessage());
         }
-        response.setResponse(serverResponse);
+        response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
         responseObserver.onCompleted();
     }
@@ -41,7 +41,7 @@ public class ProductoService extends ProductoServiceImplBase {
     @Override
     public void getAllProductos(Empty request, StreamObserver<ProductosDTO> responseObserver) {
         ProductosDTO.Builder response = ProductosDTO.newBuilder();
-        ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+        ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
         try {
             List<Producto> productos = productoBO.getAll();
             for(Producto p : productos){
@@ -53,7 +53,7 @@ public class ProductoService extends ProductoServiceImplBase {
             serverResponse.setCod(500);
             serverResponse.setMsg(e.getMessage());
         }
-        response.setResponse(serverResponse);
+        response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
         responseObserver.onCompleted();
     }
@@ -61,7 +61,7 @@ public class ProductoService extends ProductoServiceImplBase {
     @Override
     public void getByFilter(ProductoFilterDTO request, StreamObserver<ProductosDTO> responseObserver) {
         ProductosDTO.Builder response = ProductosDTO.newBuilder();
-        ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+        ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
         try {
             List<Producto> productos = productoBO.getByFilter(
                     request.getCategoria(),
@@ -80,7 +80,7 @@ public class ProductoService extends ProductoServiceImplBase {
             serverResponse.setCod(500);
             serverResponse.setMsg(e.getMessage());
         }
-        response.setResponse(serverResponse);
+        response.setServerResponse(serverResponse);
         responseObserver.onNext(response.build());
         responseObserver.onCompleted();
     }
@@ -88,13 +88,13 @@ public class ProductoService extends ProductoServiceImplBase {
     @Override
     public void getAllCategorias(Empty request, StreamObserver<CategoriasDTO> responseObserver) {
         CategoriasDTO.Builder categoriasDTO = CategoriasDTO.newBuilder();
-        ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+        ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
         try {
             List<Categoria> categorias = categoriaBO.getAll();
             for (Categoria c : categorias) {
                 categoriasDTO.addCategorias(mapCategoriaToDTO(c));
             }
-            categoriasDTO.setResponse(serverResponse);
+            categoriasDTO.setServerResponse(serverResponse);
         } catch (Exception e) {
             serverResponse.setCod(500);
             serverResponse.setMsg(e.getMessage());

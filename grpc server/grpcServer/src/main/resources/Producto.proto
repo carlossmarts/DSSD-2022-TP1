@@ -9,19 +9,14 @@ service ProductoService {
     rpc getAllCategorias(Empty) returns (CategoriasDTO);
 }
 
-message Empty {}
 
-message ServerResponse{
-    int32 cod=1;
-    string msg=2;
-}
 
+/* MAPEO DE ENTIDADES*/
 message FotoDTO {
     int32 idFoto = 1;
 	string nombre = 2;
 	string file = 3;
 }
-
 message ProductoDTO{
     int32 idProducto=1;
     string nombre =2;
@@ -33,12 +28,16 @@ message ProductoDTO{
 	int32 idCategoria = 8;
 	int32 idUsuario = 9;
 }
-
-message ResProductoDTO{
-    ProductoDTO producto = 1;
-    ServerResponse response = 2;
+message CategoriaDTO{
+    int32 idCategoria=1;
+	string categoria=2;
 }
 
+
+
+/* REQUESTS*/
+message Empty {
+}
 message ProductoFilterDTO{
     int32 categoria=1;
 	string nombreLike=2;
@@ -48,17 +47,22 @@ message ProductoFilterDTO{
 	string fechaHasta=6;
 }
 
+
+
+/* REPONSES*/
+message ProductoServerResponse{
+    int32 cod=1;
+    string msg=2;
+}
+message ResProductoDTO{
+    ProductoDTO producto = 1;
+    ProductoServerResponse serverResponse = 2;
+}
 message ProductosDTO{
     repeated ProductoDTO productos=1;
-    ServerResponse response = 2;
+    ProductoServerResponse serverResponse = 2;
 }
-
-message CategoriaDTO{
-    int32 idCategoria=1;
-	string categoria=2;
-}
-
 message CategoriasDTO{
     repeated CategoriaDTO categorias=1;
-    ServerResponse response = 2;
+    ProductoServerResponse serverResponse = 2;
 }
