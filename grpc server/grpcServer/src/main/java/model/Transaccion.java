@@ -6,12 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="ventas")
-public class Venta {
+@Table(name="transacciones")
+public class Transaccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idVenta")
-    private long idVenta;
+    @Column(name = "idTransaccion")
+    private long idTransaccion;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "idProducto")
@@ -38,11 +38,11 @@ public class Venta {
     private double precio;
 
     public long getIdVenta() {
-        return idVenta;
+        return idTransaccion;
     }
 
-    public void setIdVenta(long idVenta) {
-        this.idVenta = idVenta;
+    public void setIdVenta(long idTransaccion) {
+        this.idTransaccion = idTransaccion;
     }
 
     public Producto getProducto() {
@@ -103,8 +103,8 @@ public class Venta {
 
     @Override
     public String toString() {
-        return "Venta{" +
-                "idVenta=" + idVenta +
+        return "Transaccion{" +
+                "idTransaccion=" + idTransaccion +
                 ", producto=" + producto.toString() +
                 ", vendedor=" + vendedor.toString() +
                 ", comprador=" + comprador.toString() +

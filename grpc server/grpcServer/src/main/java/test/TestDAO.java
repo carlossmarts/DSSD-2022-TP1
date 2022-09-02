@@ -22,7 +22,7 @@ public class TestDAO {
 //        }
 
         try {
-            System.out.println(categoriaDAO.getById(1L));
+            System.out.println(categoriaDAO.getById(1));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

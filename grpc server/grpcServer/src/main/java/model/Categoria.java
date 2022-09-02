@@ -8,16 +8,16 @@ public class Categoria {
 
     @Id
     @Column(name = "idCategoria")
-    private long idCategoria;
+    private int idCategoria;
 
     @Column(name="categoria")
     private String categoria;
 
-    public long getIdCategoria() {
+    public int getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(long idCategoria) {
+    public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
 

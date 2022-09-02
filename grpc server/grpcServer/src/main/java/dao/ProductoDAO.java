@@ -1,15 +1,15 @@
 package dao;
 
+import grpc.Product;
 import model.Categoria;
+import model.FotoProducto;
 import model.Producto;
 
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ProductoDAO {
         return instancia;
     }
 
-    public Producto getById(long id) throws Exception{
+    public Producto getById(int id) throws Exception{
         Producto producto = null;
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();
@@ -49,6 +49,8 @@ public class ProductoDAO {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Producto> query = criteriaBuilder.createQuery(Producto.class);
         Root<Producto> root = query.from(Producto.class);
+        Predicate enStock = criteriaBuilder.greaterThan(root.get("cantidad"), 0);
+        query.select(root).where(enStock);
 
         try {
             productos = em.createQuery(query).getResultList();
@@ -76,7 +78,7 @@ public class ProductoDAO {
                 predicates.add(criteriaBuilder.equal(root.get("categoria"),categoria));
             }
             if(!nombreLike.isEmpty()) {
-                predicates.add(criteriaBuilder.like(root.get("nombre") , nombreLike));
+                predicates.add(criteriaBuilder.like(root.get("nombre") , "%"+nombreLike+"%"));
             }
             if(precioDesde != 0 && precioHasta != 0){
                 predicates.add(criteriaBuilder.between(root.get("precio"), precioDesde, precioHasta));
@@ -104,9 +106,12 @@ public class ProductoDAO {
 
     public Producto saveOrUpdateProducto (Producto producto) throws Exception {
         EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
         Producto entity = null;
         try {
+            transaction.begin();
             entity = em.merge(producto);
+            transaction.commit();
         } catch (Exception e){
             String msg = "Error de persistencia - Método saveOrUpdateProducto: " + e.getMessage();
             System.out.println(msg);
@@ -116,5 +121,22 @@ public class ProductoDAO {
         }
 
         return entity;
+    }
+
+    public void saveOrUpdateFotoProducto (FotoProducto foto) throws Exception {
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        FotoProducto entity = null;
+        try {
+            transaction.begin();
+            em.merge(foto);
+            transaction.commit();
+        } catch (Exception e){
+            String msg = "Error de persistencia - Método saveOrUpdateFoto: " + e.getMessage();
+            System.out.println(msg);
+            throw new Exception(msg);
+        } finally {
+            em.close();
+        }
     }
 }

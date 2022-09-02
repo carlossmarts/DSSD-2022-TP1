@@ -1,6 +1,8 @@
 package bo;
 
+import dao.ProductoDAO;
 import dao.UsuarioDAO;
+import model.Producto;
 import model.Usuario;
 
 public class UsuarioBO {
@@ -31,7 +33,10 @@ public class UsuarioBO {
 
 		return retorno;
 	} // end_addUsuario
-	
+
+	public Usuario getById (int idUsuario) throws Exception{
+		return UsuarioDAO.getInstance().getUsuarioById(idUsuario);
+	}
 
 	// METODO getUsuarioByUsuarioYClave
 	public Usuario getUsuarioByUsuarioYClave(String nombreUsuario, String clave) throws Exception{
@@ -74,8 +79,8 @@ public class UsuarioBO {
 		Producto producto = null;  // ASUMIMOS QUE SE LLAMA ASI
 		try{
 			usuario = UsuarioDAO.getInstance().getUsuarioById(idUsuario);
-			producto = ProductoDAO.getInstance().getProductoById(idProducto);  // ASUMIMOS QUE SE LLAMA ASI
-			nuevoSaldo = usuario.getSaldoBilletera() - producto.getPrecio(); // ASUMIMOS QUE SE LLAMA ASI
+			producto = ProductoDAO.getInstance().getById(idProducto);
+			nuevoSaldo = usuario.getSaldoBilletera() - producto.getPrecio();
 			actualizado = UsuarioDAO.getInstance().updateUsuarioSaldo(idUsuario, nuevoSaldo);
 			if(actualizado) {
 				return UsuarioDAO.getInstance().getUsuarioById(idUsuario); // DEVUELVE USUARIO

@@ -40,7 +40,7 @@ public class CategoriaDAO {
         return categorias;
     }
 
-    public Categoria getById(long id) throws Exception{
+    public Categoria getById(int id) throws Exception{
         Categoria categoria = null;
 
         EntityManager em = JPAUtil.getEMF().createEntityManager();

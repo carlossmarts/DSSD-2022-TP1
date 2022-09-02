@@ -51,9 +51,9 @@ public class UsuarioDAO {
 		Usuario usuario = null;
 		EntityManager em = JPAUtil.getEMF().createEntityManager();
 
-		String query = "SELECT u FROM Usuario u WHERE u.idUsuario";
-		
+		String query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario";
 		TypedQuery<Usuario> tq = em.createQuery(query, Usuario.class);
+		tq.setParameter("idUsuario", idUsuario);
 		
 		try {
 			usuario = tq.getSingleResult();
@@ -75,10 +75,9 @@ public class UsuarioDAO {
 		Usuario usuario = null;
 		EntityManager em = JPAUtil.getEMF().createEntityManager();
 
-		String query = "SELECT u FROM Usuario u WHERE u.usuario";
-		
+		String query = "SELECT u FROM Usuario u WHERE u.usuario = :nombreUsuario";
 		TypedQuery<Usuario> tq = em.createQuery(query, Usuario.class);
-		
+		tq.setParameter("nombreUsuario", nombreUsuario);
 		try {
 			usuario = tq.getSingleResult();
 		} // end_try

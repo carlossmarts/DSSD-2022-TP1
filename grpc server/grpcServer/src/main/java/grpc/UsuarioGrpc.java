@@ -17,7 +17,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
  * <pre>
- * METODOS PARA CONSURMIR 
+ * METODOS PARA CONSUMIR 
  * </pre>
  */
 @javax.annotation.Generated(
@@ -183,7 +183,7 @@ public final class UsuarioGrpc {
 
   /**
    * <pre>
-   * METODOS PARA CONSURMIR 
+   * METODOS PARA CONSUMIR 
    * </pre>
    */
   public static abstract class UsuarioImplBase implements io.grpc.BindableService {
@@ -252,7 +252,7 @@ public final class UsuarioGrpc {
 
   /**
    * <pre>
-   * METODOS PARA CONSURMIR 
+   * METODOS PARA CONSUMIR 
    * </pre>
    */
   public static final class UsuarioStub extends io.grpc.stub.AbstractStub<UsuarioStub> {
@@ -306,7 +306,7 @@ public final class UsuarioGrpc {
 
   /**
    * <pre>
-   * METODOS PARA CONSURMIR 
+   * METODOS PARA CONSUMIR 
    * </pre>
    */
   public static final class UsuarioBlockingStub extends io.grpc.stub.AbstractStub<UsuarioBlockingStub> {
@@ -356,7 +356,7 @@ public final class UsuarioGrpc {
 
   /**
    * <pre>
-   * METODOS PARA CONSURMIR 
+   * METODOS PARA CONSUMIR 
    * </pre>
    */
   public static final class UsuarioFutureStub extends io.grpc.stub.AbstractStub<UsuarioFutureStub> {

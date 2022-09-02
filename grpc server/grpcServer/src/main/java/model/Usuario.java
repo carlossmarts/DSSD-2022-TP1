@@ -1,9 +1,7 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="usuarios")
@@ -11,7 +9,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsuario")
-    private long idUsuario;
+    private int idUsuario;
 
     @Column(name="nombre")
     private String nombre;
@@ -38,12 +36,12 @@ public class Usuario {
     private List<Producto> productos;
 
     @OneToMany(mappedBy="comprador" )
-    private List<Venta> compras;
+    private List<Transaccion> compras;
 
     @OneToMany(mappedBy="vendedor" )
-    private List<Venta> ventas;
+    private List<Transaccion> ventas;
 
-    public long getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
@@ -115,19 +113,19 @@ public class Usuario {
         this.productos = productos;
     }
 
-    public List<Venta> getCompras() {
+    public List<Transaccion> getCompras() {
         return compras;
     }
 
-    public void setCompras(List<Venta> compras) {
+    public void setCompras(List<Transaccion> compras) {
         this.compras = compras;
     }
 
-    public List<Venta> getVentas() {
+    public List<Transaccion> getVentas() {
         return ventas;
     }
 
-    public void setVentas(List<Venta> ventas) {
+    public void setVentas(List<Transaccion> ventas) {
         this.ventas = ventas;
     }
 

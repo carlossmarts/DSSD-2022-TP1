@@ -13,7 +13,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idProducto")
-    private long idProducto;
+    private int idProducto;
 
     @Column(name="nombre")
     private String nombre;
@@ -42,11 +42,11 @@ public class Producto {
     @OneToMany(cascade= CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="producto")
     private List<FotoProducto> fotosProducto;
 
-    public long getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(long idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 

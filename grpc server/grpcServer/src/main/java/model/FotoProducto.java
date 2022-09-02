@@ -10,25 +10,25 @@ public class FotoProducto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idFoto")
-    private long idFoto;
+    private int idFoto;
 
     @Column(name="nombre")
     private String nombre;
-
-    @ManyToOne (cascade={CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn (name = "idProducto")
-    private FotoProducto producto;
 
     @Column (name = "archivo")
     @Basic(fetch = FetchType.LAZY)
     @Lob
     private byte[] archivo;
 
-    public long getIdFoto() {
+    @ManyToOne (cascade={CascadeType.ALL, CascadeType.REFRESH})
+    @JoinColumn (name = "idProducto")
+    private Producto producto;
+
+    public int getIdFoto() {
         return idFoto;
     }
 
-    public void setIdFoto(long idFoto) {
+    public void setIdFoto(int idFoto) {
         this.idFoto = idFoto;
     }
 
@@ -46,5 +46,13 @@ public class FotoProducto {
 
     public void setArchivo(byte[] archivo) {
         this.archivo = archivo;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

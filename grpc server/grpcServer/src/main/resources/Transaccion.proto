@@ -6,7 +6,7 @@ message Empty{}
 
 /* MODELO */
 message TransaccionDTO{
-	int32 idRegistro = 1;
+	int32 idTransaccion = 1;
 	int32 idProducto = 2;
 	int32 idComprador = 3;
 	int32 idVendedor = 4;
@@ -15,10 +15,19 @@ message TransaccionDTO{
 	double precio = 7;
 }
 
+
 /* RESPUESTA */
 message ServerResponse{
 	int32 code = 1;
 	string msg = 2;
+}
+
+message ResTransaccionDTO {
+    int32 idProducto = 1;
+    int32 idComprador = 2;
+    int32 cantidadRestante = 3;
+    double saldoRestante = 4;
+    ServerResponse serverResponse = 5;
 }
 
 /* RECIBE PEDIDO DE LISTADO DE REGISTROS DE COMPRA CON ID USUARIO */
@@ -31,15 +40,15 @@ message GetAllVentasByUsuarioIdRequest{
 	string idUsuario = 1;
 }
 
-/* DEVUELVE LISTA DE USUARIOS */
+/* DEVUELVE LISTA DE TRANSACCIONES POR USUARIO */
 message LisTransaccionDTO{
 	repeated TransaccionDTO transacciones = 1;
 	ServerResponse response = 2;
 }
 
 /* METODOS PARA CONSUMIR */
-service Registro{
-	rpc addRegistro (TransaccionDTO) returns (ServerResponse);
+service TransaccionService{
+	rpc addTransaccion (TransaccionDTO) returns (ServerResponse);
 	rpc getAllComprasByUsuarioIdRequest (GetAllComprasByUsuarioIdRequest) returns (LisTransaccionDTO);
 	rpc getAllVentasByUsuarioIdRequest (GetAllVentasByUsuarioIdRequest) returns (LisTransaccionDTO);
 }

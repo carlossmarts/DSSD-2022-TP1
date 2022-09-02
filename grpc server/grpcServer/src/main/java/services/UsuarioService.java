@@ -1,16 +1,10 @@
 package services;
 
 import bo.UsuarioBO;
-import grpc.UsuarioGrpc.UsuarioImplBase;
-import grpc.UsuarioOuterClass.UsuarioDTO;
-import grpc.UsuarioOuterClass.Empty;
 // LLAMADOS
-import grpc.UsuarioOuterClass.GetByUsuarioYClaveRequest;
-import grpc.UsuarioOuterClass.UpdateUsuarioCargaSaldoRequest;
-import grpc.UsuarioOuterClass.UpdateUsuarioCompraProductoRequest;
 // FIN LLAMADOS
-import grpc.UsuarioOuterClass.UsuarioObjDTO;
-import grpc.UsuarioOuterClass.ServerResponse;
+import grpc.UsuarioGrpc.*;
+import grpc.UsuarioOuterClass.*;
 import io.grpc.stub.StreamObserver;
 import model.Usuario;
 
@@ -130,7 +124,7 @@ public class UsuarioService extends UsuarioImplBase {
 
 	public UsuarioDTO.Builder mapUsuarioToDTO (Usuario u){
 		UsuarioDTO.Builder dto = UsuarioDTO.newBuilder();
-		dto.setIdUsuario(u.getIdUsuario());
+		dto.setIdUsuario((int)u.getIdUsuario());
 		dto.setNombre(u.getNombre());
 		dto.setApellido(u.getApellido());
 		dto.setDni(u.getDni());
