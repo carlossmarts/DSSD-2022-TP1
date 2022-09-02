@@ -1,15 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\grpc client",
-    "\\grpc server\\grpcServer",
-    "\\grpc server\\grpcServer\\src",
-    "\\grpc server\\grpcServer\\src\\main",
-    "\\grpc server\\grpcServer\\src\\main\\java",
-    "\\grpc server\\grpcServer\\src\\main\\java\\dao",
-    "\\grpc server\\grpcServer\\src\\main\\java\\services",
-    "\\grpc server\\grpcServer\\src\\main\\resources"
+    ""
   ],
-  "SelectedNode": "\\grpc server",
+  "SelectedNode": "\\Grpc_Client.sln",
   "PreviewInSolutionExplorer": false
 }

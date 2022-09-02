@@ -4,22 +4,57 @@ option csharp_namespace = "RetroShop_Client.Protos";
 
 package user;
 
-service UsuarioService {
-    rpc Post(Usuario) returns (IdUsuario);
-    rpc Login(UsuarioLogin) returns(Usuario);
+/* METODOS PARA CONSUMIR */
+service UsuarioService{
+	rpc addUsuario (UsuarioDTO) returns (ServerResponse);
+	rpc getByUsuarioYClaveRequest (GetByUsuarioYClaveRequest) returns (UsuarioObjDTO);
+	rpc updateUsuarioCargaSaldoRequest (UpdateUsuarioCargaSaldoRequest) returns (UsuarioObjDTO);
+	rpc updateUsuarioCompraProductoRequest (UpdateUsuarioCompraProductoRequest) returns (UsuarioObjDTO);
 }
-message Usuario{
-    string nombre =1;
-    string apellido =2;
-    int32 dni=3;
-    string email=4;
-    string usuario=5;
-    string clave=6;
+/* MODELO */
+message UsuarioDTO{
+	int32 idUsuario = 1;
+	string nombre = 2;
+	string apellido = 3;
+	string dni = 4;
+	string email = 5;
+	string usuario = 6;
+	string clave = 7;
+	double saldoBilletera = 8;
 }
-message IdUsuario{
-        int32 idUsuario=1;
+
+/* RESPUESTA */
+message ServerResponse{
+	int32 code = 1;
+	string msg = 2;
 }
-message UsuarioLogin{
-    string nombre=1;
-    string clave=2;
+
+/* RECIBE PEDIDO DE USUARIO CON NOMBRE DE USUARIO Y CLAVE */
+message GetByUsuarioYClaveRequest{
+	string usuario = 1;
+	string clave = 2;
+}
+
+/* RECIBE PEDIDO DE USUARIO CON SALDO ACTUALIZO POR CARGA DE SALDO*/
+message UpdateUsuarioCargaSaldoRequest{
+	int32 idUsuario = 1;
+	double saldo = 2;
+}
+
+/* RECIBE PEDIDO DE USUARIO CON SALDO ACTUALIZADO POR COMPRA DE PRODUCTO */
+message UpdateUsuarioCompraProductoRequest{
+	int32 idUsuario = 1;
+	int32 idProducto = 2;
+}
+
+/* DEVUELVE USUARIO */
+message UsuarioObjDTO{
+	UsuarioDTO usuario = 1;
+	ServerResponse response = 2;
+}
+
+/* DEVUELVE LISTA DE USUARIOS */
+message ListUsuarioDTO{
+	repeated UsuarioDTO usuarios = 1;
+	ServerResponse response = 2;
 }

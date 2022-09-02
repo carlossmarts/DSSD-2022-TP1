@@ -10,22 +10,20 @@ namespace RetroShop_Client.Controllers
     {
         private readonly string GrpcChannelURL = "https://localhost:7110";
         #region mocks
-        private List<Producto> _products = new List<Producto>();
-        private readonly ServerResponse serverResponseOk = new ServerResponse()
+        private List<ProductoDTO> _products = new List<ProductoDTO>();
+        //private readonly ServerResponse serverResponseOk = new ResProductoDTO()
+        //{
+        //};
+        private readonly List<CategoriaDTO> _categorias = new List<CategoriaDTO>()
         {
-            Cod = 200,
-            Msg = "Ok",
-        };
-        private readonly List<Categoria> _categorias = new List<Categoria>()
-        {
-            new Categoria() { IdCategoria=1, Categoria_="Vintage" }
+            new CategoriaDTO() { IdCategoria=1, Categoria="Vintage" }
         };
         #endregion
 
         #region endpoints
         // POST api/<ProductController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Producto producto)
+        public async Task<ActionResult> Post([FromBody] ProductoDTO producto)
         {
             try
             {
@@ -33,22 +31,23 @@ namespace RetroShop_Client.Controllers
                 //var client = new ProductoService.ProductoServiceClient(channel);
                 //var response = client.Post(producto);
                 _products.Add(producto);
-                return Ok(serverResponseOk);
+                return Ok();
             }
             catch (Exception ex)
             {
-                return BadRequest(new ServerResponse() { Cod = 400, Msg = ex.Message });
+                return BadRequest();
+                //return BadRequest(new ResProductoDTO() { Producto = null, Response = new ServerResponse() { Code = 400, Msg = "Error" } });
             }
         }
 
         // PUT api/<ProductController>/5
         [HttpPut("{idProducto}")]
-        public void Put(int idProducto, [FromBody] Producto producto)
+        public void Put(int idProducto, [FromBody] ProductoDTO producto)
         {
         }
         //GET api/<ProductController>/
         [HttpGet]
-        public async Task<ActionResult> GetByFilter([FromBody] ProductoFilter productoFilter)
+        public async Task<ActionResult> GetByFilter([FromBody] ProductoFilterDTO productoFilter)
         {
             return Ok(_products);
         }
