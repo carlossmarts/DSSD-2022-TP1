@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\grpc client",
+    "\\grpc client\\RetroShop_Client",
+    "\\grpc client\\RetroShop_Client\\Protos",
+    "\\grpc server",
+    "\\grpc server\\grpcServer",
+    "\\grpc server\\grpcServer\\src",
+    "\\grpc server\\grpcServer\\src\\main",
+    "\\grpc server\\grpcServer\\src\\main\\java",
+    "\\grpc server\\grpcServer\\src\\main\\resources"
   ],
-  "SelectedNode": "\\Grpc_Client.sln",
+  "SelectedNode": "\\grpc client\\Grpc_Client.sln",
   "PreviewInSolutionExplorer": false
 }
