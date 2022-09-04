@@ -62,7 +62,7 @@ const ModalCompra = (props) => {
                       {esMayor ?
                         `Después de la compra, su saldo será de $${dineroActual - producto.precio}`
                         :
-                        `Cargue dinero a tu billetera para poder comprar el producto ${producto.nombre}`}
+                        `Cargue dinero a su billetera para poder comprar el producto ${producto.nombre}`}
                     </Typography>
                   </Box>
                 </>
