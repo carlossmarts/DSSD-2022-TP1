@@ -3,6 +3,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import Typography from '@mui/material/Typography'
 import { TextField, Grid, Box, Button, Checkbox, FormControlLabel } from '@mui/material'
+import {Archivos} from './Archivos'
 
 const ModalProducto = (props) => {
 
@@ -104,17 +105,6 @@ const ModalProducto = (props) => {
                     onChange={handleInputChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    name="foto"
-                    onChange={handleInputChange}
-                    label="Link a la Foto"
-                    defaultValue={product.foto}
-                    variant="outlined"
-                    fullWidth
-                    size="small"
-                  />
-                </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
                     type="number"
@@ -127,7 +117,7 @@ const ModalProducto = (props) => {
                     size="small"
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                   <FormControlLabel
                     control={<Checkbox
                       name="visible"
@@ -135,6 +125,9 @@ const ModalProducto = (props) => {
                       checked={product.visible}
                     />} label="Publicado"
                   />
+                </Grid>
+                <Grid item xs={12} sm={2}>
+                  <Archivos/>
                 </Grid>
               </Grid>
             </form>
