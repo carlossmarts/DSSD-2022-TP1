@@ -47,8 +47,8 @@ function Imagenes(props) {
                                     overflow: 'hidden',
                                     width: '100%',
                                 }}
-                                src={step.imgPath}
-                                alt={step.label}
+                                src={`data:image/png;base64, ${step.file}`}
+                                alt={step.nombre}
                             />
                         ) : null}
                     </div>

@@ -12,7 +12,7 @@ const CardProducto = (props) => {
         <div>
             <Card>
                 <Imagenes
-                    imagenes={producto.img}
+                    imagenes={producto.fotos}
                 />
                 <CardContent>
                     <CardContent>

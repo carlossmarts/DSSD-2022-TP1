@@ -26,20 +26,16 @@ const MisProductos = (props) => {
   const [productoAEditar, setProductoAEditar] = useState({});
   const [esEdicion, setEsEdicion] = useState(false);
 
-  useEffect(() => {
-    console.log(JSON.stringify(producto) +
-      "UPDATEADO")
-  }, [producto])
-
   const abrirModalCreacion = () => {
     setEsEdicion(false)
     setOpen(true);
   };
 
   const abrirModalEdicion = (producto) => {
+    console.log('este es el producto' +producto.nombre)
+    setProductoAEditar(producto)
     setEsEdicion(true)
     setOpenEdicion(true);
-    setProductoAEditar(producto)
   };
 
   return (
