@@ -4,7 +4,7 @@ import img from '../IMG.jpg';
 
 const prodList = [{
     nombre: 'Cassette',
-    precio: 20.44,
+    precio: 5555,
     descripcion: 'Esta es una descripcion para cassettes!',
     img: [img]
 }, {

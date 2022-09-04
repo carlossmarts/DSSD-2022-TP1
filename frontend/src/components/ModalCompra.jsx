@@ -18,12 +18,11 @@ const ModalCompra = (props) => {
 
   const [dinero, setDinero] = useState(0);
   const [compraRealizada, setCompraRealizada] = useState(false);
+  const [esMayor, setEsMayor] = useState(false);
 
-
-  const handleInputChange = (event) => {
-    console.log(event.target.name)
-    setDinero(event.target.valueAsNumber)
-  }
+  useEffect(() => {
+    setEsMayor(dineroActual >= producto.precio)
+  }, [dineroActual, producto])
 
   const actualizarDinero = (event) => {
     event.preventDefault();
@@ -33,6 +32,7 @@ const ModalCompra = (props) => {
       setDineroActual(dinero + dineroActual)
     })
   }
+
 
   const cerrar = () => {
     setOpen(false);
@@ -55,10 +55,14 @@ const ModalCompra = (props) => {
                 <>
                   <Box mb={3}>
                     <Typography variant="h6" gutterBottom>
-                      {`Vas a compra ${producto.nombre}, por un total de $${producto.precio}`}
+                      {`${producto.nombre}, precio $${producto.precio}`}
                     </Typography>
                     <Typography variant="h6" gutterBottom>
-                      {`Tiene cargado en su billetera un total de $${dineroActual}. Después de la compra, su saldo será de $${dineroActual - producto.precio}`}
+                      {`Tiene cargado en su billetera un total de $${dineroActual}. `}
+                      {esMayor ?
+                        `Después de la compra, su saldo será de $${dineroActual - producto.precio}`
+                        :
+                        `Carga dinero a tu billetera para poder comprar el producto ${producto.nombre}`}
                     </Typography>
                   </Box>
                 </>
@@ -74,7 +78,7 @@ const ModalCompra = (props) => {
       </Grid>
       <DialogActions style={{ display: "flex", justifyContent: "center" }} >
         {
-          !compraRealizada ?
+          !compraRealizada && esMayor ?
             <>
               <Button onClick={actualizarDinero} variant="contained" color="secondary">
                 Comprar
