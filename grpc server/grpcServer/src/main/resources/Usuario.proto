@@ -4,13 +4,11 @@ option java_package = "grpc";
 
 /* METODOS PARA CONSUMIR */
 service UsuarioService{
-	rpc addUsuario (UsuarioDTO) returns (UsuarioServerResponse);
+	rpc addUsuario (UsuarioDTO) returns (UsuarioObjDTO);
 	rpc getByUsuarioYClaveRequest (GetByUsuarioYClaveRequest) returns (UsuarioObjDTO);
 	rpc updateUsuarioCargaSaldoRequest (UpdateUsuarioCargaSaldoRequest) returns (UsuarioObjDTO);
 	rpc updateUsuarioCompraProductoRequest (UpdateUsuarioCompraProductoRequest) returns (UsuarioObjDTO);
 }
-
-
 
 /* MODELO */
 message UsuarioDTO{
@@ -23,8 +21,6 @@ message UsuarioDTO{
 	string clave = 7;
 	double saldoBilletera = 8;
 }
-
-
 
 /* REQUEST */
 
@@ -66,4 +62,3 @@ message ListUsuarioDTO{
 	repeated UsuarioDTO usuarios = 1;
 	UsuarioServerResponse serverResponse = 2;
 }
-

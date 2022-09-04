@@ -9,7 +9,7 @@ public class TestUsuarioDAO {
 		System.out.println("----------------------------------");
 		System.out.println("Test getUsuarioById");
 		try {
-			System.out.println(dao.getUsuarioById(1));
+			System.out.println(dao.getById(1));
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

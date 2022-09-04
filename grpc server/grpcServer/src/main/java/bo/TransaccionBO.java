@@ -42,7 +42,7 @@ public class TransaccionBO {
 
         Transaccion persisted = transaccionDAO.saveOrUpdate(entity);
         if(persisted != null){
-            usModif = usuarioBO.updateUsuarioCompraProducto(entity.getComprador(), entity.getProducto());
+            usModif = usuarioBO.updateUsuarioCompraProducto(entity.getComprador().getIdUsuario(), entity.getProducto().getIdProducto());
             prModif = productoBO.vender(entity.getProducto(), entity.getCantidad());
         }
         /*TODO

@@ -16,37 +16,32 @@ public class UsuarioDAO {
 		return instancia;
 	}
 	
-	// METODO addUsuario
-	public boolean addUsuario(Usuario u) throws Exception {
+	// METODO agregarUsuario
+	public Usuario agregarUsuario(Usuario usuario) throws Exception {
 
-		boolean retorno = false;
-		
-		EntityManager em = JPAUtil.getEMF().createEntityManager();
-
-		EntityTransaction et = null;
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        Usuario entity = null;
 
 		try {
-			et = em.getTransaction();
-			et.begin();
-			em.persist(u);
-			et.commit();
-			retorno = true;
+            transaction.begin();
+            entity = em.merge(usuario);
+            transaction.commit();
 		} // end_try
-		catch (Exception ex) {
-			if (et != null) {
-				et.rollback();
-			} // end_if
-			System.out.println("Error: " + ex.getMessage());
-			throw new Exception("error de persistencia en método addMedicamento");
-		} // end_catch
+	    catch (Exception e){
+	        String msg = "Error de persistencia - Método addUsuario: " + e.getMessage();
+	        System.out.println(msg);
+	        throw new Exception(msg);
+	    }
 		finally {
-			em.close();
-		} // end_finally
-		return retorno;
+	        em.close();
+	    }
+
+		return entity;
 	} // end_addUsuario
 	
-	// METODO getUsuarioById
-	public Usuario getUsuarioById(int idUsuario) throws Exception{
+	// METODO getById
+	public Usuario getById(int idUsuario) throws Exception{
 		
 		Usuario usuario = null;
 		EntityManager em = JPAUtil.getEMF().createEntityManager();
@@ -60,7 +55,7 @@ public class UsuarioDAO {
 		} // end_try
 		catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
-			throw new Exception("ATENCION: Error de persistencia en método getUsuarioById");
+			throw new Exception("ATENCION: Error de persistencia en método getById");
 		} // end_catch
 		finally {
 			em.close();
@@ -96,18 +91,31 @@ public class UsuarioDAO {
 	public Usuario getUsuarioByUsuarioYClave(String nombreUsuario, String clave) throws Exception{
 		
 		Usuario usuario = null;
+		
 		EntityManager em = JPAUtil.getEMF().createEntityManager();
 
-		String query = "SELECT u FROM Usuario u";
+		String query = "SELECT u FROM Usuario u WHERE u.usuario=:nombreUsuario AND u.clave=:clave";
 		
 		TypedQuery<Usuario> tq = em.createQuery(query, Usuario.class);
+		tq.setParameter("nombreUsuario", nombreUsuario);
+		tq.setParameter("clave", clave);
+		
+        /*EntityManager em = JPAUtil.getEMF().createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Usuario> query = criteriaBuilder.createQuery(Usuario.class);
+        Root<Usuario> root = query.from(Usuario.class);
+        Predicate nombreUsuarioSQL = criteriaBuilder.like(root.get("usuario"), nombreUsuario);
+        Predicate claveSQL = criteriaBuilder.like(root.get("clave"), clave);
+        query.select(root).where(nombreUsuarioSQL);
+        query.select(root).where(claveSQL);*/
 		
 		try {
 			usuario = tq.getSingleResult();
+			//usuario = em.createQuery(query).getSingleResult();
 		} // end_try
 		catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
-			throw new Exception("ATENCION: Error de persistencia en método getUsuarioByUsuario");
+			throw new Exception("ATENCION: Error de persistencia en método getUsuarioByUsuarioYClave");
 		} // end_catch
 		finally {
 			em.close();
@@ -117,21 +125,16 @@ public class UsuarioDAO {
 	} // end_getUsuarioByUsuarioYClave
 	
 	// METODO updateUsuarioSaldo
-	public boolean updateUsuarioSaldo(int idUsuario, double nuevoSaldo) throws Exception{
-		
-		boolean actualizado = false;
-		
-		EntityManager em = JPAUtil.getEMF().createEntityManager();
-
-		String query = "UPDATE Usuario u SET u.saldoBilletera=:saldo WHERE u.idUsuario=:idUsuario";
-		TypedQuery<Usuario> tq = em.createQuery(query, Usuario.class);
-		tq.setParameter("saldo", nuevoSaldo);
-		tq.setParameter("idUsuario", idUsuario);
-		
-		try {
-			tq.executeUpdate();
-			actualizado = true;
-		} // end_try
+	public Usuario updateUsuarioSaldo(Usuario usuario) throws Exception{
+			
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        Usuario entity = null;
+        try {
+            transaction.begin();
+            entity = em.merge(usuario);
+            transaction.commit();
+        }
 		catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 			throw new Exception("ATENCION: Error de persistencia en método updateUsuarioCargaSaldo");
@@ -140,7 +143,7 @@ public class UsuarioDAO {
 			em.close();
 		} // end_finally
 
-		return actualizado;
+		return entity;
 		
 	} // end_updateUsuarioSaldo
 	

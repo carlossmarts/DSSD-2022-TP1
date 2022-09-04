@@ -4,7 +4,6 @@ import bo.CategoriaBO;
 import bo.ProductoBO;
 import java.util.Base64;
 
-import dao.CategoriaDAO;
 import grpc.Producto.*;
 import grpc.ProductoServiceGrpc.*;
 import io.grpc.stub.StreamObserver;
@@ -12,7 +11,6 @@ import model.Categoria;
 import model.FotoProducto;
 import model.Producto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProductoService extends ProductoServiceImplBase {

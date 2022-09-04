@@ -2,7 +2,6 @@ package bo;
 import dao.CategoriaDAO;
 import dao.ProductoDAO;
 import grpc.Producto.*;
-import grpc.Transaccion;
 import model.Categoria;
 import model.FotoProducto;
 import model.Producto;

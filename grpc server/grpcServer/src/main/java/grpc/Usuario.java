@@ -6071,15 +6071,15 @@ public final class Usuario {
       "O\022.\n\016serverResponse\030\002 \001(\0132\026.UsuarioServe" +
       "rResponse\"_\n\016ListUsuarioDTO\022\035\n\010usuarios\030" +
       "\001 \003(\0132\013.UsuarioDTO\022.\n\016serverResponse\030\002 \001" +
-      "(\0132\026.UsuarioServerResponse2\272\002\n\016UsuarioSe" +
-      "rvice\0221\n\naddUsuario\022\013.UsuarioDTO\032\026.Usuar" +
-      "ioServerResponse\022G\n\031getByUsuarioYClaveRe" +
-      "quest\022\032.GetByUsuarioYClaveRequest\032\016.Usua" +
-      "rioObjDTO\022Q\n\036updateUsuarioCargaSaldoRequ" +
-      "est\022\037.UpdateUsuarioCargaSaldoRequest\032\016.U" +
-      "suarioObjDTO\022Y\n\"updateUsuarioCompraProdu" +
-      "ctoRequest\022#.UpdateUsuarioCompraProducto" +
-      "Request\032\016.UsuarioObjDTOB\006\n\004grpcb\006proto3"
+      "(\0132\026.UsuarioServerResponse2\262\002\n\016UsuarioSe" +
+      "rvice\022)\n\naddUsuario\022\013.UsuarioDTO\032\016.Usuar" +
+      "ioObjDTO\022G\n\031getByUsuarioYClaveRequest\022\032." +
+      "GetByUsuarioYClaveRequest\032\016.UsuarioObjDT" +
+      "O\022Q\n\036updateUsuarioCargaSaldoRequest\022\037.Up" +
+      "dateUsuarioCargaSaldoRequest\032\016.UsuarioOb" +
+      "jDTO\022Y\n\"updateUsuarioCompraProductoReque" +
+      "st\022#.UpdateUsuarioCompraProductoRequest\032" +
+      "\016.UsuarioObjDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

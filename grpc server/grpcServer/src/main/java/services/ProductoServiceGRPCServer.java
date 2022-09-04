@@ -11,6 +11,8 @@ public class ProductoServiceGRPCServer {
 		System.out.println("Iniciando servidor grpc ProductoService");
 		Server server = ServerBuilder.forPort(9001)
 						.addService(new ProductoService())
+						.addService(new TransaccionService())
+						.addService(new UsuarioService())
 						.build();
 		server.start();
 
