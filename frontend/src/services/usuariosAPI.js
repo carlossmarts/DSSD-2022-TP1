@@ -5,7 +5,7 @@ export const UsuarioApi = {
     traerIdUsuario : async (username, password)=>{
         try{
             console.log("llamando al servicio usuarioLogin con username", username, "y contraseña", password);
-            const res = await axios.post('URLCAMBIAR/api/Usuario/login',
+            const res = await axios.post('https://localhost:7252/api/usuario/login',
                                             {
                                                 "username": username,
                                                 "password": password
@@ -20,7 +20,7 @@ export const UsuarioApi = {
 
     altaUsuario: async (body) => {
         try {
-            const res = await axios.post('URLCAMBIAR/api/Comercio/ComercioAndUsuario', body)
+            const res = await axios.post('https://localhost:7252/api/usuario', body)
             const ret = await res.data;
             return ret
         } catch (err) {
