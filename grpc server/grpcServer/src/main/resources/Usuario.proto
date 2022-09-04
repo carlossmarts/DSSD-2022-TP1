@@ -24,8 +24,7 @@ message UsuarioDTO{
 
 /* REQUEST */
 
-message Empty{
-}
+
 
 /* RECIBE PEDIDO DE USUARIO CON NOMBRE DE USUARIO Y CLAVE */
 message GetByUsuarioYClaveRequest{
