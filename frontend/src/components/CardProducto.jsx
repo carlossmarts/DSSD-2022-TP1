@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Imagenes from './Imagenes'
 
 const CardProducto = (props) => {
-    const { producto, esEditable, editar } = props;
+    const { producto, esEditable, editar, esComprable, comprar } = props;
     return (
         <div>
             <Card>
@@ -30,12 +30,14 @@ const CardProducto = (props) => {
                 <CardActions>
                     {esEditable ?
                         <Button onClick={() => editar(producto)}>Editar</Button>
-                        :
-                        <Button>Comprar</Button>
+                        : esComprable ?
+                            <Button onClick={() => comprar(producto)}>Comprar</Button>
+                            :
+                            <></>
                     }
                 </CardActions>
             </Card >
-        </div>)
+        </div >)
 }
 
 export default CardProducto;

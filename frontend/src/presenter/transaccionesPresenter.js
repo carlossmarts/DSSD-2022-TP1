@@ -5,8 +5,8 @@ export const useTransaccionesPresenter = ()=>{
 
     const [billetera, setBilletera] = useState([])
 
-    const traerDineroEnBilletera = async (body)=>{
-        // const res = await TransaccionesAPI.traerDineroEnBilletera(body);
+    const traerDineroEnBilletera = async (idUsuario)=>{
+        // const res = await TransaccionesAPI.traerDineroEnBilletera(idUsuario);
         // return res;
         return 2002
     }

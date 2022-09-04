@@ -13,6 +13,7 @@ import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
 
 
 const ResponsiveAppBar = () => {
+
   const [open, setOpen] = useState(false);
   const [dineroActual, setDineroActual] = useState(0);
 
@@ -26,7 +27,13 @@ const ResponsiveAppBar = () => {
   const irAMisCompras = () => { history("/mis-compras") }
   const irAHome = () => { history("/") }
 
-  const cerrarSesion = () => { 
+  useEffect(() => {
+    let id = localStorage.getItem("idUsuario")
+    if (id!=null)
+      traerDineroEnBilletera(id).then(data => setDineroActual(data)).catch(err => console.log(err))
+  }, [])
+
+  const cerrarSesion = () => {
     localStorage.removeItem("idUsuario")
     irAHome()
   }
@@ -67,11 +74,10 @@ const ResponsiveAppBar = () => {
                   <Button onClick={irALogin} sx={{ my: 2, color: 'white', display: 'block' }}>Ingresar</Button>
                   <Button onClick={irARegistro} sx={{ my: 2, color: 'white', display: 'block' }}>Registrarse</Button>
                 </>
-
                 :
                 <>
                   <Button onClick={irAMisProductos} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Productos</Button>
-                  <Button onClick={abrirBilletera} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Billetera</Button>
+                  <Button onClick={abrirBilletera} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Billetera ${`${dineroActual}`}</Button>
                   <Button onClick={irAMisCompras} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Compras</Button>
                   <Button onClick={cerrarSesion} sx={{ my: 2, color: 'white', display: 'block' }}>Cerrar Sesión</Button>
                 </>
