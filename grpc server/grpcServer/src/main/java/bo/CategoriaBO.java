@@ -1,15 +1,8 @@
 package bo;
 
-
 import dao.CategoriaDAO;
-import dao.JPAUtil;
 import model.Categoria;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriaBO {

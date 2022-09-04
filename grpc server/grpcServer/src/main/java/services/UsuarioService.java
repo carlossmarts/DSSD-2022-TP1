@@ -1,72 +1,65 @@
 package services;
 
 import bo.UsuarioBO;
-// LLAMADOS
-// FIN LLAMADOS
-import grpc.UsuarioGrpc.*;
-import grpc.UsuarioOuterClass.*;
+import grpc.Usuario.*;
+import grpc.UsuarioServiceGrpc.*;
 import io.grpc.stub.StreamObserver;
 import model.Usuario;
 
-public class UsuarioService extends UsuarioImplBase {
+public class UsuarioService extends UsuarioServiceImplBase {
+	
+	public UsuarioBO usuarioBO = UsuarioBO.getInstance();
 	
 	// METODO addUsuario
 	@Override
-	public void addUsuario(UsuarioDTO request, StreamObserver<ServerResponse> responseObserver){
-		
-		ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
-		Usuario u = null;
-		
-		try{
-			u = mapDTOToUsuario(request);
-		} // end_try
-		catch (Exception e) {
-			serverResponse.setCode(500);
-			serverResponse.setMsg(e.getMessage());
-		} // end_catach
-		
-		System.out.println("Llamada a método addUsuario con objeto: " + u.toString());
-		
-		try{
-			UsuarioBO.getInstance().addUsuario(u);
-			serverResponse.setCode(200);
-			serverResponse.setMsg("Usuario agregado");
-		} // end_try
-		catch (Exception e) {
-			serverResponse.setCode(500);
-			serverResponse.setMsg(e.getMessage());
-		} // end_catch
-		
-		responseObserver.onNext(serverResponse.build());
-		responseObserver.onCompleted();
-	} // end_addUsuario
-	
+	public void addUsuario(UsuarioDTO request, StreamObserver<UsuarioObjDTO> responseObserver){
+		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
+        UsuarioServerResponse.Builder serverResponse = UsuarioServerResponse.newBuilder();
+        try {
+            Usuario usuario = usuarioBO.agregarUsuario(request);
+            response.setUsuario(mapUsuarioDTO(usuario));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Usuario guardado");
+        } catch (Exception e) {
+            serverResponse.setCode(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+	// METODO getByUsuarioYClaveRequest
 	@Override
 	public void getByUsuarioYClaveRequest(GetByUsuarioYClaveRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
 		
 		String nombreUsuario = request.getUsuario();
 		String clave = request.getClave();
 		
-		System.out.println("Llamada al servicio getUsuarioByUsuario con nombre de usuario: "+ nombreUsuario + " y clave " + clave);
+		System.out.println("Llamada al servicio getByUsuarioYClaveRequest con nombre de usuario: "+ nombreUsuario + " y clave " + clave);
 		Usuario usuario = null;
-		ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+		
+		UsuarioServerResponse.Builder serverResponse = UsuarioServerResponse.newBuilder();
 		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
-
+		
 		try{
-			usuario = UsuarioBO.getInstance().getUsuarioByUsuarioYClave(nombreUsuario, clave);
+			usuario = usuarioBO.getUsuarioByUsuarioYClave(nombreUsuario, clave);
+            response.setUsuario(mapUsuarioDTO(usuario));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Usuario encontrado");
 		} // end_try
 		catch(Exception e){
 			serverResponse.setCode(500);
 			serverResponse.setMsg(e.getMessage());
 		} // end_catch
 		
-		response.setResponse(serverResponse);
+		response.setServerResponse(serverResponse);
 		responseObserver.onNext(response.build());
 		responseObserver.onCompleted();
 		
 	} // end_getByUsuarioYClaveRequest
 	
-	// METODO updateUsuarioCargaSaldo
+	// METODO updateUsuarioCargaSaldoRequest
 	@Override
 	public void updateUsuarioCargaSaldoRequest(UpdateUsuarioCargaSaldoRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
 		
@@ -77,52 +70,60 @@ public class UsuarioService extends UsuarioImplBase {
 		
 		Usuario usuario = null;
 		
-		ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
+		UsuarioServerResponse.Builder serverResponse = UsuarioServerResponse.newBuilder();
 		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
 
 		try {
-			usuario = UsuarioBO.getInstance().updateUsuarioCargaSaldo(idUsuario, saldo);
+			usuario = usuarioBO.updateUsuarioCargaSaldo(idUsuario, saldo);
+            response.setUsuario(mapUsuarioDTO(usuario));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Usuario con saldo actualizado");
 		} // end_try
 		catch (Exception e) {
 			serverResponse.setCode(500);
 			serverResponse.setMsg(e.getMessage());
 		} // end_catch
 		
-		response.setResponse(serverResponse);
+		response.setServerResponse(serverResponse);
 		responseObserver.onNext(response.build());
 		responseObserver.onCompleted();
 		
 	} // end_updateUsuarioCargaSaldoRequest
 	
 	// METODO updateUsuarioCompraProductoRequest
-//	@Override
-//	public void updateUsuarioCompraProductoRequest(UpdateUsuarioCompraProductoRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
-//
-//		int idUsuario = request.getIdUsuario();
-//		int idProducto = request.getIdProducto();
-//
-//		System.out.println("Llamada al servicio updateUsuarioCompraProductoRequest con idUsuario: "+ idUsuario + " y idProducto " + idProducto);
-//		Usuario usuario = null;
-//		ServerResponse.Builder serverResponse = ServerResponse.newBuilder();
-//		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
-//
-//		try {
-//			usuario = UsuarioBO.getInstance().updateUsuarioCompraProducto(idUsuario, idProducto);
-//		} // end_try
-//		catch (Exception e) {
-//			serverResponse.setCode(500);
-//			serverResponse.setMsg(e.getMessage());
-//		} // end_catch
-//
-//		response.setResponse(serverResponse);
-//		responseObserver.onNext(response.build());
-//		responseObserver.onCompleted();
-//
-//	} // updateUsuarioCompraProductoRequest
+	@Override
+	public void updateUsuarioCompraProductoRequest(UpdateUsuarioCompraProductoRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
+
+		int idUsuario = request.getIdUsuario();
+		int idProducto = request.getIdProducto();
+
+		System.out.println("Llamada al servicio updateUsuarioCompraProductoRequest con idUsuario: "+ idUsuario + " y idProducto " + idProducto);
+		
+		Usuario usuario = null;
+		
+		UsuarioServerResponse.Builder serverResponse = UsuarioServerResponse.newBuilder();
+		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();		
+
+		try {
+			usuario = usuarioBO.updateUsuarioCompraProducto(idUsuario, idProducto);
+            response.setUsuario(mapUsuarioDTO(usuario));
+            serverResponse.setCode(200);
+            serverResponse.setMsg("Usuario con saldo actualizado");
+		} // end_try
+		catch (Exception e) {
+			serverResponse.setCode(500);
+			serverResponse.setMsg(e.getMessage());
+		} // end_catch
+
+		response.setServerResponse(serverResponse);
+		responseObserver.onNext(response.build());
+		responseObserver.onCompleted();
+
+	} // updateUsuarioCompraProductoRequest
 	
 	// MAPEOS
 
-	public UsuarioDTO.Builder mapUsuarioToDTO (Usuario u){
+	public UsuarioDTO.Builder mapUsuarioDTO (Usuario u){
 		UsuarioDTO.Builder dto = UsuarioDTO.newBuilder();
 		dto.setIdUsuario((int)u.getIdUsuario());
 		dto.setNombre(u.getNombre());

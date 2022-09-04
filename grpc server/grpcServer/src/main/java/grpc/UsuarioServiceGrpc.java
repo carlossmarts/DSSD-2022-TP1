@@ -31,21 +31,21 @@ public final class UsuarioServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<grpc.Usuario.UsuarioDTO,
-      grpc.Usuario.UsuarioServerResponse> getAddUsuarioMethod;
+      grpc.Usuario.UsuarioObjDTO> getAddUsuarioMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addUsuario",
       requestType = grpc.Usuario.UsuarioDTO.class,
-      responseType = grpc.Usuario.UsuarioServerResponse.class,
+      responseType = grpc.Usuario.UsuarioObjDTO.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<grpc.Usuario.UsuarioDTO,
-      grpc.Usuario.UsuarioServerResponse> getAddUsuarioMethod() {
-    io.grpc.MethodDescriptor<grpc.Usuario.UsuarioDTO, grpc.Usuario.UsuarioServerResponse> getAddUsuarioMethod;
+      grpc.Usuario.UsuarioObjDTO> getAddUsuarioMethod() {
+    io.grpc.MethodDescriptor<grpc.Usuario.UsuarioDTO, grpc.Usuario.UsuarioObjDTO> getAddUsuarioMethod;
     if ((getAddUsuarioMethod = UsuarioServiceGrpc.getAddUsuarioMethod) == null) {
       synchronized (UsuarioServiceGrpc.class) {
         if ((getAddUsuarioMethod = UsuarioServiceGrpc.getAddUsuarioMethod) == null) {
           UsuarioServiceGrpc.getAddUsuarioMethod = getAddUsuarioMethod = 
-              io.grpc.MethodDescriptor.<grpc.Usuario.UsuarioDTO, grpc.Usuario.UsuarioServerResponse>newBuilder()
+              io.grpc.MethodDescriptor.<grpc.Usuario.UsuarioDTO, grpc.Usuario.UsuarioObjDTO>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "UsuarioService", "addUsuario"))
@@ -53,7 +53,7 @@ public final class UsuarioServiceGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   grpc.Usuario.UsuarioDTO.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.Usuario.UsuarioServerResponse.getDefaultInstance()))
+                  grpc.Usuario.UsuarioObjDTO.getDefaultInstance()))
                   .setSchemaDescriptor(new UsuarioServiceMethodDescriptorSupplier("addUsuario"))
                   .build();
           }
@@ -191,7 +191,7 @@ public final class UsuarioServiceGrpc {
     /**
      */
     public void addUsuario(grpc.Usuario.UsuarioDTO request,
-        io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioServerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getAddUsuarioMethod(), responseObserver);
     }
 
@@ -223,7 +223,7 @@ public final class UsuarioServiceGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 grpc.Usuario.UsuarioDTO,
-                grpc.Usuario.UsuarioServerResponse>(
+                grpc.Usuario.UsuarioObjDTO>(
                   this, METHODID_ADD_USUARIO)))
           .addMethod(
             getGetByUsuarioYClaveRequestMethod(),
@@ -274,7 +274,7 @@ public final class UsuarioServiceGrpc {
     /**
      */
     public void addUsuario(grpc.Usuario.UsuarioDTO request,
-        io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioServerResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddUsuarioMethod(), getCallOptions()), request, responseObserver);
     }
@@ -327,7 +327,7 @@ public final class UsuarioServiceGrpc {
 
     /**
      */
-    public grpc.Usuario.UsuarioServerResponse addUsuario(grpc.Usuario.UsuarioDTO request) {
+    public grpc.Usuario.UsuarioObjDTO addUsuario(grpc.Usuario.UsuarioDTO request) {
       return blockingUnaryCall(
           getChannel(), getAddUsuarioMethod(), getCallOptions(), request);
     }
@@ -377,7 +377,7 @@ public final class UsuarioServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<grpc.Usuario.UsuarioServerResponse> addUsuario(
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Usuario.UsuarioObjDTO> addUsuario(
         grpc.Usuario.UsuarioDTO request) {
       return futureUnaryCall(
           getChannel().newCall(getAddUsuarioMethod(), getCallOptions()), request);
@@ -432,7 +432,7 @@ public final class UsuarioServiceGrpc {
       switch (methodId) {
         case METHODID_ADD_USUARIO:
           serviceImpl.addUsuario((grpc.Usuario.UsuarioDTO) request,
-              (io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioServerResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO>) responseObserver);
           break;
         case METHODID_GET_BY_USUARIO_YCLAVE_REQUEST:
           serviceImpl.getByUsuarioYClaveRequest((grpc.Usuario.GetByUsuarioYClaveRequest) request,

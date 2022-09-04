@@ -1,7 +1,8 @@
 package bo;
 
-import dao.ProductoDAO;
 import dao.UsuarioDAO;
+import dao.ProductoDAO;
+import grpc.Usuario.UsuarioDTO;
 import model.Producto;
 import model.Usuario;
 
@@ -16,32 +17,27 @@ public class UsuarioBO {
 		return instancia;
 	} // end_UsuarioBO
 	
-	// METODO addUsuario
-	public boolean addUsuario(Usuario u) throws Exception {
-		Usuario usuario = null;
-		boolean retorno = false;
-		try{
-			usuario = UsuarioDAO.getInstance().getByNombreUsuario(u.getUsuario());			
-		} // end_try
-		catch(Exception e){
-			System.out.println(e.getMessage());
-		} // end_catch
+    UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
+    ProductoDAO productoDAO = ProductoDAO.getInstance();
 
-		if(usuario != null){
-			retorno = UsuarioDAO.getInstance().addUsuario(u);
-		} // end_if
-
-		return retorno;
-	} // end_addUsuario
-
+	// METODO agregarUsuario
+    public Usuario agregarUsuario(UsuarioDTO usuarioDTO) throws Exception {
+        Usuario toPersist = mapUsuarioToEntity(usuarioDTO);
+        Usuario persisted = usuarioDAO.agregarUsuario(toPersist);
+        return persisted;
+    }
+    
+    // METODO getById
 	public Usuario getById (int idUsuario) throws Exception{
-		return UsuarioDAO.getInstance().getUsuarioById(idUsuario);
+		return usuarioDAO.getById(idUsuario);
 	}
 
 	// METODO getUsuarioByUsuarioYClave
 	public Usuario getUsuarioByUsuarioYClave(String nombreUsuario, String clave) throws Exception{
+		Usuario usuario = null;
 		try{
-			return UsuarioDAO.getInstance().getUsuarioByUsuarioYClave(nombreUsuario, clave);
+			usuario = usuarioDAO.getUsuarioByUsuarioYClave(nombreUsuario, clave);
+			return usuario;		
 		} // end_try
 		catch (Exception e){
 			System.out.println(e.getMessage());
@@ -51,44 +47,58 @@ public class UsuarioBO {
 	
 	// METODO updateUsuarioCargaSaldo
 	public Usuario updateUsuarioCargaSaldo(int idUsuario, double saldo) throws Exception{
-		boolean actualizado = false;
-		double nuevoSaldo = 0;
+		
 		Usuario usuario = null;
+		double nuevoSaldo = 0;
+		
 		try{
-			usuario = UsuarioDAO.getInstance().getUsuarioById(idUsuario);
+			usuario = usuarioDAO.getById(idUsuario);
 			nuevoSaldo = usuario.getSaldoBilletera() + saldo;
-			actualizado = UsuarioDAO.getInstance().updateUsuarioSaldo(idUsuario, nuevoSaldo);
-			if(actualizado) {
-				return UsuarioDAO.getInstance().getUsuarioById(idUsuario); // DEVUELVE USUARIO
-			} // end_if
-			else{
-				return null;
-			} // end_else
+			usuario.setSaldoBilletera(nuevoSaldo);
+			usuario = usuarioDAO.updateUsuarioSaldo(usuario);
 		} // end_try
 		catch(Exception e){
 			System.out.println(e.getMessage());
 			throw new Exception ("ATENCION: Error, no se pudo actualizar el saldo");
 		} // end_catch
+		
+		return usuario;
+			
 	} // end_updateUsuarioCargaSaldo
 	
 	// METODO updateUsuarioCompraProducto
-	public Usuario updateUsuarioCompraProducto(Usuario comprador, Producto producto) throws Exception{
-		boolean actualizado = false;
+	public Usuario updateUsuarioCompraProducto(int idUsuario, int idProducto) throws Exception{
+		
+		Usuario usuario = null;
+		Producto producto = null;
 		double nuevoSaldo = 0;
+		
 		try{
-			nuevoSaldo = comprador.getSaldoBilletera() - producto.getPrecio();
-			actualizado = UsuarioDAO.getInstance().updateUsuarioSaldo(comprador.getIdUsuario(), nuevoSaldo);
-			if(actualizado) {
-				return UsuarioDAO.getInstance().getUsuarioById(comprador.getIdUsuario()); // DEVUELVE USUARIO
-			} // end_if
-			else{
-				return null;
-			} // end_else
+			usuario = usuarioDAO.getById(idUsuario);
+			producto = productoDAO.getById(idProducto);
+			nuevoSaldo = usuario.getSaldoBilletera() - producto.getPrecio();
+			usuario.setSaldoBilletera(nuevoSaldo);
+			usuario = usuarioDAO.updateUsuarioSaldo(usuario);
 		} // end_try
 		catch(Exception e){
 			System.out.println(e.getMessage());
 			throw new Exception ("ATENCION: Error, no se pudo actualizar el saldo");
 		} // end_catch
+		
+		return usuario;
 	} // updateUsuarioCompraProducto
+	
+    private Usuario mapUsuarioToEntity (UsuarioDTO dto) throws Exception{
+        Usuario u = new Usuario();
+        u.setIdUsuario(dto.getIdUsuario());
+        u.setNombre(dto.getNombre());
+        u.setApellido(dto.getApellido());
+        u.setDni(dto.getDni());
+        u.setEmail(dto.getEmail());
+        u.setUsuario(dto.getUsuario());
+        u.setClave(dto.getClave());
+        u.setSaldoBilletera(dto.getSaldoBilletera());
+        return u;
+    }
 	
 } // end_UsuarioBO
