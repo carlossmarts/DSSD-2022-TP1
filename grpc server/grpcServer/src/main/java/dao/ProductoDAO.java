@@ -3,6 +3,7 @@ package dao;
 import model.Categoria;
 import model.FotoProducto;
 import model.Producto;
+import model.Usuario;
 
 
 import javax.persistence.EntityManager;
@@ -49,6 +50,28 @@ public class ProductoDAO {
         Root<Producto> root = query.from(Producto.class);
         Predicate enStock = criteriaBuilder.greaterThan(root.get("cantidad"), 0);
         query.select(root).where(enStock);
+
+        try {
+            productos = em.createQuery(query).getResultList();
+        } catch (Exception e) {
+            String msg = "Error de persistencia - Método GetAllProducto: " + e.getMessage();
+            System.out.println(msg);
+            throw new Exception(msg);
+        } finally {
+            em.close();
+        }
+        return productos;
+    }
+
+    public List<Producto> getByUsuario(Usuario usuario) throws Exception{
+        List<Producto> productos = new ArrayList<Producto>();
+
+        EntityManager em = JPAUtil.getEMF().createEntityManager();
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Producto> query = criteriaBuilder.createQuery(Producto.class);
+        Root<Producto> root = query.from(Producto.class);
+        Predicate byUsuario = criteriaBuilder.equal(root.get("usuario"), usuario);
+        query.select(root).where(byUsuario);
 
         try {
             productos = em.createQuery(query).getResultList();

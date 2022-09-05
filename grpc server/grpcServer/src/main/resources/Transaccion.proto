@@ -6,10 +6,8 @@ option java_package = "grpc";
 /* METODOS PARA CONSUMIR */
 service TransaccionService{
 	rpc addTransaccion (TransaccionDTO) returns (ResTransaccionDTO);
-rpc getComprasOVentasByUsuarioRequest (GetTransaccionesRequest) returns (LisTransaccionDTO);
+    rpc getComprasOVentasByUsuarioRequest (GetTransaccionesRequest) returns (LisTransaccionDTO);
 }
-
-
 
 /* MODELO */
 message TransaccionDTO{

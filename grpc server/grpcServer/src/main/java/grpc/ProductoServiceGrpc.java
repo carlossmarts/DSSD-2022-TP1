@@ -123,6 +123,38 @@ public final class ProductoServiceGrpc {
      return getGetAllProductosMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Producto.IdUsuarioDTO,
+      grpc.Producto.ProductosDTO> getGetAllProductosByUserMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getAllProductosByUser",
+      requestType = grpc.Producto.IdUsuarioDTO.class,
+      responseType = grpc.Producto.ProductosDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Producto.IdUsuarioDTO,
+      grpc.Producto.ProductosDTO> getGetAllProductosByUserMethod() {
+    io.grpc.MethodDescriptor<grpc.Producto.IdUsuarioDTO, grpc.Producto.ProductosDTO> getGetAllProductosByUserMethod;
+    if ((getGetAllProductosByUserMethod = ProductoServiceGrpc.getGetAllProductosByUserMethod) == null) {
+      synchronized (ProductoServiceGrpc.class) {
+        if ((getGetAllProductosByUserMethod = ProductoServiceGrpc.getGetAllProductosByUserMethod) == null) {
+          ProductoServiceGrpc.getGetAllProductosByUserMethod = getGetAllProductosByUserMethod = 
+              io.grpc.MethodDescriptor.<grpc.Producto.IdUsuarioDTO, grpc.Producto.ProductosDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "ProductoService", "getAllProductosByUser"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Producto.IdUsuarioDTO.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Producto.ProductosDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new ProductoServiceMethodDescriptorSupplier("getAllProductosByUser"))
+                  .build();
+          }
+        }
+     }
+     return getGetAllProductosByUserMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.Producto.Empty,
       grpc.Producto.CategoriasDTO> getGetAllCategoriasMethod;
 
@@ -205,6 +237,13 @@ public final class ProductoServiceGrpc {
 
     /**
      */
+    public void getAllProductosByUser(grpc.Producto.IdUsuarioDTO request,
+        io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllProductosByUserMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getAllCategorias(grpc.Producto.Empty request,
         io.grpc.stub.StreamObserver<grpc.Producto.CategoriasDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllCategoriasMethod(), responseObserver);
@@ -233,6 +272,13 @@ public final class ProductoServiceGrpc {
                 grpc.Producto.Empty,
                 grpc.Producto.ProductosDTO>(
                   this, METHODID_GET_ALL_PRODUCTOS)))
+          .addMethod(
+            getGetAllProductosByUserMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Producto.IdUsuarioDTO,
+                grpc.Producto.ProductosDTO>(
+                  this, METHODID_GET_ALL_PRODUCTOS_BY_USER)))
           .addMethod(
             getGetAllCategoriasMethod(),
             asyncUnaryCall(
@@ -288,6 +334,14 @@ public final class ProductoServiceGrpc {
 
     /**
      */
+    public void getAllProductosByUser(grpc.Producto.IdUsuarioDTO request,
+        io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetAllProductosByUserMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getAllCategorias(grpc.Producto.Empty request,
         io.grpc.stub.StreamObserver<grpc.Producto.CategoriasDTO> responseObserver) {
       asyncUnaryCall(
@@ -332,6 +386,13 @@ public final class ProductoServiceGrpc {
     public grpc.Producto.ProductosDTO getAllProductos(grpc.Producto.Empty request) {
       return blockingUnaryCall(
           getChannel(), getGetAllProductosMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Producto.ProductosDTO getAllProductosByUser(grpc.Producto.IdUsuarioDTO request) {
+      return blockingUnaryCall(
+          getChannel(), getGetAllProductosByUserMethod(), getCallOptions(), request);
     }
 
     /**
@@ -386,6 +447,14 @@ public final class ProductoServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Producto.ProductosDTO> getAllProductosByUser(
+        grpc.Producto.IdUsuarioDTO request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetAllProductosByUserMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Producto.CategoriasDTO> getAllCategorias(
         grpc.Producto.Empty request) {
       return futureUnaryCall(
@@ -396,7 +465,8 @@ public final class ProductoServiceGrpc {
   private static final int METHODID_ADD_PRODUCTO = 0;
   private static final int METHODID_GET_BY_FILTER = 1;
   private static final int METHODID_GET_ALL_PRODUCTOS = 2;
-  private static final int METHODID_GET_ALL_CATEGORIAS = 3;
+  private static final int METHODID_GET_ALL_PRODUCTOS_BY_USER = 3;
+  private static final int METHODID_GET_ALL_CATEGORIAS = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -425,6 +495,10 @@ public final class ProductoServiceGrpc {
           break;
         case METHODID_GET_ALL_PRODUCTOS:
           serviceImpl.getAllProductos((grpc.Producto.Empty) request,
+              (io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO>) responseObserver);
+          break;
+        case METHODID_GET_ALL_PRODUCTOS_BY_USER:
+          serviceImpl.getAllProductosByUser((grpc.Producto.IdUsuarioDTO) request,
               (io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO>) responseObserver);
           break;
         case METHODID_GET_ALL_CATEGORIAS:
@@ -495,6 +569,7 @@ public final class ProductoServiceGrpc {
               .addMethod(getAddProductoMethod())
               .addMethod(getGetByFilterMethod())
               .addMethod(getGetAllProductosMethod())
+              .addMethod(getGetAllProductosByUserMethod())
               .addMethod(getGetAllCategoriasMethod())
               .build();
         }
