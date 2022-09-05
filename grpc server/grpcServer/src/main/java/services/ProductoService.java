@@ -101,6 +101,26 @@ public class ProductoService extends ProductoServiceImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void getAllProductosByUser(IdUsuarioDTO request, StreamObserver<ProductosDTO> responseObserver) {
+        ProductosDTO.Builder response = ProductosDTO.newBuilder();
+        ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
+        try {
+            List<Producto> productos = productoBO.getByUserId(request.getIdUsuario());
+            for(Producto p : productos){
+                response.addProductos(mapProductoToDTO(p));
+            }
+            serverResponse.setCod(200);
+            serverResponse.setMsg("");
+        } catch (Exception e) {
+            serverResponse.setCod(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
     private ProductoDTO.Builder mapProductoToDTO (Producto p) throws Exception{
         ProductoDTO.Builder dto = ProductoDTO.newBuilder();
         dto.setIdProducto(p.getIdProducto());

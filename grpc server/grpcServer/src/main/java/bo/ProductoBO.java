@@ -5,6 +5,7 @@ import grpc.Producto.*;
 import model.Categoria;
 import model.FotoProducto;
 import model.Producto;
+import model.Usuario;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +46,14 @@ public class ProductoBO {
 
         return productoDAO.getByFilter(categoria, nombreLike, precioDesde, precioHasta, fDesde, fHasta);
     }
+
+    public List<Producto> getByUserId(int idUsuario) throws Exception{
+        Usuario user = usuarioBO.getById(idUsuario);
+
+        return null;
+    }
+
+
 
 
     public Producto agregarProducto(ProductoDTO productoDTO) throws Exception {

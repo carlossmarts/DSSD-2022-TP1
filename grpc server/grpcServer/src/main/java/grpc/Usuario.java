@@ -1386,418 +1386,6 @@ public final class Usuario {
 
   }
 
-  public interface EmptyOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Empty)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code Empty}
-   */
-  public  static final class Empty extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Empty)
-      EmptyOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Empty.newBuilder() to construct.
-    private Empty(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Empty() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Empty(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return grpc.Usuario.internal_static_Empty_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return grpc.Usuario.internal_static_Empty_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              grpc.Usuario.Empty.class, grpc.Usuario.Empty.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof grpc.Usuario.Empty)) {
-        return super.equals(obj);
-      }
-      grpc.Usuario.Empty other = (grpc.Usuario.Empty) obj;
-
-      boolean result = true;
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static grpc.Usuario.Empty parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Usuario.Empty parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static grpc.Usuario.Empty parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.Usuario.Empty parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static grpc.Usuario.Empty parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static grpc.Usuario.Empty parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(grpc.Usuario.Empty prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code Empty}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Empty)
-        grpc.Usuario.EmptyOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return grpc.Usuario.internal_static_Empty_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return grpc.Usuario.internal_static_Empty_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                grpc.Usuario.Empty.class, grpc.Usuario.Empty.Builder.class);
-      }
-
-      // Construct using grpc.Usuario.Empty.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return grpc.Usuario.internal_static_Empty_descriptor;
-      }
-
-      @java.lang.Override
-      public grpc.Usuario.Empty getDefaultInstanceForType() {
-        return grpc.Usuario.Empty.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public grpc.Usuario.Empty build() {
-        grpc.Usuario.Empty result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public grpc.Usuario.Empty buildPartial() {
-        grpc.Usuario.Empty result = new grpc.Usuario.Empty(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof grpc.Usuario.Empty) {
-          return mergeFrom((grpc.Usuario.Empty)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(grpc.Usuario.Empty other) {
-        if (other == grpc.Usuario.Empty.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        grpc.Usuario.Empty parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (grpc.Usuario.Empty) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:Empty)
-    }
-
-    // @@protoc_insertion_point(class_scope:Empty)
-    private static final grpc.Usuario.Empty DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new grpc.Usuario.Empty();
-    }
-
-    public static grpc.Usuario.Empty getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Empty>
-        PARSER = new com.google.protobuf.AbstractParser<Empty>() {
-      @java.lang.Override
-      public Empty parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Empty(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Empty> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Empty> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public grpc.Usuario.Empty getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface GetByUsuarioYClaveRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:GetByUsuarioYClaveRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -6013,11 +5601,6 @@ public final class Usuario {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_UsuarioDTO_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Empty_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Empty_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GetByUsuarioYClaveRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -6060,26 +5643,26 @@ public final class Usuario {
       "rio\030\001 \001(\005\022\016\n\006nombre\030\002 \001(\t\022\020\n\010apellido\030\003 " +
       "\001(\t\022\013\n\003dni\030\004 \001(\t\022\r\n\005email\030\005 \001(\t\022\017\n\007usuar" +
       "io\030\006 \001(\t\022\r\n\005clave\030\007 \001(\t\022\026\n\016saldoBilleter" +
-      "a\030\010 \001(\001\"\007\n\005Empty\";\n\031GetByUsuarioYClaveRe" +
-      "quest\022\017\n\007usuario\030\001 \001(\t\022\r\n\005clave\030\002 \001(\t\"B\n" +
-      "\036UpdateUsuarioCargaSaldoRequest\022\021\n\tidUsu" +
-      "ario\030\001 \001(\005\022\r\n\005saldo\030\002 \001(\001\"K\n\"UpdateUsuar" +
-      "ioCompraProductoRequest\022\021\n\tidUsuario\030\001 \001" +
-      "(\005\022\022\n\nidProducto\030\002 \001(\005\"2\n\025UsuarioServerR" +
-      "esponse\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"]\n\rUs" +
-      "uarioObjDTO\022\034\n\007usuario\030\001 \001(\0132\013.UsuarioDT" +
-      "O\022.\n\016serverResponse\030\002 \001(\0132\026.UsuarioServe" +
-      "rResponse\"_\n\016ListUsuarioDTO\022\035\n\010usuarios\030" +
-      "\001 \003(\0132\013.UsuarioDTO\022.\n\016serverResponse\030\002 \001" +
-      "(\0132\026.UsuarioServerResponse2\262\002\n\016UsuarioSe" +
-      "rvice\022)\n\naddUsuario\022\013.UsuarioDTO\032\016.Usuar" +
-      "ioObjDTO\022G\n\031getByUsuarioYClaveRequest\022\032." +
-      "GetByUsuarioYClaveRequest\032\016.UsuarioObjDT" +
-      "O\022Q\n\036updateUsuarioCargaSaldoRequest\022\037.Up" +
-      "dateUsuarioCargaSaldoRequest\032\016.UsuarioOb" +
-      "jDTO\022Y\n\"updateUsuarioCompraProductoReque" +
-      "st\022#.UpdateUsuarioCompraProductoRequest\032" +
-      "\016.UsuarioObjDTOB\006\n\004grpcb\006proto3"
+      "a\030\010 \001(\001\";\n\031GetByUsuarioYClaveRequest\022\017\n\007" +
+      "usuario\030\001 \001(\t\022\r\n\005clave\030\002 \001(\t\"B\n\036UpdateUs" +
+      "uarioCargaSaldoRequest\022\021\n\tidUsuario\030\001 \001(" +
+      "\005\022\r\n\005saldo\030\002 \001(\001\"K\n\"UpdateUsuarioCompraP" +
+      "roductoRequest\022\021\n\tidUsuario\030\001 \001(\005\022\022\n\nidP" +
+      "roducto\030\002 \001(\005\"2\n\025UsuarioServerResponse\022\014" +
+      "\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"]\n\rUsuarioObjD" +
+      "TO\022\034\n\007usuario\030\001 \001(\0132\013.UsuarioDTO\022.\n\016serv" +
+      "erResponse\030\002 \001(\0132\026.UsuarioServerResponse" +
+      "\"_\n\016ListUsuarioDTO\022\035\n\010usuarios\030\001 \003(\0132\013.U" +
+      "suarioDTO\022.\n\016serverResponse\030\002 \001(\0132\026.Usua" +
+      "rioServerResponse2\262\002\n\016UsuarioService\022)\n\n" +
+      "addUsuario\022\013.UsuarioDTO\032\016.UsuarioObjDTO\022" +
+      "G\n\031getByUsuarioYClaveRequest\022\032.GetByUsua" +
+      "rioYClaveRequest\032\016.UsuarioObjDTO\022Q\n\036upda" +
+      "teUsuarioCargaSaldoRequest\022\037.UpdateUsuar" +
+      "ioCargaSaldoRequest\032\016.UsuarioObjDTO\022Y\n\"u" +
+      "pdateUsuarioCompraProductoRequest\022#.Upda" +
+      "teUsuarioCompraProductoRequest\032\016.Usuario" +
+      "ObjDTOB\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6099,44 +5682,38 @@ public final class Usuario {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UsuarioDTO_descriptor,
         new java.lang.String[] { "IdUsuario", "Nombre", "Apellido", "Dni", "Email", "Usuario", "Clave", "SaldoBilletera", });
-    internal_static_Empty_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_Empty_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Empty_descriptor,
-        new java.lang.String[] { });
     internal_static_GetByUsuarioYClaveRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_GetByUsuarioYClaveRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetByUsuarioYClaveRequest_descriptor,
         new java.lang.String[] { "Usuario", "Clave", });
     internal_static_UpdateUsuarioCargaSaldoRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_UpdateUsuarioCargaSaldoRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UpdateUsuarioCargaSaldoRequest_descriptor,
         new java.lang.String[] { "IdUsuario", "Saldo", });
     internal_static_UpdateUsuarioCompraProductoRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_UpdateUsuarioCompraProductoRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UpdateUsuarioCompraProductoRequest_descriptor,
         new java.lang.String[] { "IdUsuario", "IdProducto", });
     internal_static_UsuarioServerResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_UsuarioServerResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UsuarioServerResponse_descriptor,
         new java.lang.String[] { "Code", "Msg", });
     internal_static_UsuarioObjDTO_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_UsuarioObjDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UsuarioObjDTO_descriptor,
         new java.lang.String[] { "Usuario", "ServerResponse", });
     internal_static_ListUsuarioDTO_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_ListUsuarioDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ListUsuarioDTO_descriptor,
