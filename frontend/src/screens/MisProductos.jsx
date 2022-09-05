@@ -10,11 +10,11 @@ import {useProductosPresenter} from '../presenter/productosPresenter'
 const MisProductos = (props) => {
 
   const {
-    crearProducto,
     editarProductos
   } = props
 
-  const { traerMisProductos } = useProductosPresenter()
+  const { traerMisProductos, crearProducto } = useProductosPresenter()
+
   useEffect(() => {
     traerMisProductos().then(data => setProductos(data)).catch(err => console.log(err))
   }, [])
@@ -22,7 +22,17 @@ const MisProductos = (props) => {
   const [open, setOpen] = useState(false);
   const [openEdicion, setOpenEdicion] = useState(false);
   const [productos, setProductos] = useState([]);
-  const [producto, setProducto] = useState({});
+  const [producto, setProducto] = useState({
+    idProducto : 0,
+    nombre : "",
+    descripcion : "",
+    precio : "",
+    cantidadDisponible : "",
+    fechaFabricacion : "",
+	  archivos : [],
+	  idCategoria : 0,
+	  idUsuario : 0
+  });
   const [productoAEditar, setProductoAEditar] = useState({});
   const [esEdicion, setEsEdicion] = useState(false);
 
@@ -51,7 +61,7 @@ const MisProductos = (props) => {
           </Button>
         </Box>
       <GridProductos productos={productos} esEditable={true} editar={abrirModalEdicion}></GridProductos>
-      <ModalProducto esEdicion={false} open={open} setOpen={setOpen} crearProductos={crearProducto} producto={{}} />
+      <ModalProducto esEdicion={false} open={open} setOpen={setOpen} crearProductos={crearProducto} producto={producto} />
       <ModalProducto esEdicion={true} open={openEdicion} setOpen={setOpenEdicion} editarProductos={editarProductos} producto={productoAEditar} />
       </Grid>
     </>
