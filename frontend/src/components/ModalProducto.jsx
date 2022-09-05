@@ -118,19 +118,37 @@ const ModalProducto = (props) => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                  <FormControlLabel
-                    control={<Checkbox
-                      name="visible"
-                      onChange={handleInputChange}
-                      checked={producto.visible}
-                    />} label="Publicado"
+                  <TextField
+                    type="number"
+                    name="stock"
+                    onChange={handleInputChange}
+                    label="Stock"
+                    defaultValue={producto.cantidadDisponible}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    type="date"
+                    name="fecha"
+                    onChange={handleInputChange}
+                    label="Fecha de Fabricacion"
+                    defaultValue={producto.fechaFabricacion}
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   {
-                    producto ?
+                    prod ?
                       <Archivos
-                        form={producto}
+                        form={prod}
                         setForm={setProd}
                       />
                       :
