@@ -22,7 +22,7 @@ const prodList = [{
       ]}, {
     nombre: 'Video Grabadora',
     precio: 20.44,
-    descripcion: 'Esta es una descripcion para Videograbadoras!',
+    descripcion: 'Descripcion para grabadoras!',
     cantidadDisponible : 3,
     fechaFabricacion : "05/05/2020",
     fotos: [

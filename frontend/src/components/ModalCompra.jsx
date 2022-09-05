@@ -43,8 +43,8 @@ const ModalCompra = (props) => {
     <Dialog open={open} onClose={cerrar} fullWidth >
       <Grid container justify="center">
         <Box p={3} >
-          <Box p={1}>
-            <Box mb={3}>
+          <Box>
+            <Box>
               <Typography variant="h6" gutterBottom>
                 {"RETROSTORE - Compra"}
               </Typography>
@@ -53,21 +53,21 @@ const ModalCompra = (props) => {
               !compraRealizada
                 ?
                 <>
-                  <Box mb={3}>
-                    <Typography variant="h6" gutterBottom>
-                      {`${producto.nombre}, precio $${producto.precio}`}
+                  <Box>
+                    <Typography variant="h6">
+                      {`${producto.nombre}, precio $${producto.precio.toFixed(2)}`}
                     </Typography>
-                    <Typography variant="h6" gutterBottom>
-                      {`Tiene cargado en su billetera un total de $${dineroActual}. `}
+                    <Typography variant="h6">
+                      {`El saldo en su billetera es de $${dineroActual.toFixed(2)}. `}
                       {esMayor ?
-                        `Después de la compra, su saldo será de $${dineroActual - producto.precio}`
+                        `Después de la compra, su saldo será de $${(dineroActual - producto.precio).toFixed(2)}`
                         :
                         `Cargue dinero a su billetera para poder comprar el producto ${producto.nombre}`}
                     </Typography>
                   </Box>
                 </>
                 :
-                <Box mb={3}>
+                <Box>
                   <Typography variant="h6" gutterBottom>
                     {`Compra realizada! Su billetera ahora contiene $${dineroActual}`}
                   </Typography>
@@ -76,7 +76,7 @@ const ModalCompra = (props) => {
           </Box>
         </Box>
       </Grid>
-      <DialogActions style={{ display: "flex", justifyContent: "center" }} >
+      <DialogActions style={{ display: "flex", justifyContent: "center" }}>
         {
           !compraRealizada && esMayor ?
             <>
@@ -84,7 +84,7 @@ const ModalCompra = (props) => {
                 Comprar
               </Button>
               <Button onClick={cerrar} variant="outlined" color="secondary">
-                'Cancelar'
+                Cancelar
               </Button>
             </>
             :

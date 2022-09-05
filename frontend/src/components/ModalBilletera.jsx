@@ -29,7 +29,7 @@ const ModalBilletera = (props) => {
     actualizarBilletera((dinero + dineroActual), localStorage.getItem("idUsuario")).then((res) => {
       if (res === 201)
         setDineroModificado(true)
-        setDineroActual(dinero + dineroActual)
+      setDineroActual(dinero + dineroActual)
     })
   }
 
@@ -42,54 +42,53 @@ const ModalBilletera = (props) => {
     <Dialog open={open} onClose={cerrar} fullWidth >
       <Grid container justify="center">
         <Box p={3} >
-          <Box p={1}>
-            <Box mb={3}>
-              <Typography variant="h6" gutterBottom>
-                {"RETROSTORE - Billetera"}
-              </Typography>
-            </Box>
-            {
-              !dineroModificado
-                ?
-                <><Box mb={3}>
-                  <Typography variant="h6" gutterBottom>
-                    {`Su billetera contiene $${dineroActual}`}
-                  </Typography>
-                </Box>
-                  <form>
-                    <Grid container spacing={3}>
-                      <TextField
-                        type="number"
-                        name="Dinero"
-                        onChange={handleInputChange}
-                        label="Agregar Dinero a la Billetera"
-                        defaultValue={0}
-                        variant="outlined"
-                        fullWidth
-                        size="small"
-                      />
-                    </Grid>
-                  </form>
-                </>
-                :
-                <Box mb={3}>
-                  <Typography variant="h6" gutterBottom>
-                    {`Saldo Actualizado! Su billetera ahora contiene $${dineroActual}`}
-                  </Typography>
-                </Box>
-            }
+          <Box mb={3}>
+            <Typography variant="h6" gutterBottom>
+              {"RETROSTORE - Billetera"}
+            </Typography>
           </Box>
+          {
+            !dineroModificado
+              ?
+              <><Box mb={3}>
+                <Typography variant="h6" gutterBottom>
+                  {`Su billetera contiene $${dineroActual.toFixed(2)}`}
+                </Typography>
+              </Box>
+                <form>
+                    <TextField
+                      type="number"
+                      name="Dinero"
+                      onChange={handleInputChange}
+                      label="Agregar Dinero a la Billetera"
+                      defaultValue={0}
+                      variant="outlined"
+                      fullWidth
+                      size="small"
+                    />
+                </form>
+              </>
+              :
+              <Box mb={3}>
+                <Typography variant="h6" gutterBottom>
+                  {`Saldo Actualizado! Su billetera ahora contiene $${dineroActual.toFixed(2)}`}
+                </Typography>
+              </Box>
+          }
         </Box>
       </Grid>
-      <DialogActions style={{ display: "flex", justifyContent: "center" }} >
-        <Button onClick={actualizarDinero} variant="contained" color="secondary">
-          Actualizar
-        </Button>
-        <Button onClick={cerrar} variant="outlined" color="secondary">
-          {!dineroModificado ?
-            'Cancelar' :
-            'Cerrar'}
-        </Button>
+
+      <DialogActions style={{ display: "flex", justifyContent: "center" }}  >
+        <Grid sx={{ mt: 0, mb: 2 }}  spacing={3} >
+          <Button onClick={actualizarDinero} variant="contained" color="secondary">
+            Actualizar
+          </Button>
+          <Button onClick={cerrar} variant="outlined" color="secondary">
+            {!dineroModificado ?
+              'Cancelar' :
+              'Cerrar'}
+          </Button>
+        </Grid>
       </DialogActions>
     </Dialog>
   )

@@ -81,7 +81,6 @@ function Imagenes(props) {
                     </Button>
                 }
             />
-
         </Box>
     );
 }

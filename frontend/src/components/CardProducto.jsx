@@ -9,22 +9,23 @@ import Imagenes from './Imagenes'
 const CardProducto = (props) => {
     const { producto, esEditable, editar, esComprable, comprar } = props;
     return (
-        <div>
-            <Card>
-                <Imagenes
-                    imagenes={producto.fotos}
-                />
+            <Card sx={{ mt: 0, mb: 0 }}>
+                <Imagenes imagenes={producto.fotos} />
                 <CardContent>
-                    <CardContent>
-                        <Typography variant="h5" component="h2">
-                            {producto.nombre}
-                        </Typography>
-                    </CardContent>
-                    <Typography >
+                    <Typography variant="h5" >
+                        {producto.nombre}
+                    </Typography>
+                    <Typography variant="h6">
+                        ${producto.precio.toFixed(2)}
+                    </Typography>
+                    <Typography variant="body2">
                         {producto.descripcion}
                     </Typography>
-                    <Typography>
-                        {producto.precio}
+                    <Typography variant="body2">
+                        Fecha de Fabricación: {producto.fechaFabricacion}
+                    </Typography>
+                    <Typography variant="body2">
+                        Cantidad Disponible: {producto.cantidadDisponible}
                     </Typography>
                 </CardContent>
                 <CardActions>
@@ -37,7 +38,7 @@ const CardProducto = (props) => {
                     }
                 </CardActions>
             </Card >
-        </div >)
+       )
 }
 
 export default CardProducto;
