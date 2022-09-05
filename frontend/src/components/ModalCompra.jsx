@@ -50,7 +50,7 @@ const ModalCompra = (props) => {
               </Typography>
             </Box>
             {
-              !compraRealizada
+              !compraRealizada && producto.precio && dineroActual
                 ?
                 <>
                   <Box>
