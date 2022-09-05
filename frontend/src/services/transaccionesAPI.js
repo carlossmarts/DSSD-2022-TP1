@@ -14,7 +14,7 @@ export const TransaccionesAPI = {
 
     actualizarBilletera: async (body) => {
         try {
-            const res = await axios.put(`URLCAMBIAR/api/billetera`, body);
+            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
             const locs = await res.status;
             return locs
         } catch (err) {
@@ -24,7 +24,7 @@ export const TransaccionesAPI = {
 
     realizarCompra: async (body) => {
         try {
-            const res = await axios.put(`URLCAMBIAR/api/compras`, body);
+            const res = await axios.put(`https://localhost:7252/api/usuario/comprar`, body);
             const locs = await res.status;
             return locs
         } catch (err) {

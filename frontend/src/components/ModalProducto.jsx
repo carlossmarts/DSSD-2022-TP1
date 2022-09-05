@@ -1,9 +1,9 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useState } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import Typography from '@mui/material/Typography'
 import { TextField, Grid, Box, Button, Checkbox, FormControlLabel } from '@mui/material'
-import {Archivos} from './Archivos'
+import Archivos from './Archivos'
 
 const ModalProducto = (props) => {
 
@@ -16,30 +16,32 @@ const ModalProducto = (props) => {
     editarProductos
   } = props;
 
+
+
   useEffect(() => {
-    setProducto(producto)
+    setProd(producto)
   }, [producto])
 
-  const [product, setProducto] = useReducer(
-    (state, newState) => ({ ...state, ...newState }),
-    producto
-  );
+  
+
+
+  const [prod, setProd] = useState(producto)
 
   const handleInputChange = (event) => {
     console.log(event.target.name)
     if (event.target.name == "visible") {
-      setProducto({
-        ...product,
+      setProd({
+        ...prod,
         [event.target.name]: event.target.checked
       })
     } else if (event.target.name == "precio") {
-      setProducto({
-        ...product,
+      setProd({
+        ...prod,
         [event.target.name]: event.target.valueAsNumber
       })
     } else {
-      setProducto({
-        ...product,
+      setProd({
+        ...prod,
         [event.target.name]: event.target.value
       })
     }
@@ -47,7 +49,7 @@ const ModalProducto = (props) => {
 
   const crearProducto = (event) => {
     event.preventDefault();
-    crearProductos(product, localStorage.getItem("idUsuario")).then((res) => {
+    crearProductos(prod, localStorage.getItem("idUsuario")).then((res) => {
       if (res === 201)
         alert("Producto Creado")
     }).then(() => {
@@ -57,7 +59,7 @@ const ModalProducto = (props) => {
 
   const editarProducto = (event) => {
     event.preventDefault();
-    editarProductos(product).then((res) => {
+    editarProductos(prod).then((res) => {
       if (res === 204)
         alert("Producto Actualizado")
     }).then(() => {
@@ -80,11 +82,11 @@ const ModalProducto = (props) => {
               </Typography>
             </Box>
             <form>
-              <Grid container spacing={3} style={{ width: '100%' }}>
+              <Grid container spacing={3} style={{ width: '100%' }} alignItems="center">
                 <Grid item xs={12} sm={6}>
                   <TextField
                     label="Nombre"
-                    defaultValue={product.nombre}
+                    defaultValue={prod.nombre}
                     variant="outlined"
                     fullWidth
                     size="small"
@@ -95,7 +97,7 @@ const ModalProducto = (props) => {
                 <Grid item xs={12} sm={12}>
                   <TextField
                     label="Descripción"
-                    defaultValue={product.descripcion}
+                    defaultValue={prod.descripcion}
                     variant="outlined"
                     fullWidth
                     multiline
@@ -111,23 +113,31 @@ const ModalProducto = (props) => {
                     name="precio"
                     onChange={handleInputChange}
                     label="Precio"
-                    defaultValue={product.precio}
+                    defaultValue={prod.precio}
                     variant="outlined"
                     fullWidth
                     size="small"
                   />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={6}>
                   <FormControlLabel
                     control={<Checkbox
                       name="visible"
                       onChange={handleInputChange}
-                      checked={product.visible}
+                      checked={prod.visible}
                     />} label="Publicado"
                   />
                 </Grid>
-                <Grid item xs={12} sm={2}>
-                  <Archivos/>
+                <Grid item xs={12}>
+                  {
+                    producto ?
+                      <Archivos
+                        form={prod}
+                        setForm={setProd}
+                      />
+                    :
+                      null
+                  }
                 </Grid>
               </Grid>
             </form>
