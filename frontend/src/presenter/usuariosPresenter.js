@@ -1,19 +1,37 @@
 import { useState } from "react"
-import { UsuariosApi } from "../services/usuariosAPI"
+import axios from "axios"
+
 
 export const useUsuarioPresenter = ()=>{
 
     const [user, setUser] = useState([])
 
     const traerIdUsuario = async(username, password) =>{
-        //const res = await UsuarioApi.traerIdUsuario(username, password)
-        //return res;
+        const body = {
+            username: username,
+            password: password
+        }
+        try{
+            console.log("llamando al servicio usuarioLogin con username", username, "y contraseña", password);
+            const res = await axios.post('https://localhost:7252/api/usuario/login', { body: body});
+            const data = await res.data;
+            setUser(data)
+            return data 
+        } catch (err){
+            console.error(err)
+        }
         return 8
     }
 
     const altaUsuario = async (body)=>{
-        //const res = await UsuarioApi.altaUsuario(body);
-        //return res;
+        try {
+            const res = await axios.post('https://localhost:7252/api/usuario', {body: body})
+            const data = await res.data;
+            setUser(data)
+            return data
+        } catch (err) {
+            console.error(err)
+        }
         return 201
     }
     

@@ -1,31 +1,58 @@
 import { useState } from "react"
-import { TransaccionesAPI } from "../services/transaccionesAPI"
+import axios from "axios";
 
 export const useTransaccionesPresenter = ()=>{
 
-    const [billetera, setBilletera] = useState([])
+    const [billetera, setBilletera] = useState(0);
 
-    const traerDineroEnBilletera = async (idUsuario)=>{
-        // const res = await TransaccionesAPI.traerDineroEnBilletera(idUsuario);
-        // return res;
-        return 2002
-    }
-
-    const actualizarBilletera = async (body)=>{
-        // const res = await TransaccionesAPI.actualizarBilletera(body);
-        // return res;
+    const actualizarBilletera = async (idUsuario, saldo)=>{
+        const body = {
+            idUsuario: idUsuario,
+            saldo: saldo
+        }
+        try {
+            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
+            const data = await res.data;
+            setBilletera(data.saldoBilletera)
+        } catch (err) {
+            console.error(err)
+        }
         return 201
     }
     
     const realizarCompra = async (body)=>{
-        const res = await TransaccionesAPI.realizarCompra(body);
-        return res;
+        /* 
+         body:{
+            idTransaccion = 1;
+            idProducto 
+            idProducto 
+            idProducto 
+            idComprador
+            idVendedor 
+            nombre
+            cantidad
+            precio
+         }
+        */
+        try {
+            const res = await axios.put(`https://localhost:7252/api/usuario/comprar`, {body: body});
+            const data = await res.status;
+            /*
+            data= {
+                idProducto,
+                idComprador,
+                cantidadRestante,
+                saldoRestante
+            }
+            */
+            setBilletera(data.saldoRestante)
+        } catch (err) {
+            console.error(err)
+        }
+        return 201;
     }
 
     return {
-        billetera,
-        setBilletera,
-        traerDineroEnBilletera,
         actualizarBilletera,
         realizarCompra
     }
