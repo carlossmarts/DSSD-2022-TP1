@@ -61,7 +61,7 @@ const Filtros = (props) => {
         <React.Fragment>
             <Box p={4}>
                 <Grid container spacing={2}>
-                    <Grid item container xs={11} >
+                    <Grid item container xs={11} spacing={1}>
 
                         <Grid item xs={2}>
                             <SelectorCategorias opciones={categorias} nombre={'categorias'} setValor={setCategoria}></SelectorCategorias>
