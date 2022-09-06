@@ -5,7 +5,6 @@ import { useProductosPresenter } from '../presenter/productosPresenter'
 import ModalCompra from '../components/ModalCompra'
 import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
 import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
-import ListaCategorias from '../components/ListaCategorias'
 import Filtros from '../components/Filtros';
 
 
