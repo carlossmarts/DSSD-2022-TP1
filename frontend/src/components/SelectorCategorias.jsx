@@ -24,7 +24,7 @@ const SelectorCategorias = (props) => {
                         fullWidth
                         id={nombre}
                         options={opciones}
-                        getOptionLabel={op => op.nombre}
+                        getOptionLabel={op => op.categoria}
                         renderInput={(params) => <TextField {...params} label={`ingresar ${nombre}`} variant="outlined" />}
                         onChange={(event, value) => setValor(value)}
                     >
