@@ -36,6 +36,11 @@ const Filtros = (props) => {
         fechaHasta: ""
     })
 
+    const {
+        traerProductosPorFiltro,
+        productos
+    } = useProductosPresenter()
+
     useEffect(() => {
         let tempFiltros = { ...filtros }
         tempFiltros.categoria = categoria
@@ -48,7 +53,7 @@ const Filtros = (props) => {
         setFiltros(tempFiltros)
     }
     const buscarProductos = () => {
-        
+        //traerProductosPorFiltro(filtros)
     }
 
 
@@ -56,7 +61,7 @@ const Filtros = (props) => {
         <React.Fragment>
             <Box p={4}>
                 <Grid container spacing={2}>
-                    <Grid item container xs={11} alignItems='center'>
+                    <Grid item container xs={11} >
 
                         <Grid item xs={2}>
                             <SelectorCategorias opciones={categorias} nombre={'categorias'} setValor={setCategoria}></SelectorCategorias>
