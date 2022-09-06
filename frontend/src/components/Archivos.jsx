@@ -37,11 +37,12 @@ const Archivos = (props) => {
     });
 
     useEffect(() => {
-
         console.log(form)
-
-
     }, [form])
+
+    useEffect(() => {
+        console.log('MIRA ACA' + JSON.stringify(form))
+      }, []) 
 
     const changeFileHandler = async (event) => {
         setInput(event.target);
@@ -55,17 +56,17 @@ const Archivos = (props) => {
             });
         }
         if (filesTemp.length > 5) {
-            window.alert("la cantidad máxima de archivos permitidos es 5")
+            window.alert("la cantidad máxima de fotos permitidos es 5")
         } else {
-            formTemp.archivos = filesTemp;
+            formTemp.fotos = filesTemp;
             setForm(formTemp);
         }
     };
 
     const fileName = () => {
         let retorno = ""
-        if (form.archivos.length === 1) {
-            const name = form.archivos[0].nombre;
+        if (form.fotos.length === 1) {
+            const name = form.fotos[0].nombre;
             let result = "";
             if (name.length > 12) {
                 result = name.slice(0, 12) + "...";
@@ -73,8 +74,8 @@ const Archivos = (props) => {
                 result = name;
             }
             retorno = result;
-        } else if (form.archivos.length > 1) {
-            retorno = form.archivos.length + " Archivos";
+        } else if (form.fotos.length > 1) {
+            retorno = form.fotos.length + " fotos";
         }
 
         return retorno
@@ -83,7 +84,7 @@ const Archivos = (props) => {
     const DeleteFile = () => {
         const formTemp = { ...form };
         const filesTemp = [];
-        formTemp.archivos = filesTemp;
+        formTemp.fotos = filesTemp;
         onCloseConfirmModal();
         setForm(formTemp);
         input.value = "";
@@ -110,12 +111,12 @@ const Archivos = (props) => {
 
     const DeleteOrFile = () => {
         let retorno = null;
-        if (form.archivos.length === 0) {
+        if (form.fotos.length === 0) {
             retorno = (<Typography variant="body2" style={{ color: blue[900], fontWeight: "bold" }}>
-                ADJUNTAR ARCHIVOS
+                ADJUNTAR FOTOS
             </Typography>)
         }
-        if (form.archivos.length === 1)
+        if (form.fotos.length === 1)
             retorno = (
                 <IconButton onClick={OpenDeleteFile}>
                     <DeleteIcon
@@ -126,7 +127,7 @@ const Archivos = (props) => {
                     />
                 </IconButton>
             );
-        if (form.archivos.length > 1)
+        if (form.fotos.length > 1)
             retorno = (
                 <IconButton onClick={OpenFiles}>
                     <SubjectIcon
@@ -174,7 +175,7 @@ const Archivos = (props) => {
             <ModalListadoAdjuntos
                 open={openModalAdjunto}
                 close={closeModalListaAdjunto}
-                archivos={form.archivos}
+                fotos={form.fotos}
                 formulario={form}
                 setFormulario={setForm}
             />
@@ -182,7 +183,7 @@ const Archivos = (props) => {
             <Grid container alignItems="center">
                 <Grid item >
                     <div >
-                        {form.archivos.length < 5 ? (
+                        {form.fotos.length < 5 ? (
                             <label className="custom-file-upload">
                                 <AddCircleOutlineIcon
                                     style={{
@@ -192,7 +193,7 @@ const Archivos = (props) => {
                                     }}
                                 />
                                 <input
-                                    id={"archivos"}
+                                    id={"fotos"}
                                     onChange={changeFileHandler}
                                     type="file"
                                     multiple
@@ -226,7 +227,7 @@ const ModalListadoAdjuntos = (props) => {
     const {
         open,
         close,
-        archivos,
+        fotos,
         formulario,
         setFormulario
     } = props
@@ -235,13 +236,13 @@ const ModalListadoAdjuntos = (props) => {
         <>
             <Dialog open={open} onClose={close} fullWidth maxWidth="xs">
                 <DialogTitle >
-                    Listado de archivos adjuntos
+                    Listado de fotos adjuntos
                 </DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         {
-                            archivos ?
-                                archivos.map((archivo) => {
+                            fotos ?
+                                fotos.map((archivo) => {
                                     return <ItemListaArchivos
                                         key={archivo.nombre}
                                         item={archivo}

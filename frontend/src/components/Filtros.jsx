@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react'
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import CameraIcon from '@mui/icons-material/PhotoCamera';
@@ -16,12 +16,16 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ProductionQuantityLimits } from '@mui/icons-material';
+import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
+import SelectorCategorias from '../components/SelectorCategorias'
 
-const Filtros = () => {
+const Filtros = (props) => {
+    const { categorias } = props;
+    const [categoria, setCategoria] = useState({});
 
     return (
         <React.Fragment>
-
+            <SelectorCategorias opciones={categorias} nombre={'categorias'} setValor={setCategoria}></SelectorCategorias>
         </React.Fragment>
         )
 }
