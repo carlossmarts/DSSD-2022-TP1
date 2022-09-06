@@ -5,15 +5,17 @@ export const useTransaccionesPresenter = ()=>{
 
     const [billetera, setBilletera] = useState(0);
 
-    const actualizarBilletera = async (idUsuario, saldo)=>{
-        const body = {
-            idUsuario: idUsuario,
-            saldo: saldo
-        }
+    const traerDineroEnBilletera = async (idUsuario)=>{
+        // const res = await TransaccionesAPI.traerDineroEnBilletera(idUsuario);
+        // return res;
+        return 2002
+    }
+
+    const actualizarBilletera = async (body)=>{
         try {
-            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
-            const data = await res.data;
-            setBilletera(data.saldoBilletera)
+            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, {body: body});
+            const saldo = await res.data.saldoBilletera;
+            return saldo
         } catch (err) {
             console.error(err)
         }
@@ -36,7 +38,7 @@ export const useTransaccionesPresenter = ()=>{
         */
         try {
             const res = await axios.put(`https://localhost:7252/api/usuario/comprar`, {body: body});
-            const data = await res.status;
+            const data = await res.data;
             /*
             data= {
                 idProducto,
@@ -45,15 +47,15 @@ export const useTransaccionesPresenter = ()=>{
                 saldoRestante
             }
             */
-            setBilletera(data.saldoRestante)
+            return data
         } catch (err) {
             console.error(err)
         }
-        return 201;
     }
 
     return {
         actualizarBilletera,
-        realizarCompra
+        realizarCompra, 
+        traerDineroEnBilletera
     }
 }

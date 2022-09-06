@@ -138,84 +138,94 @@ const misProdsComprados = [{
 
 export const useProductosPresenter = () => {
 
-	const [productos, setProductos] = useState()
+  const [productos, setProductos] = useState()
 
-	const traerProductos = async () => {
-		try {
-			const res = await axios.get(`https://localhost:7252/api/producto`);
-			const data = await res.data;
-			setProductos(data)
-		} catch (err) {
-			console.error(err)
-		}
-	}
+  const traerProductos = async () => {
+   /*  try {
+      const res = await axios.get(`https://localhost:7252/api/producto`);
+      const productos = await res.data;
+      return productos
+    } catch (err) {
+      console.error(err)
+    } */
+	return prodList
+  }
 
-	const traerProductosCompradosOVendidos = async (idUsuario, tipoUsuario) => {
-		const params = {
-			idUsuario: idUsuario,
-			tipoUsuario: tipoUsuario //"comprador o vendedor"
-		}
-		try {
-			const res = await axios.get(`https://localhost:7252/api/billetera/transaccion`, { params: params });
-			const data = await res.data;
-			setProductos(data)
-		} catch (err) {
-			console.error(err)
-		}
-		return misProdsComprados.concat(prodList)
-	}
+  const traerProductosComprados = async (idUsuario) => {
+   /*  try {
+      const body = {
+        idUsuario: idUsuario,
+        tipoUsuario: 'comprador'
+      }
+      const res = await axios.post(`https://localhost:7252/api/billetera/transaccion`, body);
+      const productos = await res.data;
+      return productos
+    } catch (err) {
+      console.error(err)
+    } */
+	return misProdsComprados
+  }
 
-	const traerMisProductos = async (idUsuario) => {
-		const params = {
-			idUsuario: idUsuario
-		}
-		try {
-			const res = await axios.get(`https://localhost:7252/api/producto/byUser`, { params: params });
-			const data = await res.data;
-			setProductos(data)
-		} catch (err) {
-			console.error(err)
-		}
-		return misProds.concat(prodList)
-	}
+  const traerProductosPorFiltro = async (filtros) => {
+    /*  
+      params = {
+        categoria: 0,
+        nombreLike: "",
+        precioDesde: 0,
+        precioHasta: 0,
+        fechaDesde: "",
+        fechaHasta: ""
+      }
+     */
+    /* try {
+      const res = await axios.get(`https://localhost:7252/api/producto/byFiltros`, { params: filtros });
+      const productos = await res.data;
+      return productos
+    } catch (err) {
+      console.error(err)
+    } */
+	return prodList
+  }
 
-	const traerProductosPorFiltros = async (categroria, nombreLike, feDes, feHas, preDes, preHas) => {
-		const body = {
-			categoria: categroria,
-			nombreLike: nombreLike,
-			precioDesde: preDes,
-			precioHasta: preHas,
-			fechaDesde: feDes,
-			feHas: feHas
-		}
-		try {
-			const res = await axios.post(`https://localhost:7252/api/producto/byFilter`, { body: body });
-			const data = await res.data;
-			setProductos(data)
-		} catch (err) {
-			console.error(err)
-		}
-		return misProds.concat(prodList)
-	}
+  const traerMisProductos = async (idUsuario) => {
+    /* try {
+      const res = await axios.get(`https://localhost:7252/api/producto/byUser/${idUsuario}`);
+      const productos = await res.data;
+      return productos
+    } catch (err) {
+      console.error(err)
+    } */
+    return misProds.concat(prodList)
+  }
 
-	const crearOEditarProducto = async (body) => {
-		try {
-			const res = await axios.post(`https://localhost:7252/api/producto`, { body: body });
-			const data = await res.data;
-			setProductos(data)
-		} catch (err) {
-			console.error(err)
-		}
-		return 201
-	}
+  const crearProductos = async (body) => {
+    try {
+      const res = await axios.post(`https://localhost:7252/api/producto`, body);
+      const producto = await res.data;
+      return producto
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
-	return {
-		productos,
-		setProductos,
-		traerProductos,
-		traerProductosCompradosOVendidos,
-		traerMisProductos,
-		traerProductosPorFiltros,
-		crearOEditarProducto
-	}
+  const editarProducto = async (body) => {
+    try {
+      const res = await axios.post(`https://localhost:7252/api/producto`, body);
+      const producto = await res.data;
+      return producto
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  return {
+    productos,
+    setProductos,
+    traerProductos,
+    traerProductosComprados,
+    traerProductosPorFiltro,
+    traerMisProductos,
+    crearProductos,
+    editarProducto
+  }
 }
