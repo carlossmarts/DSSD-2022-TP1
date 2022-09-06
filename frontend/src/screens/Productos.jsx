@@ -4,18 +4,32 @@ import GridProductos from '../components/GridProductos'
 import { useProductosPresenter } from '../presenter/productosPresenter'
 import ModalCompra from '../components/ModalCompra'
 import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
+import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
+import ListaCategorias from '../components/ListaCategorias'
+import Filtros from '../components/Filtros';
 
 
 
 const Productos = () => {
 
   const { traerProductos } = useProductosPresenter()
+  const { traerCategorias } = useCategoriasPresenter()
   const { actualizarBilletera, traerDineroEnBilletera } = useTransaccionesPresenter()
   const [productos, setProductos] = useState([]);
   const [productoCompra, setProductoCompra] = useState({});
+  const [categorias, setCategorias] = useState([]);
+
 
   const [open, setOpen] = useState(false);
   const [dineroActual, setDineroActual] = useState(0);
+
+  useEffect(() => {
+    traerCategorias().then(data => setCategorias(data)).catch(err => console.log(err))
+  }, [])
+
+  useEffect(() => {
+    console.log(categorias)
+  }, [categorias])
 
   useEffect(() => {
     traerProductos().then(data => setProductos(data)).catch(err => console.log(err))
@@ -33,6 +47,7 @@ const Productos = () => {
   return (
     <>
       <Grid>
+        <Filtros categorias={categorias}></Filtros>
         <GridProductos productos={productos} esComprable={true} comprar={abrirModalCompra}></GridProductos>
       </Grid>
       <ModalCompra producto={productoCompra} open={open} setOpen={setOpen} setDineroActual={setDineroActual} dineroActual={dineroActual} actualizarBilletera={actualizarBilletera}></ModalCompra>
