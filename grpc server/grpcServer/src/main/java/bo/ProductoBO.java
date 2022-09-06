@@ -25,6 +25,7 @@ public class ProductoBO {
     }
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+   // public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     ProductoDAO productoDAO = ProductoDAO.getInstance();
     CategoriaDAO categoriaDAO = CategoriaDAO.getInstance();

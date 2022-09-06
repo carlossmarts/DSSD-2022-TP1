@@ -18,12 +18,12 @@ const SelectorCategorias = (props) => {
             id={nombre}
             options={opciones}
             getOptionLabel={op => op.categoria}
-            
             renderInput={(params) => <TextField 
                 {...params} 
                 label={`ingresar ${nombre}`} 
                 variant="outlined" 
-                InputProps={{ ...params.InputProps, style: { padding: 0, height: "38px" } }}
+                size="small"
+                InputProps={{ ...params.InputProps, style: { padding: 8, height: "38px" } }}
             />}
             onChange={(event, value) => setValor(value)}
         >

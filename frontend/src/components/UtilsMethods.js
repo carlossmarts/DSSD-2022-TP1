@@ -71,37 +71,4 @@ export const capitalize = (str)=>{
   return `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`
 }
 
-export const currencyMaskEvent = (e)=>{
-  e.target.value = currencyMask(e.target.value)
-  return e
-}
-
-export const currencyMask = (val) =>{
-  val = val.toString()
-  val = val.replace(/\D/g, "")
-  if(val.length < 2 ){
-    val = "0,0" + val;
-  } else if(val.length < 3 ){
-    val = "0," + val;
-  }else{
-    if(val[0]=== "0"){
-      val = val.replace(/0/, "")
-    }
-    val = `${val.substring(0, val.length-2)},${val.substring(val.length-2, val.length)}`
-  }
-
-  val = val. replace(/(?=(\d{3})+(\D))\B/g, ".")
-  val = "$ " + val;
-  if (val === "$ 0,0" || val === "$ 0,00"){
-    val = ""
-  }
-  return val
-}
-
-export const formatImporte = (num) => {
-  num = num.toString()
-  num = num.replace(".", ",")
-  num = num. replace(/(?=(\d{3})+(\D))\B/g, ".")
-  return `${num.length === 0 ? "" : "$ "} ${num}`
-}
 

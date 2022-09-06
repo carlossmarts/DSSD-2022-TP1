@@ -43,13 +43,22 @@ const Filtros = (props) => {
 
     useEffect(() => {
         let tempFiltros = { ...filtros }
-        tempFiltros.categoria = categoria
+        tempFiltros.categoria = categoria.idCategoria
         setFiltros(tempFiltros)
     }, [categoria])
 
+    useEffect (()=>{
+        console.log("filtros", filtros)
+    },[filtros])
+
     const handleChange = (e) => {
+        console.log(e.target.value)
+        let value = e.target.value
+        if(e.target.type === "number"){
+            value = Number(value)
+        }
         let tempFiltros = { ...filtros }
-        tempFiltros[e.target.name] = e.target.value
+        tempFiltros[e.target.name] = value
         setFiltros(tempFiltros)
     }
     const buscarProductos = () => {
@@ -64,7 +73,7 @@ const Filtros = (props) => {
                     <Grid item container xs={11} spacing={1}>
 
                         <Grid item xs={2}>
-                            <SelectorCategorias opciones={categorias} nombre={'categorias'} setValor={setCategoria}></SelectorCategorias>
+                            <SelectorCategorias opciones={categorias} nombre={'categorias'} setValor={setCategoria} categoria={categoria}></SelectorCategorias>
                         </Grid>
                         <Grid item xs={2}>
                             <TextField
