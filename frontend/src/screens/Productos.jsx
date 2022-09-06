@@ -12,18 +12,16 @@ import Filtros from '../components/Filtros';
 const Productos = () => {
 
   const { traerProductos } = useProductosPresenter()
-  const { traerCategorias } = useCategoriasPresenter()
+  const { traerCategorias, categorias } = useCategoriasPresenter()
   const { actualizarBilletera, traerDineroEnBilletera } = useTransaccionesPresenter()
   const [productos, setProductos] = useState([]);
   const [productoCompra, setProductoCompra] = useState({});
-  const [categorias, setCategorias] = useState([]);
-
 
   const [open, setOpen] = useState(false);
   const [dineroActual, setDineroActual] = useState(0);
 
   useEffect(() => {
-    traerCategorias().then(data => setCategorias(data)).catch(err => console.log(err))
+    traerCategorias()
   }, [])
 
   useEffect(() => {

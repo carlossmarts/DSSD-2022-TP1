@@ -3,7 +3,7 @@ import React, { useReducer, useEffect, useState } from 'react'
 
 
 export const useCategoriasPresenter = () => {
-    //const [categorias, setCategorias] = useState([])
+    const [categorias, setCategorias] = useState([])
 
     const traerCategorias = async () => {
         // try{
@@ -13,7 +13,7 @@ export const useCategoriasPresenter = () => {
         // } catch (e){
         //     console.error("ocurrio un error al consultar las categorias", e)
         // }
-        return [
+        setCategorias([
             {
                 "idCategoria": 1,
                 "categoria": "Videojuegos"
@@ -46,13 +46,13 @@ export const useCategoriasPresenter = () => {
                 "idCategoria": 8,
                 "categoria": "Latas y botellas"
             }
-        ]
+        ])
     }
 
     return {
         traerCategorias,
-        //categorias, 
-        //setCategorias
+        categorias, 
+        setCategorias
     }
 }
 
