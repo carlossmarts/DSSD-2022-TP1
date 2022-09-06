@@ -1,4 +1,5 @@
 import { useState } from "react"
+import axios from 'axios'
 import { TransaccionesAPI } from "../services/transaccionesAPI"
 
 export const useTransaccionesPresenter = ()=>{
@@ -12,14 +13,24 @@ export const useTransaccionesPresenter = ()=>{
     }
 
     const actualizarBilletera = async (body)=>{
-        // const res = await TransaccionesAPI.actualizarBilletera(body);
-        // return res;
+        try {
+            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
+            const saldo = await res.data.saldoBilletera;
+            return saldo
+        } catch (err) {
+            console.error(err)
+        }
         return 201
     }
     
     const realizarCompra = async (body)=>{
-        const res = await TransaccionesAPI.realizarCompra(body);
-        return res;
+        try {
+            const res = await axios.put(`https://localhost:7252/api/usuario/comprar`, body);
+            const locs = await res.data;
+            return locs
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     return {

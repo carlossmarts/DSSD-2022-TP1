@@ -5,33 +5,31 @@ const SelectorCategorias = (props) => {
     const {
         opciones,
         setValor,
+        categoria,
         nombre
     } = props
 
     return (
-        <Grid
-            container
-            spacing={8}
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            alignContent="center"
-            wrap="nowrap"
+        
+        <Autocomplete
+            value={categoria ?
+                opciones[categoria - 1]
+                : null}
+            id={nombre}
+            options={opciones}
+            getOptionLabel={op => op.categoria}
+            
+            renderInput={(params) => <TextField 
+                {...params} 
+                label={`ingresar ${nombre}`} 
+                variant="outlined" 
+                InputProps={{ ...params.InputProps, style: { padding: 0, height: "38px" } }}
+            />}
+            onChange={(event, value) => setValor(value)}
         >
-            <Grid item xs={10} sm={8} md={6} >
-                <Box m={4}>
-                    <Autocomplete
-                        fullWidth
-                        id={nombre}
-                        options={opciones}
-                        getOptionLabel={op => op.categoria}
-                        renderInput={(params) => <TextField {...params} label={`ingresar ${nombre}`} variant="outlined" />}
-                        onChange={(event, value) => setValor(value)}
-                    >
-                    </Autocomplete>
-                </Box>
-            </Grid>
-        </Grid>
+        </Autocomplete>
+        
+      
     )
 }
 export default SelectorCategorias;

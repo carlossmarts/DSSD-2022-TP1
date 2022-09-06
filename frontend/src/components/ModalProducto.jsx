@@ -1,9 +1,12 @@
-import React, { useReducer, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import Typography from '@mui/material/Typography'
-import { TextField, Grid, Box, Button, Checkbox, FormControlLabel } from '@mui/material'
+import { TextField, Grid, Box, Button } from '@mui/material'
 import Archivos from './Archivos'
+import SelectorCategorias from './SelectorCategorias'
+import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
+
 
 const ModalProducto = (props) => {
 
@@ -16,23 +19,46 @@ const ModalProducto = (props) => {
     editarProductos
   } = props;
 
-
-
   useEffect(() => {
     setProd(producto)
   }, [producto])
 
-
+  const { traerCategorias, categorias } = useCategoriasPresenter()
+  useEffect(() => {
+    traerCategorias()
+  }, [])
   const [prod, setProd] = useState(producto)
+  const [categoria, setCategoria] = useState(producto)
+
 
   const handleInputChange = (event) => {
     console.log(event.target.name)
-    if (event.target.name == "visible") {
+    if (event.target.name == "descripcion") {
       setProd({
         ...prod,
-        [event.target.name]: event.target.checked
+        [event.target.name]: event.target.value
       })
-    } else if (event.target.name == "precio") {
+    } else if (event.target.name == "nombre") {
+      setProd({
+        ...prod,
+        [event.target.name]: event.target.value
+      })
+    } else if (event.target.name == "categoria") {
+      setProd({
+        ...prod,
+        [event.target.name]: event.target.valueAsNumber
+      })
+    } else if (event.target.name == "fecha") {
+      setProd({
+        ...prod,
+        [event.target.name]: event.target.valueAsDate
+      })
+    } else if (event.target.name == "stock") {
+      setProd({
+        ...prod,
+        [event.target.name]: event.target.valueAsNumber
+      })
+    } else if (event.target.name == "stock") {
       setProd({
         ...prod,
         [event.target.name]: event.target.valueAsNumber
@@ -91,6 +117,9 @@ const ModalProducto = (props) => {
                     name="nombre"
                     onChange={handleInputChange}
                   />
+                </Grid>
+                <Grid item xs={12} sm={6} style={{ width: '100%' }}>
+                  <SelectorCategorias categoria={producto.idCategoria} opciones={categorias} nombre={'categorias'} setValor={setCategoria}></SelectorCategorias>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                   <TextField
