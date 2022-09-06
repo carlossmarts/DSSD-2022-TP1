@@ -3,7 +3,7 @@
     "",
     "\\grpc client",
     "\\grpc client\\RetroShop_Client",
-    "\\grpc client\\RetroShop_Client\\Protos",
+    "\\grpc client\\RetroShop_Client\\Controllers",
     "\\grpc server",
     "\\grpc server\\grpcServer",
     "\\grpc server\\grpcServer\\src",
@@ -11,6 +11,6 @@
     "\\grpc server\\grpcServer\\src\\main\\java",
     "\\grpc server\\grpcServer\\src\\main\\resources"
   ],
-  "SelectedNode": "\\grpc client\\RetroShop_Client\\Protos\\Transaccion.proto",
+  "SelectedNode": "\\grpc client\\Grpc_Client.sln",
   "PreviewInSolutionExplorer": false
 }
