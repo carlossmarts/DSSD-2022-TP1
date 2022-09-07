@@ -13,10 +13,10 @@ const MisProductos = (props) => {
     editarProductos
   } = props
 
-  const { traerMisProductos, crearProducto, editarProducto } = useProductosPresenter()
+  const { traerMisProductos } = useProductosPresenter()
 
   useEffect(() => {
-    traerMisProductos().then(data => setProductos(data)).catch(err => console.log(err))
+    traerMisProductos(localStorage.getItem("idUsuario")).then(data => setProductos(data)).catch(err => console.log(err))
   }, [])
 
   const [open, setOpen] = useState(false);
@@ -56,9 +56,11 @@ const MisProductos = (props) => {
             Nuevo producto
           </Button>
         </Box>
-      <GridProductos productos={productos} esEditable={true} editar={abrirModalEdicion}></GridProductos>
-      <ModalProducto esEdicion={false} open={open} setOpen={setOpen} crearProducto={crearProducto} producto={producto} />
-      <ModalProducto esEdicion={true} open={openEdicion} setOpen={setOpenEdicion} editarProductos={editarProductos} producto={productoAEditar} />
+      {productos ? <GridProductos productos={productos} esEditable={true} editar={abrirModalEdicion}></GridProductos>
+      :
+      <Grid>'No Hay productos'</Grid>}
+<ModalProducto esEdicion={false} open={open} setOpen={setOpen} producto={producto} />
+      <ModalProducto esEdicion={true} open={openEdicion} setOpen={setOpenEdicion} producto={productoAEditar} />
       </Grid>
     </>
   );

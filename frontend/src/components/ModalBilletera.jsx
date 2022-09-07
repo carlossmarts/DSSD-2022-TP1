@@ -3,6 +3,7 @@ import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import Typography from '@mui/material/Typography'
 import { TextField, Grid, Box, Button } from '@mui/material'
+import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
 
 
 const ModalBilletera = (props) => {
@@ -15,9 +16,14 @@ const ModalBilletera = (props) => {
     actualizarBilletera
   } = props;
 
+  const { traerDineroEnBilletera } = useTransaccionesPresenter()
+
   const [dinero, setDinero] = useState(0);
   const [dineroModificado, setDineroModificado] = useState(false);
 
+  useEffect(() => {
+    traerDineroEnBilletera(localStorage.getItem("idUsuario")).then(data => setDineroActual(data)).catch(err => console.log(err))
+  }, [])
 
   const handleInputChange = (event) => {
     console.log(event.target.name)
@@ -26,11 +32,11 @@ const ModalBilletera = (props) => {
 
   const actualizarDinero = (event) => {
     event.preventDefault();
-    actualizarBilletera((dinero + dineroActual), localStorage.getItem("idUsuario")).then((res) => {
-      if (res === 201)
-        setDineroModificado(true)
-      setDineroActual(dinero + dineroActual)
+    actualizarBilletera(dinero, localStorage.getItem("idUsuario")).then(res =>{
+      setDineroModificado(true)
+      setDineroActual(res)
     })
+    
   }
 
   const cerrar = () => {
@@ -47,12 +53,11 @@ const ModalBilletera = (props) => {
               {"RETROSTORE - Billetera"}
             </Typography>
           </Box>
-          {
-            !dineroModificado
+          {!dineroModificado
               ?
               <><Box mb={3}>
                 <Typography variant="h6" gutterBottom>
-                  {`Su billetera contiene $${dineroActual.toFixed(2)}`}
+                  {`Su billetera contiene $${dineroActual}`}
                 </Typography>
               </Box>
                 <form>
@@ -79,15 +84,19 @@ const ModalBilletera = (props) => {
       </Grid>
 
       <DialogActions style={{ display: "flex", justifyContent: "center" }}  >
-        <Grid sx={{ mt: 0, mb: 2 }}  spacing={3} >
-          <Button onClick={actualizarDinero} variant="contained" color="secondary">
-            Actualizar
-          </Button>
-          <Button onClick={cerrar} variant="outlined" color="secondary">
-            {!dineroModificado ?
-              'Cancelar' :
-              'Cerrar'}
-          </Button>
+        <Grid container sx={{ mt: 0, mb: 2 }}  spacing={3} justifyContent="center">
+          <Grid item>
+            <Button onClick={actualizarDinero} variant="contained" color="secondary">
+              Actualizar
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button onClick={cerrar} variant="outlined" color="secondary">
+              {!dineroModificado ?
+                'Cancelar' :
+                'Cerrar'}
+            </Button>
+          </Grid>
         </Grid>
       </DialogActions>
     </Dialog>

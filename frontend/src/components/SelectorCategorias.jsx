@@ -16,6 +16,7 @@ const SelectorCategorias = (props) => {
                 opciones[categoria - 1]
                 : null}
             id={nombre}
+            disableClearable={true}
             options={opciones}
             getOptionLabel={op => op.categoria}
             renderInput={(params) => <TextField 

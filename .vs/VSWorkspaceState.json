@@ -11,6 +11,6 @@
     "\\grpc server\\grpcServer\\src\\main\\java",
     "\\grpc server\\grpcServer\\src\\main\\resources"
   ],
-  "SelectedNode": "\\grpc client\\RetroShop_Client\\Controllers\\ProductController.cs",
+  "SelectedNode": "\\grpc client\\RetroShop_Client\\Controllers\\UserController.cs",
   "PreviewInSolutionExplorer": false
 }

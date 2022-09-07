@@ -25,7 +25,11 @@ import { useProductosPresenter } from '../presenter/productosPresenter'
 import SelectorCategorias from '../components/SelectorCategorias'
 
 const Filtros = (props) => {
-    const { categorias } = props;
+    const { 
+        categorias,
+        setProductos
+    } = props;
+
     const [categoria, setCategoria] = useState({});
     const [filtros, setFiltros] = useState({
         categoria: 0,
@@ -47,6 +51,10 @@ const Filtros = (props) => {
         setFiltros(tempFiltros)
     }, [categoria])
 
+    useEffect(()=>{
+        console.log("filtros", filtros)
+    }, [filtros])
+
 
     const handleChange = (e) => {
         console.log(e.target.value)
@@ -59,7 +67,7 @@ const Filtros = (props) => {
         setFiltros(tempFiltros)
     }
     const buscarProductos = () => {
-        //traerProductosPorFiltro(filtros)
+        traerProductosPorFiltro(filtros).then(data => setProductos(data))
     }
 
 

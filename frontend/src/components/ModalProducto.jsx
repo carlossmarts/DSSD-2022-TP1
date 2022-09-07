@@ -6,6 +6,7 @@ import { TextField, Grid, Box, Button } from '@mui/material'
 import Archivos from './Archivos'
 import SelectorCategorias from './SelectorCategorias'
 import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
+import { useProductosPresenter } from '../presenter/productosPresenter'
 
 
 const ModalProducto = (props) => {
@@ -15,9 +16,12 @@ const ModalProducto = (props) => {
     setOpen,
     esEdicion,
     producto,
-    crearProducto,
     editarProductos
   } = props;
+
+  const {crearProducto, editarProducto} = useProductosPresenter()
+  const [categoria, setCategoria] = useState(producto)
+  const [prod, setProd] = useState(producto)
 
   useEffect(() => {
     setProd(producto)
@@ -27,61 +31,38 @@ const ModalProducto = (props) => {
   useEffect(() => {
     traerCategorias()
   }, [])
-  const [prod, setProd] = useState(producto)
-  const [categoria, setCategoria] = useState(producto)
 
   useEffect(() => {
-    setProd({...prod, categoria: categoria.idCategoria})
+    setProd({...prod, idCategoria: categoria.idCategoria})
   }, [categoria])
+
+  useEffect(() => {
+    console.log("prod:", prod)
+  }, [prod])
 
   const handleInputChange = (event) => {
     console.log(event.target.name)
-    if (event.target.name == "descripcion") {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.value
-      })
-    } else if (event.target.name == "nombre") {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.value
-      })
-    } else if (event.target.name == "fecha") {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.valueAsDate
-      })
-    } else if (event.target.name == "stock") {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.valueAsNumber
-      })
-    } else if (event.target.name == "stock") {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.valueAsNumber
-      })
-    } else {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.value
-      })
-    }
+    const name = event.target.name
+    const value = event.target.type === "number" ? event.target.valueAsNumber : event.target.value
+    let temp = {...prod}
+    temp[name] = value
+    setProd(temp)
   }
 
   const callCrearProducto = (event) => {
     event.preventDefault();
-    crearProducto(prod, localStorage.getItem("idUsuario")).then((res) => {
-      if (res === 201)
-        alert("Producto Creado")
+    const idUsuario = localStorage.getItem("idUsuario")
+    crearProducto({...prod, idUsuario: idUsuario}).then((res) => {
+      alert("Producto Creado")
     }).then(() => {
       window.location.reload()
     })
   }
-
-  const editarProducto = (event) => {
+  
+  const callEditarProducto = (event) => {
     event.preventDefault();
-    editarProductos(prod).then((res) => {
+    const idUsuario = localStorage.getItem("idUsuario")
+    editarProducto({...prod, idUsuario: idUsuario}).then((res) => {
       if (res === 204)
         alert("Producto Actualizado")
     }).then(() => {
@@ -117,7 +98,7 @@ const ModalProducto = (props) => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} style={{ width: '100%' }}>
-                  <SelectorCategorias categoria={producto.idCategoria} opciones={categorias} nombre={'categorias'} setValor={setCategoria}></SelectorCategorias>
+                <SelectorCategorias opciones={categorias} nombre={'categorias'} setValor={setCategoria} categoria={categoria}></SelectorCategorias>
                 </Grid>
                 <Grid item xs={12} sm={12}>
                   <TextField
@@ -147,9 +128,9 @@ const ModalProducto = (props) => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     type="number"
-                    name="stock"
+                    name="cantidadDisponible"
                     onChange={handleInputChange}
-                    label="Stock"
+                    label="Cantidad Disponible"
                     defaultValue={producto.cantidadDisponible}
                     variant="outlined"
                     fullWidth
@@ -159,7 +140,7 @@ const ModalProducto = (props) => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     type="date"
-                    name="fecha"
+                    name="fechaFabricacion"
                     onChange={handleInputChange}
                     label="Fecha de Fabricacion"
                     defaultValue={producto.fechaFabricacion}
@@ -195,7 +176,7 @@ const ModalProducto = (props) => {
               Crear
             </Button>
             :
-            <Button onClick={editarProducto} variant="contained" color="secondary">
+            <Button onClick={callEditarProducto} variant="contained" color="secondary">
               Actualizar
             </Button>}
         <Button onClick={cerrar} variant="outlined" color="secondary">

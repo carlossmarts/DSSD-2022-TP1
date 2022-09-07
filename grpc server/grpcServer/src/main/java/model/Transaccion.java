@@ -28,9 +28,6 @@ public class Transaccion {
     @Column(name = "nombre")
     private String nombre;
 
-//    @Column(name = "ventascol")
-//    private String ventascol;
-
     @Column(name = "cantidad")
     private int cantidad;
 
