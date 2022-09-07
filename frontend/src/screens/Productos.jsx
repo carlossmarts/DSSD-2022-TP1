@@ -44,7 +44,7 @@ const Productos = () => {
   return (
     <>
       <Grid>
-        <Filtros categorias={categorias}></Filtros>
+        <Filtros categorias={categorias} setProductos={setProductos}></Filtros>
         <GridProductos productos={productos} esComprable={true} comprar={abrirModalCompra}></GridProductos>
       </Grid>
       <ModalCompra producto={productoCompra} open={open} setOpen={setOpen} setDineroActual={setDineroActual} dineroActual={dineroActual} actualizarBilletera={actualizarBilletera}></ModalCompra>

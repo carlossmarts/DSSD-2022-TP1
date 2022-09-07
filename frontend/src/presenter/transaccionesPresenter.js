@@ -7,17 +7,22 @@ export const useTransaccionesPresenter = ()=>{
 
     const traerDineroEnBilletera = async (idUsuario)=>{
         try {
-            const res = await axios.get(`https://localhost:7252/api/usuario`, {body: body});
-            const saldo = await res.data.saldoBilletera;
+            const res = await axios.get(`https://localhost:7252/api/usuario?idUsuario=${idUsuario}`);
+            const saldo = await res.data.usuario.saldoBilletera;
             return saldo
         } catch (err) {
             console.error(err)
         }
     }
 
-    const actualizarBilletera = async (body)=>{
+    const actualizarBilletera = async (saldo, idUsuario)=>{
+        const body={
+            idUsuario: idUsuario,
+            saldo: saldo
+          }
         try {
-            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, {body: body});
+            const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
+            console.log(res);
             const saldo = await res.data.saldoBilletera;
             return saldo
         } catch (err) {
@@ -30,8 +35,6 @@ export const useTransaccionesPresenter = ()=>{
          body:{
             idTransaccion = 1;
             idProducto 
-            idProducto 
-            idProducto 
             idComprador
             idVendedor 
             nombre
@@ -40,7 +43,7 @@ export const useTransaccionesPresenter = ()=>{
          }
         */
         try {
-            const res = await axios.put(`https://localhost:7252/api/usuario/comprar`, {body: body});
+            const res = await axios.post(`https://localhost:7252/api/billetera/compra`, body);
             const data = await res.data;
             /*
             data= {

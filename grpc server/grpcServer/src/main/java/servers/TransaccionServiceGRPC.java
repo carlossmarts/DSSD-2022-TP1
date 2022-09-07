@@ -3,21 +3,20 @@ package servers;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import services.ProductoService;
+import services.TransaccionService;
 
 import java.io.IOException;
 
 public class TransaccionServiceGRPC {
-    public static void main(String[] args) throws IOException, InterruptedException{
+	public static void main(String[] args) throws IOException, InterruptedException {
 
-        System.out.println("Iniciando servidor grpc TransaccionService");
+		System.out.println("Iniciando servidor grpc TransaccionService");
 
-        Server server = ServerBuilder.forPort(9003)
-                .addService(new ProductoService())
-                .build();
-        server.start();
+		Server server = ServerBuilder.forPort(9003).addService(new TransaccionService()).build();
+		server.start();
 
-        System.out.println("Servidor escuchando en puerto " + server.getPort());
+		System.out.println("Servidor escuchando en puerto " + server.getPort());
 
-        server.awaitTermination();
-    }
+		server.awaitTermination();
+	}
 }

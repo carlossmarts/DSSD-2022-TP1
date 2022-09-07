@@ -143,6 +143,7 @@ export const useProductosPresenter = () => {
   const traerProductos = async () => {
    try {
       const res = await axios.get(`https://localhost:7252/api/producto`);
+	  console.log("GET ALL PRODUCT",res);
       const productos = await res.data;
       return productos
     } catch (err) {
@@ -151,18 +152,19 @@ export const useProductosPresenter = () => {
   }
 
   const traerProductosComprados = async (idUsuario) => {
-   /*  try {
+   try {
       const body = {
-        idUsuario: idUsuario,
+        idUsuario: Number(idUsuario),
         tipoUsuario: 'comprador'
       }
+	  console.log(body);
       const res = await axios.post(`https://localhost:7252/api/billetera/transaccion`, body);
       const productos = await res.data;
+	  console
       return productos
     } catch (err) {
       console.error(err)
-    } */
-	return misProdsComprados
+    }
   }
 
   const traerProductosPorFiltro = async (filtros) => {
@@ -176,32 +178,29 @@ export const useProductosPresenter = () => {
         fechaHasta: ""
       }
      */
-    /* try {
-      const res = await axios.get(`https://localhost:7252/api/producto/byFiltros`, { params: filtros });
+    try {
+      const res = await axios.post(`https://localhost:7252/api/producto/byFilter`, filtros);
       const productos = await res.data;
+	  console.log(productos);
       return productos
     } catch (err) {
       console.error(err)
-    } */
-	return prodList
+    }
   }
 
   const traerMisProductos = async (idUsuario) => {
-    /* try {
-      const res = await axios.get(`https://localhost:7252/api/producto/byUser/${idUsuario}`);
+    try {
+      const res = await axios.get(`https://localhost:7252/api/producto/byUser?idUsuario=${idUsuario}`);
       const productos = await res.data;
       return productos
     } catch (err) {
       console.error(err)
-    } */
-    return misProds.concat(prodList)
+    } 
   }
 
   const crearProducto = async (body) => {
     try {
-		console.log("Productosssss");
-		console.log(JSON.stringify(body));
-      const res = await axios.post(`https://localhost:7252/api/producto`, {body});
+      const res = await axios.post(`https://localhost:7252/api/producto`, body);
       const producto = await res.data;
       return producto
     } catch (err) {
@@ -211,6 +210,7 @@ export const useProductosPresenter = () => {
 
   const editarProducto = async (body) => {
     try {
+		console.log("PRODUCTO REQUEST",JSON.stringify(body));
       const res = await axios.post(`https://localhost:7252/api/producto`, body);
       const producto = await res.data;
       return producto

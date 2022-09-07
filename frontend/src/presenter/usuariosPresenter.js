@@ -9,8 +9,8 @@ export const useUsuarioPresenter = () => {
     const traerIdUsuario = async (username, password) => {
         try {
             const body = {
-                username: username,
-                password: password
+                usuario: username,
+                clave: password
             }
             console.log("llamando al servicio usuarioLogin con username", username, "y contraseña", password);
             const res = await axios.post('https://localhost:7252/api/usuario/login', body);
@@ -19,7 +19,6 @@ export const useUsuarioPresenter = () => {
         } catch (err) {
             console.error(err)
         }
-        return 8
     }
 
     const altaUsuario = async (body) => {

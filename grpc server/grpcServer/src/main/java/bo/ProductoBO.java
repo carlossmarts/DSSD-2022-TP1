@@ -24,8 +24,8 @@ public class ProductoBO {
         return instancia;
     }
 
-    public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-   // public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    //public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     ProductoDAO productoDAO = ProductoDAO.getInstance();
     CategoriaDAO categoriaDAO = CategoriaDAO.getInstance();
@@ -50,8 +50,7 @@ public class ProductoBO {
 
     public List<Producto> getByUserId(int idUsuario) throws Exception{
         Usuario user = usuarioBO.getById(idUsuario);
-
-        return null;
+        return productoDAO.getByUsuario(user);
     }
 
 

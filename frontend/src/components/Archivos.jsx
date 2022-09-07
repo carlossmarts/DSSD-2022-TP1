@@ -47,7 +47,7 @@ const Archivos = (props) => {
     const changeFileHandler = async (event) => {
         setInput(event.target);
         const formTemp = { ...form };
-        const filesTemp = [...formTemp.archivos];
+        const filesTemp = [...formTemp.fotos];
         for (let i = 0; i < event.target.files.length; i++) {
             const file_bytes = await convertBase64(event.target.files[i]);
             filesTemp.push({
@@ -289,8 +289,8 @@ const ItemListaArchivos = (props) => {
 
     const eliminar = () => {
         const formTemp = { ...formulario };
-        const filesTemp = [...formTemp.archivos].filter(f => f.nombre !== item.nombre);
-        formTemp.archivos = filesTemp;
+        const filesTemp = [...formTemp.fotos].filter(f => f.nombre !== item.nombre);
+        formTemp.fotos = filesTemp;
         setFormulario(formTemp);
         setOpen(false);
     }

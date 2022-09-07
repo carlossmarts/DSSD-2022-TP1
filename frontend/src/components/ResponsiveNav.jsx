@@ -77,7 +77,7 @@ const ResponsiveAppBar = () => {
                 :
                 <>
                   <Button onClick={irAMisProductos} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Productos</Button>
-                  <Button onClick={abrirBilletera} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Billetera ${`${dineroActual.toFixed(2)}`}</Button>
+                  <Button onClick={abrirBilletera} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Billetera ${dineroActual?`${dineroActual.toFixed(2)}`:null}</Button>
                   <Button onClick={irAMisCompras} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Compras</Button>
                   <Button onClick={cerrarSesion} sx={{ my: 2, color: 'white', display: 'block' }}>Cerrar Sesión</Button>
                 </>

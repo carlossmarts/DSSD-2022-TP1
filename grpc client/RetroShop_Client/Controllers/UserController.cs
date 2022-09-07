@@ -34,7 +34,7 @@ namespace RetroShop_Client.Controllers
             try
             {
                 GetUsuarioRequest idUsuarioDTO = new GetUsuarioRequest() { IdUsuario = idUsuario };
-                var response = await _service.addUsuarioAsync(idUsuarioDTO);
+                var response = await _service.getUsuarioAsync(idUsuarioDTO);
                 return Ok(response);
             }
             catch (Exception ex)
