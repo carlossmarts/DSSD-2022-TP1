@@ -162,7 +162,7 @@ const Registro = () => {
           "dni": dni,
           "email": email.toString(),
           "usuario": username,
-          "contraseña": password,
+          "clave": password,
         }
         await altaUsuario(nuevoUsuario)
         alert("Usuario Creado")

@@ -15,7 +15,7 @@ const ModalProducto = (props) => {
     setOpen,
     esEdicion,
     producto,
-    crearProductos,
+    crearProducto,
     editarProductos
   } = props;
 
@@ -71,9 +71,9 @@ const ModalProducto = (props) => {
     }
   }
 
-  const crearProducto = (event) => {
+  const callCrearProducto = (event) => {
     event.preventDefault();
-    crearProductos(prod, localStorage.getItem("idUsuario")).then((res) => {
+    crearProducto(prod, localStorage.getItem("idUsuario")).then((res) => {
       if (res === 201)
         alert("Producto Creado")
     }).then(() => {
@@ -193,7 +193,7 @@ const ModalProducto = (props) => {
         {
           !esEdicion
             ?
-            <Button onClick={crearProducto} variant="contained" color="secondary">
+            <Button onClick={callCrearProducto} variant="contained" color="secondary">
               Crear
             </Button>
             :

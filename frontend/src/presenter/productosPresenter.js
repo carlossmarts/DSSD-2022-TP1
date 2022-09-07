@@ -141,14 +141,13 @@ export const useProductosPresenter = () => {
   const [productos, setProductos] = useState()
 
   const traerProductos = async () => {
-   /*  try {
+   try {
       const res = await axios.get(`https://localhost:7252/api/producto`);
       const productos = await res.data;
       return productos
     } catch (err) {
       console.error(err)
-    } */
-	return prodList
+    } 
   }
 
   const traerProductosComprados = async (idUsuario) => {
@@ -198,9 +197,11 @@ export const useProductosPresenter = () => {
     return misProds.concat(prodList)
   }
 
-  const crearProductos = async (body) => {
+  const crearProducto = async (body) => {
     try {
-      const res = await axios.post(`https://localhost:7252/api/producto`, body);
+		console.log("Productosssss");
+		console.log(JSON.stringify(body));
+      const res = await axios.post(`https://localhost:7252/api/producto`, {body});
       const producto = await res.data;
       return producto
     } catch (err) {
@@ -225,7 +226,7 @@ export const useProductosPresenter = () => {
     traerProductosComprados,
     traerProductosPorFiltro,
     traerMisProductos,
-    crearProductos,
+    crearProducto,
     editarProducto
   }
 }

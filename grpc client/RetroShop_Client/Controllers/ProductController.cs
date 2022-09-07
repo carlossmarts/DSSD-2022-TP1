@@ -4,11 +4,14 @@ using Microsoft.Extensions.Options;
 using RetroShop_Client.Model.Config;
 using System;
 using System.Diagnostics.Eventing.Reader;
+using System.Web.Http.Cors;
 
 namespace RetroShop_Client.Controllers
 {
     [Route("api/producto")]
     [ApiController]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class ProductController : ControllerBase
     {
         #region fields
@@ -77,11 +80,12 @@ namespace RetroShop_Client.Controllers
         }
         [HttpGet]
         [Route("byUser")]
-        public async Task<ActionResult> GetByUsuario(IdUsuarioDTO idUsuario)
+        public async Task<ActionResult> GetByUsuario(int idUsuario)
         {
             try
             {
-                var response = await _service.getAllProductosByUserAsync(idUsuario);
+                IdUsuarioDTO idUsuarioDTO = new IdUsuarioDTO() { IdUsuario=idUsuario};
+                var response = await _service.getAllProductosByUserAsync(idUsuarioDTO);
                 if (response.Productos.Count == 0) return NoContent();
                 return Ok(response.Productos);
             }

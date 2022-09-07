@@ -13,7 +13,7 @@ const MisProductos = (props) => {
     editarProductos
   } = props
 
-  const { traerMisProductos, crearProducto } = useProductosPresenter()
+  const { traerMisProductos, crearProducto, editarProducto } = useProductosPresenter()
 
   useEffect(() => {
     traerMisProductos().then(data => setProductos(data)).catch(err => console.log(err))
@@ -57,7 +57,7 @@ const MisProductos = (props) => {
           </Button>
         </Box>
       <GridProductos productos={productos} esEditable={true} editar={abrirModalEdicion}></GridProductos>
-      <ModalProducto esEdicion={false} open={open} setOpen={setOpen} crearProductos={crearProducto} producto={producto} />
+      <ModalProducto esEdicion={false} open={open} setOpen={setOpen} crearProducto={crearProducto} producto={producto} />
       <ModalProducto esEdicion={true} open={openEdicion} setOpen={setOpenEdicion} editarProductos={editarProductos} producto={productoAEditar} />
       </Grid>
     </>

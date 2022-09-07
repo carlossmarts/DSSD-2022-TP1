@@ -2,11 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using RetroShop_Client.Model.Config;
+using System.Web.Http.Cors;
 
 namespace RetroShop_Client.Controllers
 {
     [Route("api/usuario")]
     [ApiController]
+    [EnableCors(origins: "http://localhost:3000/", headers: "*", methods: "*")]
+
     public class UserController : ControllerBase
     {
         #region fields
@@ -18,6 +21,7 @@ namespace RetroShop_Client.Controllers
         public UserController(IOptions<ApiConfig> config)
         {
             _config = config;
+            AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
             GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURLUsuario);
             _service = new UsuarioService.UsuarioServiceClient(channel);
         }
