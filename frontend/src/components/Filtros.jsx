@@ -51,13 +51,7 @@ const Filtros = (props) => {
         setFiltros(tempFiltros)
     }, [categoria])
 
-    useEffect(()=>{
-        console.log("filtros", filtros)
-    }, [filtros])
-
-
     const handleChange = (e) => {
-        console.log(e.target.value)
         let value = e.target.value
         if(e.target.type === "number"){
             value = Number(value)

@@ -68,7 +68,6 @@ const Login = () => {
             try {
                 const user = await traerIdUsuario(username, password);
                 const idUsuario = user.idUsuario;
-                console.log("id de usuario recuperado en login", idUsuario);
                 if(user){
             localStorage.setItem("idUsuario", idUsuario)
             history({

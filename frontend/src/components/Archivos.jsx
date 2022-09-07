@@ -36,14 +36,6 @@ const Archivos = (props) => {
         open: false
     });
 
-    useEffect(() => {
-        console.log(form)
-    }, [form])
-
-    useEffect(() => {
-        console.log('MIRA ACA' + JSON.stringify(form))
-      }, []) 
-
     const changeFileHandler = async (event) => {
         setInput(event.target);
         const formTemp = { ...form };

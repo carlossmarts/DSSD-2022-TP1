@@ -42,7 +42,6 @@ const MisProductos = (props) => {
   };
 
   const abrirModalEdicion = (producto) => {
-    console.log('este es el producto' +producto.nombre)
     setProductoAEditar(producto)
     setEsEdicion(true)
     setOpenEdicion(true);

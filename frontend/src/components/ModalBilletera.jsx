@@ -26,7 +26,6 @@ const ModalBilletera = (props) => {
   }, [])
 
   const handleInputChange = (event) => {
-    console.log(event.target.name)
     setDinero(event.target.valueAsNumber)
   }
 

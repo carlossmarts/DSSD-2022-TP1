@@ -36,12 +36,7 @@ const ModalProducto = (props) => {
     setProd({...prod, idCategoria: categoria.idCategoria})
   }, [categoria])
 
-  useEffect(() => {
-    console.log("prod:", prod)
-  }, [prod])
-
   const handleInputChange = (event) => {
-    console.log(event.target.name)
     const name = event.target.name
     const value = event.target.type === "number" ? event.target.valueAsNumber : event.target.value
     let temp = {...prod}

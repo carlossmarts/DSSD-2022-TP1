@@ -22,7 +22,6 @@ export const useTransaccionesPresenter = ()=>{
           }
         try {
             const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
-            console.log(res);
             const saldo = await res.data.saldoBilletera;
             return saldo
         } catch (err) {

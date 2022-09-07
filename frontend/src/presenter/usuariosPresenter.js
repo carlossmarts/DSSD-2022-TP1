@@ -12,7 +12,6 @@ export const useUsuarioPresenter = () => {
                 usuario: username,
                 clave: password
             }
-            console.log("llamando al servicio usuarioLogin con username", username, "y contraseña", password);
             const res = await axios.post('https://localhost:7252/api/usuario/login', body);
             const user = await res.data;
             return user;
@@ -22,7 +21,6 @@ export const useUsuarioPresenter = () => {
     }
 
     const altaUsuario = async (body) => {
-        console.log()
         try {
             const res = await axios.post('https://localhost:7252/api/usuario', body)
             const ret = await res.data;

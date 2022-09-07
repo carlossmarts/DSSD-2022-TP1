@@ -24,15 +24,6 @@ export const convertBase64 = async (archivo) => {
       };
       try {
         const compressedFile = await imageCompression(archivo, options);
-        console.log(
-          "compressedFile instanceof Blob",
-          compressedFile instanceof Blob
-        ); // true
-        console.log(
-          `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
-        ); // smaller than maxSizeMB
-        console.log(`uncompressedFile size ${archivo.size / 1024 / 1024} MB`);
-        convert(compressedFile, resolve, reject);
       } catch (error) {
         reject(error);
         console.log(error);

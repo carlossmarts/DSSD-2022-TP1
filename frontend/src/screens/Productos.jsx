@@ -25,10 +25,6 @@ const Productos = () => {
   }, [])
 
   useEffect(() => {
-    console.log(categorias)
-  }, [categorias])
-
-  useEffect(() => {
     traerProductos().then(data => setProductos(data)).catch(err => console.log(err))
   }, [])
 
