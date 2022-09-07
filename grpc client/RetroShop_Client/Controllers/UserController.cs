@@ -28,6 +28,21 @@ namespace RetroShop_Client.Controllers
         #endregion
 
         #region endpoints
+        [HttpGet]
+        public async Task<ActionResult> Get(int idUsuario)
+        {
+            try
+            {
+                GetUsuarioRequest idUsuarioDTO = new GetUsuarioRequest() { IdUsuario = idUsuario };
+                var response = await _service.addUsuarioAsync(idUsuarioDTO);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500);
+            }
+        }
         // POST api/<UserController>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UsuarioDTO usuario)
@@ -43,7 +58,6 @@ namespace RetroShop_Client.Controllers
                 return StatusCode(500);
             }
         }
-        //GET
         [HttpPost]
         [Route("login")]
         public async Task<ActionResult> Login([FromBody] GetByUsuarioYClaveRequest usuarioLogin)
@@ -54,7 +68,7 @@ namespace RetroShop_Client.Controllers
                 if (response.Usuario == null) return NotFound();
                 return Ok(response.Usuario);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 return StatusCode(500);

@@ -30,6 +30,9 @@ const ModalProducto = (props) => {
   const [prod, setProd] = useState(producto)
   const [categoria, setCategoria] = useState(producto)
 
+  useEffect(() => {
+    setProd({...prod, categoria: categoria.idCategoria})
+  }, [categoria])
 
   const handleInputChange = (event) => {
     console.log(event.target.name)
@@ -42,11 +45,6 @@ const ModalProducto = (props) => {
       setProd({
         ...prod,
         [event.target.name]: event.target.value
-      })
-    } else if (event.target.name == "categoria") {
-      setProd({
-        ...prod,
-        [event.target.name]: event.target.valueAsNumber
       })
     } else if (event.target.name == "fecha") {
       setProd({

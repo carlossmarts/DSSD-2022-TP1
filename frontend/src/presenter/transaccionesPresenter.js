@@ -6,9 +6,13 @@ export const useTransaccionesPresenter = ()=>{
     const [billetera, setBilletera] = useState(0);
 
     const traerDineroEnBilletera = async (idUsuario)=>{
-        // const res = await TransaccionesAPI.traerDineroEnBilletera(idUsuario);
-        // return res;
-        return 2002
+        try {
+            const res = await axios.get(`https://localhost:7252/api/usuario`, {body: body});
+            const saldo = await res.data.saldoBilletera;
+            return saldo
+        } catch (err) {
+            console.error(err)
+        }
     }
 
     const actualizarBilletera = async (body)=>{
@@ -19,7 +23,6 @@ export const useTransaccionesPresenter = ()=>{
         } catch (err) {
             console.error(err)
         }
-        return 201
     }
     
     const realizarCompra = async (body)=>{
