@@ -4,6 +4,7 @@ import bo.CategoriaBO;
 import bo.ProductoBO;
 import java.util.Base64;
 
+import bo.TransaccionBO;
 import grpc.Producto.*;
 import grpc.ProductoServiceGrpc.*;
 import io.grpc.stub.StreamObserver;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ProductoService extends ProductoServiceImplBase {
 
     public ProductoBO productoBO = ProductoBO.getInstance();
+    public TransaccionBO transaccionBO= TransaccionBO.getInstance();
     public CategoriaBO categoriaBO = CategoriaBO.getInstance();
 
     @Override
@@ -107,6 +109,26 @@ public class ProductoService extends ProductoServiceImplBase {
         ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
         try {
             List<Producto> productos = productoBO.getByUserId(request.getIdUsuario());
+            for(Producto p : productos){
+                response.addProductos(mapProductoToDTO(p));
+            }
+            serverResponse.setCod(200);
+            serverResponse.setMsg("");
+        } catch (Exception e) {
+            serverResponse.setCod(500);
+            serverResponse.setMsg(e.getMessage());
+        }
+        response.setServerResponse(serverResponse);
+        responseObserver.onNext(response.build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getComprasOVentasByUsuarioRequest(GetTransaccionesRequest request, StreamObserver<ProductosDTO> responseObserver) {
+        ProductosDTO.Builder response = ProductosDTO.newBuilder();
+        ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
+        try {
+            List<Producto> productos = transaccionBO.getProductos(request.getIdUsuario(), request.getTipoUsuario());
             for(Producto p : productos){
                 response.addProductos(mapProductoToDTO(p));
             }

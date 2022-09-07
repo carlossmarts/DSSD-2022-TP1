@@ -76,7 +76,7 @@ public class ProductoDAO {
         try {
             productos = em.createQuery(query).getResultList();
         } catch (Exception e) {
-            String msg = "Error de persistencia - Método GetAllProducto: " + e.getMessage();
+            String msg = "Error de persistencia - Método GetAllProductoByUser: " + e.getMessage();
             System.out.println(msg);
             throw new Exception(msg);
         } finally {

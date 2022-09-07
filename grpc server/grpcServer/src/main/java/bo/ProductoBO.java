@@ -51,6 +51,7 @@ public class ProductoBO {
     public List<Producto> getByUserId(int idUsuario) throws Exception{
         Usuario user = usuarioBO.getById(idUsuario);
 
+
         return null;
     }
 

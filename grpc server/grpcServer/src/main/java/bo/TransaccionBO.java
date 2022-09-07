@@ -6,6 +6,7 @@ import model.Transaccion;
 import grpc.Transaccion.*;
 import model.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransaccionBO {
@@ -30,6 +31,16 @@ public class TransaccionBO {
             transaccionesDTO.addTransacciones(mapTransaccionToDTO(t));
         }
         return transaccionesDTO;
+    }
+
+    public List<Producto> getProductos(int idUsuario, String tipoUsuario) throws Exception{
+        List<Transaccion> transacciones = transaccionDAO.getByIdUsuario(idUsuario, tipoUsuario);
+        List<Producto> productos = new ArrayList<Producto>();
+
+        for(Transaccion t : transacciones){
+            productos.add(t.getProducto());
+        }
+        return productos;
     }
 
 

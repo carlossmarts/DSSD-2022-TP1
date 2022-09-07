@@ -28,8 +28,8 @@ public class Transaccion {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "ventascol")
-    private String ventascol;
+//    @Column(name = "ventascol")
+//    private String ventascol;
 
     @Column(name = "cantidad")
     private int cantidad;
@@ -77,14 +77,6 @@ public class Transaccion {
         this.nombre = nombre;
     }
 
-    public String getVentascol() {
-        return ventascol;
-    }
-
-    public void setVentascol(String ventascol) {
-        this.ventascol = ventascol;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
@@ -109,7 +101,6 @@ public class Transaccion {
                 ", vendedor=" + vendedor.toString() +
                 ", comprador=" + comprador.toString() +
                 ", nombre='" + nombre + '\'' +
-                ", ventascol='" + ventascol + '\'' +
                 ", cantidad=" + cantidad +
                 ", precio=" + precio +
                 '}';

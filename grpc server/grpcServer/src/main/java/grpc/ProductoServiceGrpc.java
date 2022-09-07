@@ -187,6 +187,38 @@ public final class ProductoServiceGrpc {
      return getGetAllCategoriasMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Producto.GetTransaccionesRequest,
+      grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getComprasOVentasByUsuarioRequest",
+      requestType = grpc.Producto.GetTransaccionesRequest.class,
+      responseType = grpc.Producto.ProductosDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Producto.GetTransaccionesRequest,
+      grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod() {
+    io.grpc.MethodDescriptor<grpc.Producto.GetTransaccionesRequest, grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod;
+    if ((getGetComprasOVentasByUsuarioRequestMethod = ProductoServiceGrpc.getGetComprasOVentasByUsuarioRequestMethod) == null) {
+      synchronized (ProductoServiceGrpc.class) {
+        if ((getGetComprasOVentasByUsuarioRequestMethod = ProductoServiceGrpc.getGetComprasOVentasByUsuarioRequestMethod) == null) {
+          ProductoServiceGrpc.getGetComprasOVentasByUsuarioRequestMethod = getGetComprasOVentasByUsuarioRequestMethod = 
+              io.grpc.MethodDescriptor.<grpc.Producto.GetTransaccionesRequest, grpc.Producto.ProductosDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "ProductoService", "getComprasOVentasByUsuarioRequest"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Producto.GetTransaccionesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Producto.ProductosDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new ProductoServiceMethodDescriptorSupplier("getComprasOVentasByUsuarioRequest"))
+                  .build();
+          }
+        }
+     }
+     return getGetComprasOVentasByUsuarioRequestMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -249,6 +281,13 @@ public final class ProductoServiceGrpc {
       asyncUnimplementedUnaryCall(getGetAllCategoriasMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getComprasOVentasByUsuarioRequest(grpc.Producto.GetTransaccionesRequest request,
+        io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetComprasOVentasByUsuarioRequestMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -286,6 +325,13 @@ public final class ProductoServiceGrpc {
                 grpc.Producto.Empty,
                 grpc.Producto.CategoriasDTO>(
                   this, METHODID_GET_ALL_CATEGORIAS)))
+          .addMethod(
+            getGetComprasOVentasByUsuarioRequestMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Producto.GetTransaccionesRequest,
+                grpc.Producto.ProductosDTO>(
+                  this, METHODID_GET_COMPRAS_OVENTAS_BY_USUARIO_REQUEST)))
           .build();
     }
   }
@@ -347,6 +393,14 @@ public final class ProductoServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetAllCategoriasMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getComprasOVentasByUsuarioRequest(grpc.Producto.GetTransaccionesRequest request,
+        io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetComprasOVentasByUsuarioRequestMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -400,6 +454,13 @@ public final class ProductoServiceGrpc {
     public grpc.Producto.CategoriasDTO getAllCategorias(grpc.Producto.Empty request) {
       return blockingUnaryCall(
           getChannel(), getGetAllCategoriasMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.Producto.ProductosDTO getComprasOVentasByUsuarioRequest(grpc.Producto.GetTransaccionesRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetComprasOVentasByUsuarioRequestMethod(), getCallOptions(), request);
     }
   }
 
@@ -460,6 +521,14 @@ public final class ProductoServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetAllCategoriasMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Producto.ProductosDTO> getComprasOVentasByUsuarioRequest(
+        grpc.Producto.GetTransaccionesRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetComprasOVentasByUsuarioRequestMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_PRODUCTO = 0;
@@ -467,6 +536,7 @@ public final class ProductoServiceGrpc {
   private static final int METHODID_GET_ALL_PRODUCTOS = 2;
   private static final int METHODID_GET_ALL_PRODUCTOS_BY_USER = 3;
   private static final int METHODID_GET_ALL_CATEGORIAS = 4;
+  private static final int METHODID_GET_COMPRAS_OVENTAS_BY_USUARIO_REQUEST = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -504,6 +574,10 @@ public final class ProductoServiceGrpc {
         case METHODID_GET_ALL_CATEGORIAS:
           serviceImpl.getAllCategorias((grpc.Producto.Empty) request,
               (io.grpc.stub.StreamObserver<grpc.Producto.CategoriasDTO>) responseObserver);
+          break;
+        case METHODID_GET_COMPRAS_OVENTAS_BY_USUARIO_REQUEST:
+          serviceImpl.getComprasOVentasByUsuarioRequest((grpc.Producto.GetTransaccionesRequest) request,
+              (io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -571,6 +645,7 @@ public final class ProductoServiceGrpc {
               .addMethod(getGetAllProductosMethod())
               .addMethod(getGetAllProductosByUserMethod())
               .addMethod(getGetAllCategoriasMethod())
+              .addMethod(getGetComprasOVentasByUsuarioRequestMethod())
               .build();
         }
       }
