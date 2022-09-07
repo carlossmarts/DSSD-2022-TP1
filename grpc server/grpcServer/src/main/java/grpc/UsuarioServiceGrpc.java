@@ -62,6 +62,38 @@ public final class UsuarioServiceGrpc {
      return getAddUsuarioMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.Usuario.GetUsuarioRequest,
+      grpc.Usuario.UsuarioObjDTO> getGetUsuarioMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getUsuario",
+      requestType = grpc.Usuario.GetUsuarioRequest.class,
+      responseType = grpc.Usuario.UsuarioObjDTO.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.Usuario.GetUsuarioRequest,
+      grpc.Usuario.UsuarioObjDTO> getGetUsuarioMethod() {
+    io.grpc.MethodDescriptor<grpc.Usuario.GetUsuarioRequest, grpc.Usuario.UsuarioObjDTO> getGetUsuarioMethod;
+    if ((getGetUsuarioMethod = UsuarioServiceGrpc.getGetUsuarioMethod) == null) {
+      synchronized (UsuarioServiceGrpc.class) {
+        if ((getGetUsuarioMethod = UsuarioServiceGrpc.getGetUsuarioMethod) == null) {
+          UsuarioServiceGrpc.getGetUsuarioMethod = getGetUsuarioMethod = 
+              io.grpc.MethodDescriptor.<grpc.Usuario.GetUsuarioRequest, grpc.Usuario.UsuarioObjDTO>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UsuarioService", "getUsuario"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Usuario.GetUsuarioRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.Usuario.UsuarioObjDTO.getDefaultInstance()))
+                  .setSchemaDescriptor(new UsuarioServiceMethodDescriptorSupplier("getUsuario"))
+                  .build();
+          }
+        }
+     }
+     return getGetUsuarioMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<grpc.Usuario.GetByUsuarioYClaveRequest,
       grpc.Usuario.UsuarioObjDTO> getGetByUsuarioYClaveRequestMethod;
 
@@ -197,6 +229,13 @@ public final class UsuarioServiceGrpc {
 
     /**
      */
+    public void getUsuario(grpc.Usuario.GetUsuarioRequest request,
+        io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetUsuarioMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getByUsuarioYClaveRequest(grpc.Usuario.GetByUsuarioYClaveRequest request,
         io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetByUsuarioYClaveRequestMethod(), responseObserver);
@@ -225,6 +264,13 @@ public final class UsuarioServiceGrpc {
                 grpc.Usuario.UsuarioDTO,
                 grpc.Usuario.UsuarioObjDTO>(
                   this, METHODID_ADD_USUARIO)))
+          .addMethod(
+            getGetUsuarioMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.Usuario.GetUsuarioRequest,
+                grpc.Usuario.UsuarioObjDTO>(
+                  this, METHODID_GET_USUARIO)))
           .addMethod(
             getGetByUsuarioYClaveRequestMethod(),
             asyncUnaryCall(
@@ -277,6 +323,14 @@ public final class UsuarioServiceGrpc {
         io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddUsuarioMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getUsuario(grpc.Usuario.GetUsuarioRequest request,
+        io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetUsuarioMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -334,6 +388,13 @@ public final class UsuarioServiceGrpc {
 
     /**
      */
+    public grpc.Usuario.UsuarioObjDTO getUsuario(grpc.Usuario.GetUsuarioRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetUsuarioMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public grpc.Usuario.UsuarioObjDTO getByUsuarioYClaveRequest(grpc.Usuario.GetByUsuarioYClaveRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetByUsuarioYClaveRequestMethod(), getCallOptions(), request);
@@ -385,6 +446,14 @@ public final class UsuarioServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.Usuario.UsuarioObjDTO> getUsuario(
+        grpc.Usuario.GetUsuarioRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetUsuarioMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Usuario.UsuarioObjDTO> getByUsuarioYClaveRequest(
         grpc.Usuario.GetByUsuarioYClaveRequest request) {
       return futureUnaryCall(
@@ -409,9 +478,10 @@ public final class UsuarioServiceGrpc {
   }
 
   private static final int METHODID_ADD_USUARIO = 0;
-  private static final int METHODID_GET_BY_USUARIO_YCLAVE_REQUEST = 1;
-  private static final int METHODID_UPDATE_USUARIO_CARGA_SALDO_REQUEST = 2;
-  private static final int METHODID_UPDATE_USUARIO_COMPRA_PRODUCTO_REQUEST = 3;
+  private static final int METHODID_GET_USUARIO = 1;
+  private static final int METHODID_GET_BY_USUARIO_YCLAVE_REQUEST = 2;
+  private static final int METHODID_UPDATE_USUARIO_CARGA_SALDO_REQUEST = 3;
+  private static final int METHODID_UPDATE_USUARIO_COMPRA_PRODUCTO_REQUEST = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -432,6 +502,10 @@ public final class UsuarioServiceGrpc {
       switch (methodId) {
         case METHODID_ADD_USUARIO:
           serviceImpl.addUsuario((grpc.Usuario.UsuarioDTO) request,
+              (io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO>) responseObserver);
+          break;
+        case METHODID_GET_USUARIO:
+          serviceImpl.getUsuario((grpc.Usuario.GetUsuarioRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Usuario.UsuarioObjDTO>) responseObserver);
           break;
         case METHODID_GET_BY_USUARIO_YCLAVE_REQUEST:
@@ -508,6 +582,7 @@ public final class UsuarioServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UsuarioServiceFileDescriptorSupplier())
               .addMethod(getAddUsuarioMethod())
+              .addMethod(getGetUsuarioMethod())
               .addMethod(getGetByUsuarioYClaveRequestMethod())
               .addMethod(getUpdateUsuarioCargaSaldoRequestMethod())
               .addMethod(getUpdateUsuarioCompraProductoRequestMethod())

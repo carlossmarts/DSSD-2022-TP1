@@ -29,6 +29,30 @@ public class UsuarioService extends UsuarioServiceImplBase {
         responseObserver.onCompleted();
     }
 
+	@Override
+	public void getUsuario(GetUsuarioRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
+
+		Usuario usuario = null;
+		UsuarioServerResponse.Builder serverResponse = UsuarioServerResponse.newBuilder();
+		UsuarioObjDTO.Builder response = UsuarioObjDTO.newBuilder();
+
+		try{
+			usuario = usuarioBO.getById(request.getIdUsuario());
+			response.setUsuario(mapUsuarioDTO(usuario));
+			serverResponse.setCode(200);
+			serverResponse.setMsg("Usuario encontrado");
+		} // end_try
+		catch(Exception e){
+			serverResponse.setCode(500);
+			serverResponse.setMsg(e.getMessage());
+		} // end_catch
+
+		response.setServerResponse(serverResponse);
+		responseObserver.onNext(response.build());
+		responseObserver.onCompleted();
+
+	}
+
 	// METODO getByUsuarioYClaveRequest
 	@Override
 	public void getByUsuarioYClaveRequest(GetByUsuarioYClaveRequest request, StreamObserver<UsuarioObjDTO> responseObserver) {
