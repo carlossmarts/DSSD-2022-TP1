@@ -30,13 +30,13 @@ public class Producto {
     @Type(type="date")
     private Date fechaFabricacion;
     
-    @Column(name="precioBase")
+    @Column(name="precioBase") //Nuevos atributos TP2
     private double precioBase;
     
-    @Column(name="esSubasta")
+    @Column(name="esSubasta")//Nuevos atributos TP2
     private boolean esSubasta;
     
-    @Column(name="fechaLimite")
+    @Column(name="fechaLimite")//Nuevos atributos TP2
     @Type(type="date")
     private Date fechaLimite;
 
