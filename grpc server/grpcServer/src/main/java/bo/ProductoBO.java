@@ -53,9 +53,6 @@ public class ProductoBO {
         return productoDAO.getByUsuario(user);
     }
 
-
-
-
     public Producto agregarProducto(ProductoDTO productoDTO) throws Exception {
         Producto toPersist = mapProductoToEntity(productoDTO);
         List<FotoProducto> fotos = toPersist.getFotosProducto();
@@ -96,6 +93,9 @@ public class ProductoBO {
             fotos.add(tempFoto);
         }
         p.setFotosProducto(fotos);
+        p.setPrecioBase(dto.getPrecioBase());
+        p.setEsSubasta(dto.getEsSubasta());
+        p.setFechaLimite(sdf.parse(dto.getFechaLimite()));
         return p;
     }
 

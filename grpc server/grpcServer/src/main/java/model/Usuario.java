@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 @Table(name="usuarios")
 public class Usuario {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsuario")
@@ -31,6 +32,9 @@ public class Usuario {
 
     @Column(name="saldoBilletera")
     private double saldoBilletera;
+    
+    @Column (name = "idTipoUsuario")
+    private int idTipoUsuario;
 
     @OneToMany(mappedBy="usuario" )
     private List<Producto> productos;
@@ -129,17 +133,24 @@ public class Usuario {
         this.ventas = ventas;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "idUsuario=" + idUsuario +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni='" + dni + '\'' +
-                ", email='" + email + '\'' +
-                ", usuario='" + usuario + '\'' +
-                ", clave='" + clave + '\'' +
-                ", saldoBilletera=" + saldoBilletera +
-                '}';
-    }
+	public int getIdTipoUsuario() {
+		return idTipoUsuario;
+	}
+
+	public void setIdTipoUsuario(int idTipoUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
+	}
+
+	public void setSaldoBilletera(double saldoBilletera) {
+		this.saldoBilletera = saldoBilletera;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", email=" + email + ", usuario=" + usuario + ", clave=" + clave + ", saldoBilletera="
+				+ saldoBilletera + ", idTipoUsuario=" + idTipoUsuario + ", productos=" + productos + ", compras="
+				+ compras + ", ventas=" + ventas + "]";
+	}
+	
 }

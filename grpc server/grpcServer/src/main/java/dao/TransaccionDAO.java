@@ -1,19 +1,11 @@
 package dao;
 
 import model.Transaccion;
-import model.Categoria;
-import model.Producto;
-import model.Usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class TransaccionDAO {

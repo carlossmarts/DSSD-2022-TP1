@@ -60,7 +60,7 @@ public final class Transaccion {
   }
   /**
    * <pre>
-   * MODELO 
+   * MODEL 
    * </pre>
    *
    * Protobuf type {@code TransaccionDTO}
@@ -490,7 +490,7 @@ public final class Transaccion {
     }
     /**
      * <pre>
-     * MODELO 
+     * MODEL 
      * </pre>
      *
      * Protobuf type {@code TransaccionDTO}

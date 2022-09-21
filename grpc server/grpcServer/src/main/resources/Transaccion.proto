@@ -9,7 +9,7 @@ service TransaccionService{
     rpc getComprasOVentasByUsuarioRequest (GetTransaccionesRequest) returns (LisTransaccionDTO);
 }
 
-/* MODELO */
+/* MODEL */
 message TransaccionDTO{
 	int32 idTransaccion = 1;
 	int32 idProducto = 2;
@@ -26,12 +26,12 @@ message GetTransaccionesRequest{
 	string tipoUsuario = 2;
 }
 
-
 /* RESPONSES */
 message TransaccionServerResponse{
 	int32 cod = 1;
 	string msg = 2;
 }
+
 message ResTransaccionDTO {
     int32 idProducto = 1;
     int32 idComprador = 2;
@@ -39,12 +39,9 @@ message ResTransaccionDTO {
     double saldoRestante = 4;
     TransaccionServerResponse serverResponse = 5;
 }
+
 /* DEVUELVE LISTA DE TRANSACCIONES POR USUARIO */
 message LisTransaccionDTO{
 	repeated TransaccionDTO transacciones = 1;
 	TransaccionServerResponse serverResponse = 2;
 }
-
-
-
-

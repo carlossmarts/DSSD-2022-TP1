@@ -147,7 +147,7 @@ public class ProductoDAO {
     public void saveOrUpdateFotoProducto (FotoProducto foto) throws Exception {
         EntityManager em = JPAUtil.getEMF().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
-        FotoProducto entity = null;
+        //FotoProducto entity = null;
         try {
             transaction.begin();
             em.merge(foto);

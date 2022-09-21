@@ -9,7 +9,6 @@ import java.util.List;
 @Table(name="productos")
 public class Producto {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "idProducto")
@@ -30,6 +29,16 @@ public class Producto {
     @Column(name="fechaFabricacion")
     @Type(type="date")
     private Date fechaFabricacion;
+    
+    @Column(name="precioBase")
+    private double precioBase;
+    
+    @Column(name="esSubasta")
+    private boolean esSubasta;
+    
+    @Column(name="fechaLimite")
+    @Type(type="date")
+    private Date fechaLimite;
 
     @ManyToOne (cascade={CascadeType.DETACH,CascadeType.REFRESH})
     @JoinColumn (name = "idCategoria")
@@ -109,22 +118,41 @@ public class Producto {
     public List<FotoProducto> getFotosProducto() {
         return fotosProducto;
     }
-
+    
     public void setFotosProducto(List<FotoProducto> fotosProducto) {
-        this.fotosProducto = fotosProducto;
-    }
+		this.fotosProducto = fotosProducto;
+	}
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "idProducto=" + idProducto +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", precio=" + precio +
-                ", cantidad=" + cantidad +
-                ", fechaFabricacion=" + fechaFabricacion +
-                ", categoria=" + categoria.toString() +
-                ", usuario=" + usuario.toString() +
-                '}';
-    }
+	public double getPrecioBase() {
+		return precioBase;
+	}
+
+	public void setPrecioBase(double precioBase) {
+		this.precioBase = precioBase;
+	}
+
+	public boolean isEsSubasta() {
+		return esSubasta;
+	}
+
+	public void setEsSubasta(boolean esSubasta) {
+		this.esSubasta = esSubasta;
+	}
+
+	public Date getFechaLimite() {
+		return fechaLimite;
+	}
+
+	public void setFechaLimite(Date fechaLimite) {
+		this.fechaLimite = fechaLimite;
+	}
+
+	@Override
+	public String toString() {
+		return "Producto [idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", precio=" + precio + ", cantidad=" + cantidad + ", fechaFabricacion=" + fechaFabricacion
+				+ ", precioBase=" + precioBase + ", esSubasta=" + esSubasta + ", fechaLimite=" + fechaLimite
+				+ ", categoria=" + categoria + ", usuario=" + usuario + "]";
+	}
+	
 }

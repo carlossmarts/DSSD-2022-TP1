@@ -124,7 +124,7 @@ public class ProductoService extends ProductoServiceImplBase {
     }
 
     @Override
-    public void getComprasOVentasByUsuarioRequest(GetTransaccionesRequest request, StreamObserver<ProductosDTO> responseObserver) {
+    public void getComprasOVentasByUsuarioRequest(GetProductosRequest request, StreamObserver<ProductosDTO> responseObserver) {
         ProductosDTO.Builder response = ProductosDTO.newBuilder();
         ProductoServerResponse.Builder serverResponse = ProductoServerResponse.newBuilder();
         try {
@@ -160,6 +160,9 @@ public class ProductoService extends ProductoServiceImplBase {
             tempFotoDTO.setFile(Base64.getEncoder().encodeToString(foto.getArchivo()));
             dto.addFotos(tempFotoDTO);
         }
+        dto.setPrecioBase(p.getPrecioBase());
+        dto.setEsSubasta(p.isEsSubasta());
+        dto.setFechaLimite(ProductoBO.sdf.format(p.getFechaLimite()));
         return dto;
     }
 

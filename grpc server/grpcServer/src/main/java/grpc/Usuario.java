@@ -87,10 +87,15 @@ public final class Usuario {
      * <code>double saldoBilletera = 8;</code>
      */
     double getSaldoBilletera();
+
+    /**
+     * <code>int32 idTipoUsuario = 9;</code>
+     */
+    int getIdTipoUsuario();
   }
   /**
    * <pre>
-   * MODELO 
+   * MODEL 
    * </pre>
    *
    * Protobuf type {@code UsuarioDTO}
@@ -113,6 +118,7 @@ public final class Usuario {
       usuario_ = "";
       clave_ = "";
       saldoBilletera_ = 0D;
+      idTipoUsuario_ = 0;
     }
 
     @java.lang.Override
@@ -183,6 +189,11 @@ public final class Usuario {
             case 65: {
 
               saldoBilletera_ = input.readDouble();
+              break;
+            }
+            case 72: {
+
+              idTipoUsuario_ = input.readInt32();
               break;
             }
             default: {
@@ -439,6 +450,15 @@ public final class Usuario {
       return saldoBilletera_;
     }
 
+    public static final int IDTIPOUSUARIO_FIELD_NUMBER = 9;
+    private int idTipoUsuario_;
+    /**
+     * <code>int32 idTipoUsuario = 9;</code>
+     */
+    public int getIdTipoUsuario() {
+      return idTipoUsuario_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -477,6 +497,9 @@ public final class Usuario {
       if (saldoBilletera_ != 0D) {
         output.writeDouble(8, saldoBilletera_);
       }
+      if (idTipoUsuario_ != 0) {
+        output.writeInt32(9, idTipoUsuario_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -512,6 +535,10 @@ public final class Usuario {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(8, saldoBilletera_);
       }
+      if (idTipoUsuario_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, idTipoUsuario_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -546,6 +573,8 @@ public final class Usuario {
           java.lang.Double.doubleToLongBits(getSaldoBilletera())
           == java.lang.Double.doubleToLongBits(
               other.getSaldoBilletera()));
+      result = result && (getIdTipoUsuario()
+          == other.getIdTipoUsuario());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -574,6 +603,8 @@ public final class Usuario {
       hash = (37 * hash) + SALDOBILLETERA_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getSaldoBilletera()));
+      hash = (37 * hash) + IDTIPOUSUARIO_FIELD_NUMBER;
+      hash = (53 * hash) + getIdTipoUsuario();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -671,7 +702,7 @@ public final class Usuario {
     }
     /**
      * <pre>
-     * MODELO 
+     * MODEL 
      * </pre>
      *
      * Protobuf type {@code UsuarioDTO}
@@ -727,6 +758,8 @@ public final class Usuario {
 
         saldoBilletera_ = 0D;
 
+        idTipoUsuario_ = 0;
+
         return this;
       }
 
@@ -761,6 +794,7 @@ public final class Usuario {
         result.usuario_ = usuario_;
         result.clave_ = clave_;
         result.saldoBilletera_ = saldoBilletera_;
+        result.idTipoUsuario_ = idTipoUsuario_;
         onBuilt();
         return result;
       }
@@ -838,6 +872,9 @@ public final class Usuario {
         }
         if (other.getSaldoBilletera() != 0D) {
           setSaldoBilletera(other.getSaldoBilletera());
+        }
+        if (other.getIdTipoUsuario() != 0) {
+          setIdTipoUsuario(other.getIdTipoUsuario());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1330,6 +1367,32 @@ public final class Usuario {
       public Builder clearSaldoBilletera() {
         
         saldoBilletera_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int idTipoUsuario_ ;
+      /**
+       * <code>int32 idTipoUsuario = 9;</code>
+       */
+      public int getIdTipoUsuario() {
+        return idTipoUsuario_;
+      }
+      /**
+       * <code>int32 idTipoUsuario = 9;</code>
+       */
+      public Builder setIdTipoUsuario(int value) {
+        
+        idTipoUsuario_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 idTipoUsuario = 9;</code>
+       */
+      public Builder clearIdTipoUsuario() {
+        
+        idTipoUsuario_ = 0;
         onChanged();
         return this;
       }
@@ -6128,32 +6191,33 @@ public final class Usuario {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rUsuario.proto\"\225\001\n\nUsuarioDTO\022\021\n\tidUsua" +
+      "\n\rUsuario.proto\"\254\001\n\nUsuarioDTO\022\021\n\tidUsua" +
       "rio\030\001 \001(\005\022\016\n\006nombre\030\002 \001(\t\022\020\n\010apellido\030\003 " +
       "\001(\t\022\013\n\003dni\030\004 \001(\t\022\r\n\005email\030\005 \001(\t\022\017\n\007usuar" +
       "io\030\006 \001(\t\022\r\n\005clave\030\007 \001(\t\022\026\n\016saldoBilleter" +
-      "a\030\010 \001(\001\"&\n\021GetUsuarioRequest\022\021\n\tidUsuari" +
-      "o\030\001 \001(\005\";\n\031GetByUsuarioYClaveRequest\022\017\n\007" +
-      "usuario\030\001 \001(\t\022\r\n\005clave\030\002 \001(\t\"B\n\036UpdateUs" +
-      "uarioCargaSaldoRequest\022\021\n\tidUsuario\030\001 \001(" +
-      "\005\022\r\n\005saldo\030\002 \001(\001\"K\n\"UpdateUsuarioCompraP" +
-      "roductoRequest\022\021\n\tidUsuario\030\001 \001(\005\022\022\n\nidP" +
-      "roducto\030\002 \001(\005\"2\n\025UsuarioServerResponse\022\014" +
-      "\n\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\"]\n\rUsuarioObjD" +
-      "TO\022\034\n\007usuario\030\001 \001(\0132\013.UsuarioDTO\022.\n\016serv" +
+      "a\030\010 \001(\001\022\025\n\ridTipoUsuario\030\t \001(\005\"&\n\021GetUsu" +
+      "arioRequest\022\021\n\tidUsuario\030\001 \001(\005\";\n\031GetByU" +
+      "suarioYClaveRequest\022\017\n\007usuario\030\001 \001(\t\022\r\n\005" +
+      "clave\030\002 \001(\t\"B\n\036UpdateUsuarioCargaSaldoRe" +
+      "quest\022\021\n\tidUsuario\030\001 \001(\005\022\r\n\005saldo\030\002 \001(\001\"" +
+      "K\n\"UpdateUsuarioCompraProductoRequest\022\021\n" +
+      "\tidUsuario\030\001 \001(\005\022\022\n\nidProducto\030\002 \001(\005\"2\n\025" +
+      "UsuarioServerResponse\022\014\n\004code\030\001 \001(\005\022\013\n\003m" +
+      "sg\030\002 \001(\t\"]\n\rUsuarioObjDTO\022\034\n\007usuario\030\001 \001" +
+      "(\0132\013.UsuarioDTO\022.\n\016serverResponse\030\002 \001(\0132" +
+      "\026.UsuarioServerResponse\"_\n\016ListUsuarioDT" +
+      "O\022\035\n\010usuarios\030\001 \003(\0132\013.UsuarioDTO\022.\n\016serv" +
       "erResponse\030\002 \001(\0132\026.UsuarioServerResponse" +
-      "\"_\n\016ListUsuarioDTO\022\035\n\010usuarios\030\001 \003(\0132\013.U" +
-      "suarioDTO\022.\n\016serverResponse\030\002 \001(\0132\026.Usua" +
-      "rioServerResponse2\344\002\n\016UsuarioService\022)\n\n" +
-      "addUsuario\022\013.UsuarioDTO\032\016.UsuarioObjDTO\022" +
-      "0\n\ngetUsuario\022\022.GetUsuarioRequest\032\016.Usua" +
-      "rioObjDTO\022G\n\031getByUsuarioYClaveRequest\022\032" +
-      ".GetByUsuarioYClaveRequest\032\016.UsuarioObjD" +
-      "TO\022Q\n\036updateUsuarioCargaSaldoRequest\022\037.U" +
-      "pdateUsuarioCargaSaldoRequest\032\016.UsuarioO" +
-      "bjDTO\022Y\n\"updateUsuarioCompraProductoRequ" +
-      "est\022#.UpdateUsuarioCompraProductoRequest" +
-      "\032\016.UsuarioObjDTOB\006\n\004grpcb\006proto3"
+      "2\344\002\n\016UsuarioService\022)\n\naddUsuario\022\013.Usua" +
+      "rioDTO\032\016.UsuarioObjDTO\0220\n\ngetUsuario\022\022.G" +
+      "etUsuarioRequest\032\016.UsuarioObjDTO\022G\n\031getB" +
+      "yUsuarioYClaveRequest\022\032.GetByUsuarioYCla" +
+      "veRequest\032\016.UsuarioObjDTO\022Q\n\036updateUsuar" +
+      "ioCargaSaldoRequest\022\037.UpdateUsuarioCarga" +
+      "SaldoRequest\032\016.UsuarioObjDTO\022Y\n\"updateUs" +
+      "uarioCompraProductoRequest\022#.UpdateUsuar" +
+      "ioCompraProductoRequest\032\016.UsuarioObjDTOB" +
+      "\006\n\004grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6172,7 +6236,7 @@ public final class Usuario {
     internal_static_UsuarioDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UsuarioDTO_descriptor,
-        new java.lang.String[] { "IdUsuario", "Nombre", "Apellido", "Dni", "Email", "Usuario", "Clave", "SaldoBilletera", });
+        new java.lang.String[] { "IdUsuario", "Nombre", "Apellido", "Dni", "Email", "Usuario", "Clave", "SaldoBilletera", "IdTipoUsuario", });
     internal_static_GetUsuarioRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_GetUsuarioRequest_fieldAccessorTable = new

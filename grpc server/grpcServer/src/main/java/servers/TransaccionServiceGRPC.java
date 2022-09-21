@@ -2,7 +2,6 @@ package servers;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import services.ProductoService;
 import services.TransaccionService;
 
 import java.io.IOException;

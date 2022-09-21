@@ -5,7 +5,6 @@ import model.Categoria;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class CategoriaDAO {
         try {
             CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
             CriteriaQuery<Categoria> query = criteriaBuilder.createQuery(Categoria.class);
-            Root<Categoria> root = query.from(Categoria.class);
+            //Root<Categoria> root = query.from(Categoria.class);
             categorias = em.createQuery(query).getResultList();
         } catch (Exception e) {
             String msg = "CategoriaDAO(getAll) - Error de persistencia: " + e.getMessage();

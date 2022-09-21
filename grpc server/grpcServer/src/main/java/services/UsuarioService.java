@@ -157,7 +157,7 @@ public class UsuarioService extends UsuarioServiceImplBase {
 		dto.setUsuario(u.getUsuario());
 		dto.setClave(u.getClave());
 		dto.setSaldoBilletera(u.getSaldoBilletera());
-
+		dto.setIdTipoUsuario(u.getIdTipoUsuario());
 		return dto;
 	} // end_mapUsuarioToDTO
 	
@@ -171,7 +171,7 @@ public class UsuarioService extends UsuarioServiceImplBase {
 		u.setUsuario(dto.getUsuario());
 		u.setClave(dto.getClave());
 		u.setSaldoBilletera(dto.getSaldoBilletera());
-		
+		u.setIdTipoUsuario(dto.getIdTipoUsuario());
 		return u;
 	} // end_mapDTOToUsuario
 	

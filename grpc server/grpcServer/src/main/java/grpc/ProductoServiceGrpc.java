@@ -187,28 +187,28 @@ public final class ProductoServiceGrpc {
      return getGetAllCategoriasMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<grpc.Producto.GetTransaccionesRequest,
+  private static volatile io.grpc.MethodDescriptor<grpc.Producto.GetProductosRequest,
       grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getComprasOVentasByUsuarioRequest",
-      requestType = grpc.Producto.GetTransaccionesRequest.class,
+      requestType = grpc.Producto.GetProductosRequest.class,
       responseType = grpc.Producto.ProductosDTO.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<grpc.Producto.GetTransaccionesRequest,
+  public static io.grpc.MethodDescriptor<grpc.Producto.GetProductosRequest,
       grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod() {
-    io.grpc.MethodDescriptor<grpc.Producto.GetTransaccionesRequest, grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod;
+    io.grpc.MethodDescriptor<grpc.Producto.GetProductosRequest, grpc.Producto.ProductosDTO> getGetComprasOVentasByUsuarioRequestMethod;
     if ((getGetComprasOVentasByUsuarioRequestMethod = ProductoServiceGrpc.getGetComprasOVentasByUsuarioRequestMethod) == null) {
       synchronized (ProductoServiceGrpc.class) {
         if ((getGetComprasOVentasByUsuarioRequestMethod = ProductoServiceGrpc.getGetComprasOVentasByUsuarioRequestMethod) == null) {
           ProductoServiceGrpc.getGetComprasOVentasByUsuarioRequestMethod = getGetComprasOVentasByUsuarioRequestMethod = 
-              io.grpc.MethodDescriptor.<grpc.Producto.GetTransaccionesRequest, grpc.Producto.ProductosDTO>newBuilder()
+              io.grpc.MethodDescriptor.<grpc.Producto.GetProductosRequest, grpc.Producto.ProductosDTO>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "ProductoService", "getComprasOVentasByUsuarioRequest"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  grpc.Producto.GetTransaccionesRequest.getDefaultInstance()))
+                  grpc.Producto.GetProductosRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   grpc.Producto.ProductosDTO.getDefaultInstance()))
                   .setSchemaDescriptor(new ProductoServiceMethodDescriptorSupplier("getComprasOVentasByUsuarioRequest"))
@@ -283,7 +283,7 @@ public final class ProductoServiceGrpc {
 
     /**
      */
-    public void getComprasOVentasByUsuarioRequest(grpc.Producto.GetTransaccionesRequest request,
+    public void getComprasOVentasByUsuarioRequest(grpc.Producto.GetProductosRequest request,
         io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO> responseObserver) {
       asyncUnimplementedUnaryCall(getGetComprasOVentasByUsuarioRequestMethod(), responseObserver);
     }
@@ -329,7 +329,7 @@ public final class ProductoServiceGrpc {
             getGetComprasOVentasByUsuarioRequestMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                grpc.Producto.GetTransaccionesRequest,
+                grpc.Producto.GetProductosRequest,
                 grpc.Producto.ProductosDTO>(
                   this, METHODID_GET_COMPRAS_OVENTAS_BY_USUARIO_REQUEST)))
           .build();
@@ -396,7 +396,7 @@ public final class ProductoServiceGrpc {
 
     /**
      */
-    public void getComprasOVentasByUsuarioRequest(grpc.Producto.GetTransaccionesRequest request,
+    public void getComprasOVentasByUsuarioRequest(grpc.Producto.GetProductosRequest request,
         io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetComprasOVentasByUsuarioRequestMethod(), getCallOptions()), request, responseObserver);
@@ -458,7 +458,7 @@ public final class ProductoServiceGrpc {
 
     /**
      */
-    public grpc.Producto.ProductosDTO getComprasOVentasByUsuarioRequest(grpc.Producto.GetTransaccionesRequest request) {
+    public grpc.Producto.ProductosDTO getComprasOVentasByUsuarioRequest(grpc.Producto.GetProductosRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetComprasOVentasByUsuarioRequestMethod(), getCallOptions(), request);
     }
@@ -525,7 +525,7 @@ public final class ProductoServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<grpc.Producto.ProductosDTO> getComprasOVentasByUsuarioRequest(
-        grpc.Producto.GetTransaccionesRequest request) {
+        grpc.Producto.GetProductosRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getGetComprasOVentasByUsuarioRequestMethod(), getCallOptions()), request);
     }
@@ -576,7 +576,7 @@ public final class ProductoServiceGrpc {
               (io.grpc.stub.StreamObserver<grpc.Producto.CategoriasDTO>) responseObserver);
           break;
         case METHODID_GET_COMPRAS_OVENTAS_BY_USUARIO_REQUEST:
-          serviceImpl.getComprasOVentasByUsuarioRequest((grpc.Producto.GetTransaccionesRequest) request,
+          serviceImpl.getComprasOVentasByUsuarioRequest((grpc.Producto.GetProductosRequest) request,
               (io.grpc.stub.StreamObserver<grpc.Producto.ProductosDTO>) responseObserver);
           break;
         default:

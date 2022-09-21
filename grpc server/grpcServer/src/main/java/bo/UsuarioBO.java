@@ -98,6 +98,7 @@ public class UsuarioBO {
         u.setUsuario(dto.getUsuario());
         u.setClave(dto.getClave());
         u.setSaldoBilletera(dto.getSaldoBilletera());
+        u.setIdTipoUsuario(dto.getIdTipoUsuario());
         return u;
     }
 	
