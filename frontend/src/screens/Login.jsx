@@ -68,8 +68,10 @@ const Login = () => {
             try {
                 const user = await traerIdUsuario(username, password);
                 const idUsuario = user.idUsuario;
+                const idTipoUsuario = user.idTipoUsuario;
                 if(user){
             localStorage.setItem("idUsuario", idUsuario)
+            localStorage.setItem("idTipoUsuario", idTipoUsuario)
             history({
                         pathname:"/",
                         state: {idUsuario}
