@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import GridProductos from '../components/GridProductos'
 import ModalProducto from '../components/ModalProducto'
-import {useProductosPresenter} from '../presenter/productosPresenter'
+import { useProductosPresenter } from '../presenter/productosPresenter'
 
 
 const MisProductos = (props) => {
@@ -50,16 +50,16 @@ const MisProductos = (props) => {
   return (
     <>
       <Grid>
-      <Box p={4} >
+        <Box p={4} >
           <Button onClick={abrirModalCreacion} variant="contained" color="primary">
             Nuevo producto
           </Button>
         </Box>
-      {productos ? <GridProductos productos={productos} esEditable={true} editar={abrirModalEdicion}></GridProductos>
-      :
-      <Grid>'No Hay productos'</Grid>}
-<ModalProducto esEdicion={false} open={open} setOpen={setOpen} producto={producto} />
-      <ModalProducto esEdicion={true} open={openEdicion} setOpen={setOpenEdicion} producto={productoAEditar} />
+        {productos ? <GridProductos productos={productos} esEditable={true} editar={abrirModalEdicion}></GridProductos>
+          :
+          <Grid>'No Hay productos'</Grid>}
+        <ModalProducto esEdicion={false} open={open} setOpen={setOpen} producto={producto} />
+        <ModalProducto esEdicion={true} open={openEdicion} setOpen={setOpenEdicion} producto={productoAEditar} />
       </Grid>
     </>
   );
