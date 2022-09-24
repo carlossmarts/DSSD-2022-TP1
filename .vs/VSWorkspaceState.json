@@ -3,7 +3,7 @@
     "",
     "\\grpc client",
     "\\grpc client\\RetroShop_Client",
-    "\\grpc client\\RetroShop_Client\\Controllers",
+    "\\grpc client\\RetroShop_Client\\Protos",
     "\\grpc server",
     "\\grpc server\\grpcServer",
     "\\grpc server\\grpcServer\\src",
