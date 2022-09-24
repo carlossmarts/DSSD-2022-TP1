@@ -311,9 +311,8 @@ const Registro = () => {
                   onChange={e => { call_setTipoUsuario(e.target.value) }}
                   fullWidth
                 >
-                  <MenuItem value={1}>Vendedor</MenuItem>
-                  <MenuItem value={2}>Comprador</MenuItem>
-                  <MenuItem value={3}>Monitor</MenuItem>
+                  <MenuItem value={1}>Cliente</MenuItem>
+                  <MenuItem value={2}>Monitor</MenuItem>
                 </Select>
               </Grid>
             </Grid>
