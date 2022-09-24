@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import Button from '@mui/material/Button';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router'
 import { useUsuarioPresenter } from '../presenter/usuariosPresenter'
@@ -22,8 +25,11 @@ const Registro = () => {
   const history = useNavigate();
   const { altaUsuario } = useUsuarioPresenter()
 
-  const [cargando, setCargando] = useState(true);
+  const [tipoUsuario, setTipoUsuario] = useState(0);
+  const [errTipoUsuario, setErrTipoUsuario] = useState("");
+
   const [visible, setVisible] = useState(false);
+  const [cargando, setCargando] = useState(true);
 
   const [nombre, setNombre] = useState("");
   const [errNombre, setErrNombre] = useState("");
@@ -102,6 +108,16 @@ const Registro = () => {
     }
   }
 
+  const call_setTipoUsuario = (val) => {
+    if (val !== "") {
+      setErrTipoUsuario("");
+      setTipoUsuario(val);
+    } else {
+      setErrTipoUsuario("Este campo no puede estar vacio");
+      setEmail(val);
+    }
+  }
+
   const limpiarCampos = () => {
     setNombre("");
     setApellido("");
@@ -147,6 +163,10 @@ const Registro = () => {
       setErrPass("Este campo es requerido");
       retorno = false;
     }
+    if (tipoUsuario === "") {
+      setErrPass("Este campo es requerido");
+      retorno = false;
+    }
 
     return retorno;
   }
@@ -163,6 +183,7 @@ const Registro = () => {
           "email": email.toString(),
           "usuario": username,
           "clave": password,
+          "idTipoUsuario": tipoUsuario
         }
         await altaUsuario(nuevoUsuario)
         alert("Usuario Creado")
@@ -185,7 +206,7 @@ const Registro = () => {
       <Box m={8} />
       <Container maxWidth="sm" >
         <Paper>
-          <Box m={4}>
+          <Box m={3} >
             <Grid container spacing={2}>
               <Grid container item justifyContent="center" >
                 <Box m={3}>
@@ -281,6 +302,19 @@ const Registro = () => {
                   helperText={errEmail}
                 />
               </Grid>
+              <Grid container item style={{ width: '100%' }}>
+                <InputLabel>Tipo de Usuario</InputLabel>
+                <Select
+                  id="tipo-usuario-select"
+                  value={tipoUsuario}
+                  label="Tipo de usuario"
+                  onChange={e => { call_setTipoUsuario(e.target.value) }}
+                  fullWidth
+                >
+                  <MenuItem value={1}>Cliente</MenuItem>
+                  <MenuItem value={2}>Monitor</MenuItem>
+                </Select>
+              </Grid>
             </Grid>
           </Box>
           <Box display="flex" justifyContent="center">
@@ -291,7 +325,7 @@ const Registro = () => {
                 <></>
             }
           </Box>
-          <Box m={2} display="flex" justifyContent="space-around" alignItems="center">
+          <Box pb={2} display="flex" justifyContent="space-around" alignItems="center">
             <Button onClick={validarYEnviar} variant="contained" color="secondary">
               Aceptar
             </Button>

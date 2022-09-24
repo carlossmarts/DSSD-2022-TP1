@@ -21,6 +21,7 @@ export const useUsuarioPresenter = () => {
     }
 
     const altaUsuario = async (body) => {
+        console.log(JSON.stringify(body))
         try {
             const res = await axios.post('https://localhost:7252/api/usuario', body)
             const ret = await res.data;
