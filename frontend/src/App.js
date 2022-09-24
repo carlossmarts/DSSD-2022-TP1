@@ -7,6 +7,7 @@ import Registro from './screens/Registro'
 import Productos from './screens/Productos'
 import MisProductos from './screens/MisProductos'
 import MisCompras from './screens/MisCompras'
+import Monitor from './screens/Monitor';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
@@ -19,6 +20,7 @@ const App = () => {
         <ResponsiveNav />
         <Routes>
           <Route exact path={'/'} element={<Productos/>} />
+          <Route exact path={'/monitor'} element={<Monitor/>} />
           <Route exact path={'/mis-productos'} element={<MisProductos/>} />
           <Route exact path={'/mis-compras'} element={<MisCompras/>} />
           <Route exact path={'/login'} element={<Login />} />
