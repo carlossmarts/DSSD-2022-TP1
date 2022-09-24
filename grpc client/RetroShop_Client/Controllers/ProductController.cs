@@ -84,6 +84,40 @@ namespace RetroShop_Client.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] Producto producto)
+        {
+            try
+            {
+                ProductoDTO productoDTO = new ProductoDTO()
+                {
+                    IdProducto = producto.idProducto,
+                    Nombre = producto.nombre,
+                    Descripcion = producto.descripcion,
+                    Precio = producto.precio,
+                    CantidadDisponible = producto.cantidadDisponible,
+                    FechaFabricacion = producto.fechaFabricacion,
+                    IdCategoria = producto.idCategoria,
+                    IdUsuario = producto.idUsuario,
+                    PrecioBase = producto.precioBase,
+                    EsSubasta = producto.esSubasta,
+                    FechaLimite = producto.fechaLimite
+                };
+                foreach (var foto in producto.fotos)
+                {
+                    FotoDTO fotoDTO = new FotoDTO() { Nombre = foto.nombre, File = foto.file, IdFoto = foto.idFoto };
+                    productoDTO.Fotos.Add(fotoDTO);
+                }
+
+                var response = await _service.addProductoAsync(productoDTO);
+                return Ok(response.Producto);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500);
+            }
+        }
         [HttpGet]
         public async Task<ActionResult> GetAllProductos()
         {
