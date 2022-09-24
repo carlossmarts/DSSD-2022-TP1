@@ -46,7 +46,10 @@ namespace RetroShop_Client.Controllers
                     CantidadDisponible = producto.cantidadDisponible,
                     FechaFabricacion = producto.fechaFabricacion,
                     IdCategoria = producto.idCategoria,
-                    IdUsuario = producto.idUsuario
+                    IdUsuario = producto.idUsuario,
+                    PrecioBase = producto.precioBase,
+                    EsSubasta = producto.esSubasta,
+                    FechaLimite = producto.fechaLimite
                 };
                 foreach (var foto in producto.fotos)
                 {
