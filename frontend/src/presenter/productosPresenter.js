@@ -71,7 +71,7 @@ export const useProductosPresenter = () => {
 
   const editarProducto = async (body) => {
     try {
-      const res = await axios.post(`https://localhost:7252/api/producto`, body);
+      const res = await axios.put(`https://localhost:7252/api/producto`, body);
       const producto = await res.data;
       return producto
     } catch (err) {

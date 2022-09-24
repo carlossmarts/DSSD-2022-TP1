@@ -9,10 +9,6 @@ import {useProductosPresenter} from '../presenter/productosPresenter'
 
 const MisProductos = (props) => {
 
-  const {
-    editarProductos
-  } = props
-
   const { traerMisProductos } = useProductosPresenter()
 
   useEffect(() => {
@@ -26,13 +22,17 @@ const MisProductos = (props) => {
     idProducto : 0,
     nombre : "",
     descripcion : "",
-    precio : "",
+    precio : 0,
     cantidadDisponible : "",
     fechaFabricacion : "",
 	  fotos : [],
 	  idCategoria : 0,
-	  idUsuario : 0
+	  idUsuario : 0,
+    precioBase: 0,
+    esSubasta: false,
+    fechaLimite: ""
   });
+  
   const [productoAEditar, setProductoAEditar] = useState({});
   const [esEdicion, setEsEdicion] = useState(false);
 
