@@ -82,7 +82,7 @@ const Filtros = (props) => {
                                 id="nombreLike"
                                 variant="outlined"
                                 value={filtros.nombreLike}
-                                InputProps={{ style: { padding: 0, height: "38px" } }}
+                                size="small"
                                 onChange={handleChange}
                             />
                         </Grid>

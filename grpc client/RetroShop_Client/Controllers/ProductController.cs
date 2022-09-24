@@ -25,7 +25,7 @@ namespace RetroShop_Client.Controllers
         {
             _config = config;
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-            GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURLProducto);
+            GrpcChannel channel = GrpcChannel.ForAddress(_config.Value.GrpcChannelURL);
             _service = new ProductoService.ProductoServiceClient(channel);
         }
         #endregion
