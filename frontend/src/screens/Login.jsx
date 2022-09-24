@@ -73,7 +73,7 @@ const Login = () => {
             localStorage.setItem("idUsuario", idUsuario)
             localStorage.setItem("idTipoUsuario", idTipoUsuario)
             history({
-                        pathname:"/",
+                        pathname:idTipoUsuario === 1 ? "/" : "/monitor",
                         state: {idUsuario}
                     })
                 } else{
