@@ -28,6 +28,10 @@ const ModalProducto = (props) => {
     setProd(producto)
   }, [producto])
 
+  useEffect(() => {
+    console.log(prod)
+  }, [prod])
+
   const { traerCategorias, categorias } = useCategoriasPresenter()
   useEffect(() => {
     traerCategorias()

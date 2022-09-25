@@ -14,26 +14,26 @@ export function getCurrentDate(separator = "/") {
 
 //Funciones para carga de archivos
 export const convertBase64 = async (archivo) => {
-  if (archivo.type.includes("image")) {
-    return new Promise(async (resolve, reject) => {
-      const options = {
-        maxSizeMB: 1,
-        maxWidthOrHeight: 1920,
-        useWebWorker: true,
-        initialQuality: 0.8,
-      };
-      try {
-        const compressedFile = await imageCompression(archivo, options);
-      } catch (error) {
-        reject(error);
-        console.log(error);
-      }
-    });
-  } else {
+  // if (archivo.type.includes("image")) {
+  //   return new Promise(async (resolve, reject) => {
+  //     const options = {
+  //       maxSizeMB: 1,
+  //       maxWidthOrHeight: 1920,
+  //       useWebWorker: true,
+  //       initialQuality: 0.8,
+  //     };
+  //     try {
+  //       const compressedFile = await imageCompression(archivo, options);
+  //     } catch (error) {
+  //       reject(error);
+  //       console.log(error);
+  //     }
+  //   });
+  // } else {
     return new Promise((resolve, reject) => {
       convert(archivo, resolve, reject);
     });
-  }
+  //}
 };
 
 const convert = (file, resolve, reject) => {
