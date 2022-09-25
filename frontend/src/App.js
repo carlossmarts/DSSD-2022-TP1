@@ -13,16 +13,17 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const App = () => {
   const theme = createTheme();
+  const [openModalCarrito, setOpenModalCarrito] = useState(false);
 
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/">
-        <ResponsiveNav />
+        <ResponsiveNav setOpenModalCarrito={setOpenModalCarrito} />
         <Routes>
-          <Route exact path={'/'} element={<Productos/>} />
-          <Route exact path={'/monitor'} element={<Monitor/>} />
-          <Route exact path={'/mis-productos'} element={<MisProductos/>} />
-          <Route exact path={'/mis-compras'} element={<MisCompras/>} />
+          <Route exact path={'/'} element={<Productos openModalCarrito={openModalCarrito} setOpenModalCarrito={setOpenModalCarrito} />} />
+          <Route exact path={'/monitor'} element={<Monitor />} />
+          <Route exact path={'/mis-productos'} element={<MisProductos />} />
+          <Route exact path={'/mis-compras'} element={<MisCompras />} />
           <Route exact path={'/login'} element={<Login />} />
           <Route exact path={'/registro'} element={<Registro />} />
         </Routes>

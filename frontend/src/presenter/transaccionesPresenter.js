@@ -42,8 +42,8 @@ export const useTransaccionesPresenter = ()=>{
          }
         */
         try {
-            const res = await axios.post(`https://localhost:7252/api/billetera/compra`, body);
-            const data = await res.data;
+            //const res = await axios.post(`https://localhost:7252/api/billetera/compra`, body);
+            //const data = await res.data;
             /*
             data= {
                 idProducto,
@@ -52,7 +52,8 @@ export const useTransaccionesPresenter = ()=>{
                 saldoRestante
             }
             */
-            return data
+            //return data
+            return 200
         } catch (err) {
             console.error(err)
         }

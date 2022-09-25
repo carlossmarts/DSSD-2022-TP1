@@ -13,7 +13,7 @@ const ModalSubasta = (props) => {
     dineroActual
   } = props;
 
-  const [oferta, setOferta] = useState(false);
+  const [oferta, setOferta] = useState(0);
   const [ofertaRealizada, setOfertaRealizada] = useState(false);
   const [esMayor, setEsMayor] = useState(false);
 
