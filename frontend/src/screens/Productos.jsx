@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid';
 import GridProductos from '../components/GridProductos'
 import { useProductosPresenter } from '../presenter/productosPresenter'
-import ModalCompra from '../components/ModalCompra'
+import ModalSubasta from '../components/ModalSubasta'
+import Carrito from '../components/Carrito'
 import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
 import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
 import Filtros from '../components/Filtros';
@@ -16,7 +17,7 @@ const Productos = () => {
   const { actualizarBilletera, traerDineroEnBilletera } = useTransaccionesPresenter()
   const [productos, setProductos] = useState([]);
   const [productoCompra, setProductoCompra] = useState({});
-
+  const [cartItems, setCartItems] = useState([]);
   const [open, setOpen] = useState(false);
   const [dineroActual, setDineroActual] = useState(0);
 
@@ -32,6 +33,10 @@ const Productos = () => {
     traerDineroEnBilletera(localStorage.getItem("idUsuario")).then(data => setDineroActual(data)).catch(err => console.log(err))
   }, [])
 
+  const agregarCarrito = (product) => {
+    cartItems.length!==0 ? setCartItems([...cartItems, product]) : setCartItems([product]);
+};
+
   const abrirModalCompra = (producto) => {
     setProductoCompra(producto)
     setOpen(true);
@@ -41,9 +46,10 @@ const Productos = () => {
     <>
       <Grid>
         <Filtros categorias={categorias} setProductos={setProductos}></Filtros>
-        <GridProductos productos={productos} esComprable={true} comprar={abrirModalCompra}></GridProductos>
+        <GridProductos productos={productos} esComprable={true} setCartItems={agregarCarrito} ofertar={abrirModalCompra}></GridProductos>
       </Grid>
-      <ModalCompra producto={productoCompra} open={open} setOpen={setOpen} setDineroActual={setDineroActual} dineroActual={dineroActual} actualizarBilletera={actualizarBilletera}></ModalCompra>
+      <Carrito productos={cartItems}></Carrito>
+      <ModalSubasta producto={productoCompra} open={open} setOpen={setOpen} dineroActual={dineroActual}></ModalSubasta>
     </>
   );
 }

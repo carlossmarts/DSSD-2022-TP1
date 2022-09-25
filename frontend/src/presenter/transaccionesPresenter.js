@@ -58,9 +58,14 @@ export const useTransaccionesPresenter = ()=>{
         }
     }
 
+    const registrarOferta = async (body)=>{    
+        return 200
+    }
+
     return {
         actualizarBilletera,
         realizarCompra, 
-        traerDineroEnBilletera
+        traerDineroEnBilletera,
+        registrarOferta
     }
 }
