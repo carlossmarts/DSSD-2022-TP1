@@ -41,7 +41,7 @@ export const useTransaccionesPresenter = () => {
             precio
          }
         */
-         try {
+        try {
             const res = await axios.post(`https://localhost:7252/api/billetera/compra`, body);
             const data = await res.data;
             /*
@@ -57,7 +57,7 @@ export const useTransaccionesPresenter = () => {
             console.error(err)
         }
     }
-    
+
     const generarFactura = async (body) => {
         /* 
          body:{
@@ -72,6 +72,7 @@ export const useTransaccionesPresenter = () => {
         */
         try {
             const res = await axios.post(`http://localhost:5000/api/facturacion/generarFactura`, body);
+            console.log(res.data);
             const data = await res.data;
             /*
             data= {
@@ -88,7 +89,12 @@ export const useTransaccionesPresenter = () => {
     }
 
     const registrarOferta = async (body) => {
-        return 200
+        try {
+            const res = await axios.post(`http://localhost:5000/api/subasta/`, body);
+            
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return {

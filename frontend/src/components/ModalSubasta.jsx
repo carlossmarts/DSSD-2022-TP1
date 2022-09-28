@@ -4,14 +4,10 @@ import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
 import { TextField, Grid, Box, Button } from "@mui/material";
 import { useTransaccionesPresenter } from "../presenter/transaccionesPresenter";
+import { getCurrentDate } from "./UtilsMethods";
 
 const ModalSubasta = (props) => {
-  const {
-    open,
-    setOpen,
-    producto,
-    dineroActual
-  } = props;
+  const { open, setOpen, producto, dineroActual } = props;
 
   const [oferta, setOferta] = useState(0);
   const [ofertaRealizada, setOfertaRealizada] = useState(false);
@@ -25,30 +21,23 @@ const ModalSubasta = (props) => {
   }, [dineroActual, producto]);
 
   const handleInputChange = (event) => {
-    setOferta(event.target.valueAsNumber)
-  }
+    setOferta(event.target.valueAsNumber);
+  };
 
   const completarOferta = (event) => {
     event.preventDefault();
-    const usuario = localStorage.getItem("idUsuario")
+    const usuario = localStorage.getItem("idUsuario");
     const body = {
-      //ACTUALIZAR EL BODY
-      idTransaccion: 0,
-      idProducto: producto.idProducto,
+      fechaPuja: getCurrentDate("-"),
       idComprador: Number(usuario),
-      idVendedor: producto.idUsuario,
-      nombre: producto.nombre,
-      cantidad: 1,
-      precio: producto.precio
-    }
-    registrarOferta(body).then(
-      (res) => {
-        console.log('BODY ', JSON.stringify(body))
-        console.log('RES ', JSON.stringify(res))
-        setOfertaRealizada(true);
-      }
-    );
-
+      precioOfrecido: oferta,
+      idProducto: producto.idProducto,
+    };
+    registrarOferta(body).then((res) => {
+      console.log("BODY ", JSON.stringify(body));
+      console.log("RES ", JSON.stringify(res));
+      setOfertaRealizada(true);
+    });
   };
 
   const cerrar = () => {
