@@ -30,7 +30,7 @@ const MisProductos = (props) => {
 	  idUsuario : 0,
     precioBase: 0,
     esSubasta: false,
-    fechaLimite: ""
+    fechaLimite: "2022-09-20"
   });
   
   const [productoAEditar, setProductoAEditar] = useState({});
