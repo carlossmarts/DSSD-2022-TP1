@@ -28,9 +28,9 @@ const FiltroMonitor = (props)=>{
     const handleClick = (origen) =>{
         setOrigen(origen)
         origen === "producto" ?
-            getHistorialProductos().then(data=>setHistorial(data)).catch(err => console.log(err))
+            getHistorialProductos(idProducto).then(data=>setHistorial(data)).catch(err => console.log(err))
         :
-            getHistorialSubasta().then(data=>setHistorial(data)).catch(err => console.log(err))
+            getHistorialSubasta(idProducto).then(data=>setHistorial(data)).catch(err => console.log(err))
     }
 
     return(

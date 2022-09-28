@@ -23,7 +23,7 @@ const MisProductos = (props) => {
     nombre : "",
     descripcion : "",
     precio : 0,
-    cantidadDisponible : 0,
+    cantidadDisponible : 1,
     fechaFabricacion : "",
 	  fotos : [],
 	  idCategoria : 0,
