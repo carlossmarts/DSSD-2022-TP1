@@ -10,6 +10,9 @@ import MisCompras from './screens/MisCompras'
 import Monitor from './screens/Monitor';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { Box } from '@mui/material';
+import TestPDF from './components/TestPDF';
+
 
 const App = () => {
   const theme = createTheme();
@@ -29,6 +32,10 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
+    
+    // <Box>
+    //   <TestPDF/>
+    // </Box>
   );
 }
 

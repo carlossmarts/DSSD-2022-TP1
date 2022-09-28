@@ -19,11 +19,12 @@ const ModalCarrito = (props) => {
   const precioTotal = Array.isArray(productos) ? productos.reduce((a, c) => a + c.precio, 0) : 0
   const [compraEnProceso, setCompraEnProceso] = useState(false);
 
-  const { realizarCompra, traerDineroEnBilletera } =
+  const { realizarCompra, generarFactura } =
     useTransaccionesPresenter();
 
   const completarCompra = (event) => {
     event.preventDefault()
+    var prodCliente = []
     const usuario = localStorage.getItem("idUsuario")
     setCompraEnProceso(true)
     productos.map((producto, i) => {
@@ -37,6 +38,42 @@ const ModalCarrito = (props) => {
         cantidad: 1,
         precio: producto.precio
       }
+      const fecha = new Date()
+      const bodyProdCliente = {
+        fechaCompra: fecha.toLocaleDateString(),
+        idVendedor: producto.idUsuario,
+        idComprador: Number(usuario),
+        productos: [
+          {
+            nombre: producto.nombre,
+            precio: producto.precio,
+            cantidad: 1
+          }
+        ],
+        totalFacturado: producto.precio
+      }
+
+      const bodyProd = {
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: 1
+      }
+
+      if (prodCliente.length === 0) {
+        prodCliente.push(bodyProdCliente)
+      } else {
+        var existe = false
+        for (i = 0; i < prodCliente.length; i++) {
+          if (prodCliente[i].idVendedor === bodyProdCliente.idVendedor) {
+            existe = true
+            prodCliente[i].productos = [...prodCliente[i].productos, bodyProd]
+            prodCliente[i].totalFacturado = prodCliente[i].productos.reduce((a, c) => a + c.precio, 0)
+          }
+        }
+        if (!existe) {
+          prodCliente.push(bodyProdCliente)
+        }
+      }
       realizarCompra(body).then(
         (res) => {
           console.log('BODY ', JSON.stringify(body))
@@ -48,7 +85,12 @@ const ModalCarrito = (props) => {
           }
         }
       );
-    })
+    }).then(prodCliente.map((factura) => {
+      generarFactura(factura).then(
+        (res) => {
+          console.log('RES ', JSON.stringify(res))
+        })
+    }))
   };
 
   const cerrar = () => {
@@ -58,7 +100,7 @@ const ModalCarrito = (props) => {
 
   return (
     <Dialog open={open} onClose={cerrar} fullWidth>
-      <Grid container justify="center">
+      <Grid container justify="center" >
         <Box p={3}>
           <Box>
             <Box>
@@ -95,7 +137,7 @@ const ModalCarrito = (props) => {
               )}
           </Box>
         </Box>
-      </Grid>
+      </Grid >
       <DialogActions style={{ display: "flex", justifyContent: "center" }}>
         {!compraRealizada ? (
           <>
@@ -106,7 +148,7 @@ const ModalCarrito = (props) => {
             >
               Comprar
             </Button>
-            <Button onClick={cerrar} variant="outlined" color="secondary">
+            <Button onClick={cerrar} variant="outlined" color="secondary" >
               Cancelar
             </Button>
           </>
@@ -116,7 +158,7 @@ const ModalCarrito = (props) => {
           </Button>
         )}
       </DialogActions>
-    </Dialog>
+    </Dialog >
   );
 };
 
