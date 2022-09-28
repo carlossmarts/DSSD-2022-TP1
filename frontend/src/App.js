@@ -10,24 +10,30 @@ import MisCompras from './screens/MisCompras'
 import Monitor from './screens/Monitor';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import { Box } from '@mui/material';
+import TestPDF from './components/TestPDF';
+
 
 const App = () => {
   const theme = createTheme();
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/">
-        <ResponsiveNav />
-        <Routes>
-          <Route exact path={'/'} element={<Productos/>} />
-          <Route exact path={'/monitor'} element={<Monitor/>} />
-          <Route exact path={'/mis-productos'} element={<MisProductos/>} />
-          <Route exact path={'/mis-compras'} element={<MisCompras/>} />
-          <Route exact path={'/login'} element={<Login />} />
-          <Route exact path={'/registro'} element={<Registro />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    // <ThemeProvider theme={theme}>
+    //   <BrowserRouter basename="/">
+    //     <ResponsiveNav />
+    //     <Routes>
+    //       <Route exact path={'/'} element={<Productos/>} />
+    //       <Route exact path={'/monitor'} element={<Monitor/>} />
+    //       <Route exact path={'/mis-productos'} element={<MisProductos/>} />
+    //       <Route exact path={'/mis-compras'} element={<MisCompras/>} />
+    //       <Route exact path={'/login'} element={<Login />} />
+    //       <Route exact path={'/registro'} element={<Registro />} />
+    //     </Routes>
+    //   </BrowserRouter>
+    // </ThemeProvider>
+    <Box>
+      <TestPDF/>
+    </Box>
   );
 }
 

@@ -3,9 +3,11 @@ import axios from "axios"
 
 
 export const useUsuarioPresenter = () => {
+    
 
     const [user, setUser] = useState([])
 
+    
     const traerIdUsuario = async (username, password) => {
         try {
             const body = {
@@ -31,10 +33,23 @@ export const useUsuarioPresenter = () => {
         }
     }
 
+    const getById = async (idUsuario) => {
+        console.log(JSON.stringify(idUsuario))
+        try {
+            const res = await axios.get('https://localhost:7252/api/usuario/',{idUsuario:idUsuario})
+            const ret = await res.data;
+            console.log(ret)
+            return ret
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     return {
         user,
         setUser,
         traerIdUsuario,
+        getById,
         altaUsuario
     }
 }
