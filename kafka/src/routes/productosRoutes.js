@@ -9,6 +9,6 @@ const router = express();
 
 //rutas
 router.post('/api/producto',productosCallback.save);
-router.get('/api/producto/getHistorico', consumer.traerMensajes);
+router.post('/api/producto/getHistorico', consumer.traerMensajes);
 
 module.exports = router

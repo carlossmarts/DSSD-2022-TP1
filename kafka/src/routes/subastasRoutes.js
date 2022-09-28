@@ -9,6 +9,6 @@ const router = express();
 
 //rutas
 router.post('/api/subasta',subastasCallback.save);
-router.get('/api/subasta/getHistorico', consumer.traerMensajes);
+router.post('/api/subasta/getHistorico', consumer.traerMensajes);
 
 module.exports = router
