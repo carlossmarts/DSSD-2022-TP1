@@ -8,58 +8,26 @@ import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useProductosPresenter } from "../presenter/productosPresenter";
+import { useTransaccionesPresenter } from "../presenter/transaccionesPresenter";
 
-const lista = [
-  {
-    "idFactura": 16,
-    "fechaCompra": "2022-08-09",
-    "totalFacturado": 14985,
-    "nombre": "The Nintendo 64 - Randy S Lacombe",
-    "precio": 14985,
-    "cantidad": 1
-  },
-  {
-    "idFactura": 17,
-    "fechaCompra": "2022-09-28",
-    "totalFacturado": 55,
-    "nombre": "test",
-    "precio": 55,
-    "cantidad": 1
-  },
-  {
-    "idFactura": 18,
-    "fechaCompra": "2022-09-28",
-    "totalFacturado": 15935,
-    "nombre": "The Nintendo 64 - Randy S Lacombe",
-    "precio": 14985,
-    "cantidad": 1
-  },
-  {
-    "idFactura": 18,
-    "fechaCompra": "2022-09-28",
-    "totalFacturado": 15935,
-    "nombre": "Juego de cartas Uno Ruibal",
-    "precio": 950,
-    "cantidad": 1
-  },
-  {
-    "idFactura": 19,
-    "fechaCompra": "2022-09-28",
-    "totalFacturado": 9590,
-    "nombre": "Simon Hg Hasbro",
-    "precio": 9590,
-    "cantidad": 1
-  }
-]
+
 
 const MisCompras = () => {
   const { traerProductosComprados } = useProductosPresenter();
+  const { traerFacturas } = useTransaccionesPresenter()
 
   const [productos, setProductos] = useState([]);
+  const [facturas, setFacturas] = useState([]);
 
   useEffect(() => {
     traerProductosComprados(localStorage.getItem("idUsuario"))
       .then((data) => setProductos(data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    traerFacturas(localStorage.getItem("idUsuario"))
+      .then((data) => setFacturas(data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -77,16 +45,16 @@ const MisCompras = () => {
       <Grid>
         <Container sx={{ py: 3 }} maxWidth="md">
           <Grid container spacing={4} >
-            {lista
-              ? lista.map((producto) => (
-                <Grid item key={producto} xs={12} sm={6} md={4} >
+            {facturas
+              ? facturas.map((factura) => (
+                <Grid item key={factura} xs={12} sm={6} md={4} >
                   <Card sx={{ mt: 0, mb: 0 }}>
                     <CardContent>
                       <Typography variant="h6" >
-                        {`Compra de ${producto.nombre}`}
+                        {`Compra de ${factura.nombre}`}
                       </Typography>
                       <CardActions>
-                        <Button onClick={() => descargarFactura(factura)}>Ver Factura</Button>
+                        <Button onClick={() => descargarFactura(factura.id)}>Ver Factura</Button>
                       </CardActions>
                     </CardContent>
                   </Card >

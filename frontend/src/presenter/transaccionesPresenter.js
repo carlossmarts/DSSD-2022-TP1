@@ -91,10 +91,55 @@ export const useTransaccionesPresenter = () => {
     const registrarOferta = async (body) => {
         try {
             const res = await axios.post(`http://localhost:5000/api/subasta/`, body);
-            
+
         } catch (err) {
             console.error(err);
         }
+    }
+
+    const traerFacturas = async (body) => {
+        return [
+            {
+                "idFactura": 16,
+                "fechaCompra": "2022-08-09",
+                "totalFacturado": 14985,
+                "nombre": "The Nintendo 64 - Randy S Lacombe",
+                "precio": 14985,
+                "cantidad": 1
+            },
+            {
+                "idFactura": 17,
+                "fechaCompra": "2022-09-28",
+                "totalFacturado": 55,
+                "nombre": "test",
+                "precio": 55,
+                "cantidad": 1
+            },
+            {
+                "idFactura": 18,
+                "fechaCompra": "2022-09-28",
+                "totalFacturado": 15935,
+                "nombre": "The Nintendo 64 - Randy S Lacombe",
+                "precio": 14985,
+                "cantidad": 1
+            },
+            {
+                "idFactura": 18,
+                "fechaCompra": "2022-09-28",
+                "totalFacturado": 15935,
+                "nombre": "Juego de cartas Uno Ruibal",
+                "precio": 950,
+                "cantidad": 1
+            },
+            {
+                "idFactura": 19,
+                "fechaCompra": "2022-09-28",
+                "totalFacturado": 9590,
+                "nombre": "Simon Hg Hasbro",
+                "precio": 9590,
+                "cantidad": 1
+            }
+        ]
     }
 
     return {
@@ -102,6 +147,7 @@ export const useTransaccionesPresenter = () => {
         realizarCompra,
         traerDineroEnBilletera,
         registrarOferta,
-        generarFactura
+        generarFactura,
+        traerFacturas
     }
 }
