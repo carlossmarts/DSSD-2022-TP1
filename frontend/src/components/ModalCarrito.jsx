@@ -38,9 +38,9 @@ const ModalCarrito = (props) => {
         cantidad: 1,
         precio: producto.precio
       }
-
+      const fecha = new Date()
       const bodyProdCliente = {
-        fechaCompra: Date.now().toString(),
+        fechaCompra: fecha.toLocaleDateString(),
         idVendedor: producto.idUsuario,
         idComprador: Number(usuario),
         productos: [
