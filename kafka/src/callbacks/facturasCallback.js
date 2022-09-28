@@ -16,8 +16,7 @@ callback.save = (req, res) => {
 
 callback.getAll = ((req, res) => {
   try {
-    const facturas = facturasController.getByComprador(req.body.idComprador)
-    res.json(facturas)
+    facturasController.getByComprador(req, res)
   } catch (error) {
     console.error("FacturasCallbak getByComprador: " + error.message);
     res.json(serverError(error))

@@ -14,14 +14,14 @@ controller.save = (req) => {
             facturaReq,
             (err, facturaReq) => {
                 if (err) {
-                    console.error("Error insertando factura" + err.message);
+                    console.error("Error insertando factura:" + err.message);
                     return conn.rollback(() => {
                         serverError(err);
                         throw err;
                     });
                 }
                 req.body.productos.forEach(detalle => {
-                    const detalle_factura = {
+                    let detalle_factura = {
                         idFactura: facturaReq.insertId,
                         idVendedor: req.body.idVendedor,
                         nombre: detalle.nombre,
@@ -29,7 +29,7 @@ controller.save = (req) => {
                         cantidad: detalle.cantidad
                     };
                     conn.query(
-                        "INSERT INTO facturas detalle_factura ?",
+                        "INSERT INTO detalle_factura set ?",
                         detalle_factura,
                         (err, facturaReq) => {
                             if (err) {
@@ -39,7 +39,7 @@ controller.save = (req) => {
                                     throw err;
                                 });
                             }
-                            return serverOK(factura);
+                            return serverOK(req);
                         })
                 });
             }
@@ -47,8 +47,8 @@ controller.save = (req) => {
     })
 }
 
-controller.getByComprador = (req) => {
-    req.getConnection((err, con) => {
+controller.getByComprador = (req, res) => {
+    req.getConnection((err, conn) => {
         conn.query(`SELECT f.idFactura, f.fechaCompra, f.totalFacturado, df.nombre, df.precio, df.cantidad FROM facturas f
         LEFT JOIN detalle_factura df ON f.idFactura = df.idFactura
         WHERE f.idComprador = ? `, [req.body.idComprador],
@@ -57,9 +57,10 @@ controller.getByComprador = (req) => {
                     console.error("Error consultando factura" + err.message);
                     return;
                 }
-                return facturas
+                console.log(facturas);
+                res.json(facturas)
             })
-    })
+    });
 }
 
 module.exports = controller
