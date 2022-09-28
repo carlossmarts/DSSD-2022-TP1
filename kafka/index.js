@@ -2,11 +2,11 @@ const express = require('express')
 path = require('path')
 mysql = require('mysql')
 const consumer = require("./src/kafka/consumer");
-var cors = require('cors')
+const cors = require('cors')
 
 myConnection = require('express-myconnection');
-const productosRoutes = require ('./src/routes/productosRoutes');
-const subastasRoutes = require ('./src/routes/subastasRoutes')
+const productosRoutes = require('./src/routes/productosRoutes');
+const subastasRoutes = require('./src/routes/subastasRoutes')
 const facturasRoutes = require('./src/routes/facturasRoutes')
 const ejemploRoutes = require('./src/routes/ejemploRoutes')
 const { persist } = require('./src/callbacks/facturasCallback');
@@ -26,8 +26,8 @@ app.use(myConnection(mysql, {
 	database: 'retroshop'
 }, 'single'));
 
-app.use(express.urlencoded({extended: false}));
-const logger = (req, res, next)=>{
+app.use(express.urlencoded({ extended: false }));
+const logger = (req, res, next) => {
 	console.log(`Peticion ${req.method.toUpperCase()} recibida -  ${req.protocol}://${req.get('host')}${req.originalUrl}`)
 	console.log("body: ", req.body)
 	next();
@@ -43,7 +43,7 @@ app.use(facturasRoutes)
 
 consumer.persistFacturas();
 
-app.listen(app.get('port'), ()=>{
+app.listen(app.get('port'), () => {
 	console.log("server iniciado y escuchando en puerto ", app.get('port'))
 })
 

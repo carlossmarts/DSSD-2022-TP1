@@ -49,16 +49,23 @@ controller.save = (req) => {
 
 controller.getByComprador = (req, res) => {
     req.getConnection((err, conn) => {
-        conn.query(`SELECT f.idFactura, f.fechaCompra, f.totalFacturado, df.nombre, df.precio, df.cantidad FROM facturas f
-        LEFT JOIN detalle_factura df ON f.idFactura = df.idFactura
-        WHERE f.idComprador = ? `, [req.body.idComprador],
+        conn.query(`SELECT * from facturas f WHERE f.idComprador = ? `, [req.body.idComprador],
             (err, facturas) => {
                 if (err) {
                     console.error("Error consultando factura" + err.message);
                     return;
                 }
-                console.log(facturas);
-                res.json(facturas)
+                var respFacturas = [];
+                for (let factura of facturas) {
+                    conn.query(`SELECT * from detalle_factura d where d.idFactura = ?`, [factura.idFactura], (err, detalle) => {
+                        if (err) {
+                            console.error("Error consultando factura" + err.message);
+                            return;
+                        }
+                        respFacturas.push({ ...factura, productos: detalle })
+                    });
+                }
+                res.json(respFacturas)
             })
     });
 }
