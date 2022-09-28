@@ -23,7 +23,7 @@ controller.save = (req) => {
                 req.body.productos.forEach(detalle => {
                     const detalle_factura = {
                         idFactura: facturaReq.insertId,
-                        idVendedor: facturaReq.idVendedor,
+                        idVendedor: req.body.idVendedor,
                         nombre: detalle.nombre,
                         precio: detalle.precio,
                         cantidad: detalle.cantidad
