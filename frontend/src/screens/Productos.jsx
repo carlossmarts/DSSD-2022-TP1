@@ -2,22 +2,28 @@ import React, { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid';
 import GridProductos from '../components/GridProductos'
 import { useProductosPresenter } from '../presenter/productosPresenter'
-import ModalCompra from '../components/ModalCompra'
+import ModalSubasta from '../components/ModalSubasta'
+import ModalCarrito from '../components/ModalCarrito'
 import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
 import { useCategoriasPresenter } from '../presenter/categoriasPresenter'
 import Filtros from '../components/Filtros';
 
 
 
-const Productos = () => {
+const Productos = (props) => {
 
+  const {
+    openModalCarrito,
+    setOpenModalCarrito
+  } = props;
+  
   const { traerProductos } = useProductosPresenter()
   const { traerCategorias, categorias } = useCategoriasPresenter()
   const { actualizarBilletera, traerDineroEnBilletera } = useTransaccionesPresenter()
   const [productos, setProductos] = useState([]);
-  const [productoCompra, setProductoCompra] = useState({});
-
-  const [open, setOpen] = useState(false);
+  const [productoSubasta, setProductoSubasta] = useState({});
+  const [cartItems, setCartItems] = useState([]);
+  const [openModalSubasta, setOpenModalSubasta] = useState(false);
   const [dineroActual, setDineroActual] = useState(0);
 
   useEffect(() => {
@@ -32,18 +38,22 @@ const Productos = () => {
     traerDineroEnBilletera(localStorage.getItem("idUsuario")).then(data => setDineroActual(data)).catch(err => console.log(err))
   }, [])
 
-  const abrirModalCompra = (producto) => {
-    setProductoCompra(producto)
-    setOpen(true);
-  };
+  const agregarCarrito = (product) => {
+    cartItems.length!==0 ? setCartItems([...cartItems, product]) : setCartItems([product]);
+};
 
+  const abrirModalSubasta = (producto) => {
+    setProductoSubasta(producto)
+    setOpenModalSubasta(true);
+  };
   return (
     <>
       <Grid>
         <Filtros categorias={categorias} setProductos={setProductos}></Filtros>
-        <GridProductos productos={productos} esComprable={true} comprar={abrirModalCompra}></GridProductos>
+        <GridProductos productos={productos} esComprable={true} setCartItems={agregarCarrito} ofertar={abrirModalSubasta}></GridProductos>
       </Grid>
-      <ModalCompra producto={productoCompra} open={open} setOpen={setOpen} setDineroActual={setDineroActual} dineroActual={dineroActual} actualizarBilletera={actualizarBilletera}></ModalCompra>
+      <ModalCarrito productos={cartItems} open={openModalCarrito} setOpen={setOpenModalCarrito} dineroActual={dineroActual} setDineroActual={setDineroActual}></ModalCarrito>
+      <ModalSubasta producto={productoSubasta} open={openModalSubasta} setOpen={setOpenModalSubasta} dineroActual={dineroActual}></ModalSubasta>
     </>
   );
 }

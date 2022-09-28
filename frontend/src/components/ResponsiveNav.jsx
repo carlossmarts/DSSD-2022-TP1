@@ -12,11 +12,14 @@ import { useTransaccionesPresenter } from '../presenter/transaccionesPresenter'
 
 
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
+
+  const {
+    setOpenModalCarrito
+  } = props;
 
   const [open, setOpen] = useState(false);
   const [dineroActual, setDineroActual] = useState(0);
-
   const { actualizarBilletera, traerDineroEnBilletera } = useTransaccionesPresenter()
 
   const history = useNavigate();
@@ -26,6 +29,10 @@ const ResponsiveAppBar = () => {
   const irAMisProductos = () => { history("/mis-productos") }
   const irAMisCompras = () => { history("/mis-compras") }
   const irAHome = () => { history("/") }
+
+  const abrirModalCarrito = () => {
+    setOpenModalCarrito(true);
+  };
 
   useEffect(() => {
     let id = localStorage.getItem("idUsuario")
@@ -79,6 +86,7 @@ const ResponsiveAppBar = () => {
                   <Button onClick={irAMisProductos} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Productos</Button>
                   <Button onClick={abrirBilletera} sx={{ my: 2, color: 'white', display: 'block' }}>Mi Billetera ${dineroActual?`${dineroActual.toFixed(2)}`:null}</Button>
                   <Button onClick={irAMisCompras} sx={{ my: 2, color: 'white', display: 'block' }}>Mis Compras</Button>
+                  <Button onClick={abrirModalCarrito} sx={{ my: 2, color: 'white', display: 'block' }}>Carrito</Button>
                   <Button onClick={cerrarSesion} sx={{ my: 2, color: 'white', display: 'block' }}>Cerrar Sesión</Button>
                 </>
             }
