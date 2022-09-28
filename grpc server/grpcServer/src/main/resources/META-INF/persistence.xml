@@ -12,11 +12,11 @@
             <!-- Driver for DB database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <!-- URL for DB -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://bclnro5zyhtbtwvryre1-mysql.services.clever-cloud.com/bclnro5zyhtbtwvryre1" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/retroshop" />
             <!-- Username -->
-            <property name="javax.persistence.jdbc.user" value="ukxw0rjfbjdb9cfu" />
+            <property name="javax.persistence.jdbc.user" value="root" />
             <!-- Password -->
-            <property name="javax.persistence.jdbc.password" value="CWZb3YYjm9MpSPeKXjXY" />
+            <property name="javax.persistence.jdbc.password" value="password" />
         </properties>
     </persistence-unit>
 </persistence>

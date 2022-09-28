@@ -2,6 +2,7 @@ const express = require('express')
 path = require('path')
 mysql = require('mysql')
 const consumer = require("./src/kafka/consumer");
+var cors = require('cors')
 
 myConnection = require('express-myconnection');
 const productosRoutes = require ('./src/routes/productosRoutes');
@@ -15,13 +16,14 @@ app.set('port', 5000)
 
 //middlewares
 app.use(express.json())
+app.use(cors())
 
 app.use(myConnection(mysql, {
-	host: 'bclnro5zyhtbtwvryre1-mysql.services.clever-cloud.com',
-	user: 'ukxw0rjfbjdb9cfu',
-	password: 'CWZb3YYjm9MpSPeKXjXY',
+	host: 'localhost',
+	user: 'root',
+	password: 'password',
 	port: 3306,
-	database: 'bclnro5zyhtbtwvryre1'
+	database: 'retroshop'
 }, 'single'));
 
 app.use(express.urlencoded({extended: false}));
