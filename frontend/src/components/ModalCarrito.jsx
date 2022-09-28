@@ -11,40 +11,44 @@ const ModalCarrito = (props) => {
     setOpen,
     productos,
     setDineroActual,
-    dineroActual,
-    actualizarBilletera,
+    dineroActual
   } = props;
 
   const [dinero, setDinero] = useState(0);
   const [compraRealizada, setCompraRealizada] = useState(false);
-  const [esMayor, setEsMayor] = useState(false);
   const precioTotal = Array.isArray(productos) ? productos.reduce((a, c) => a + c.precio, 0) : 0
+  const [compraEnProceso, setCompraEnProceso] = useState(false);
 
   const { realizarCompra, traerDineroEnBilletera } =
     useTransaccionesPresenter();
 
-  useEffect(() => {
-    setEsMayor(dineroActual >= precioTotal);
-  }, [dineroActual, productos]);
-
   const completarCompra = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const usuario = localStorage.getItem("idUsuario")
-    const body = {
-      idTransaccion: 0,
-      idUsuario: usuario
-      //COMPLETAR PARA COMPRA
-    }
-    realizarCompra(body).then(
-      (res) => {
-        console.log('BODY ', JSON.stringify(body))
-        console.log('RES ', JSON.stringify(res))
-        //setDineroActual(res.saldoRestante);
-        setDineroActual(dineroActual-precioTotal);
-        setCompraRealizada(true);
+    setCompraEnProceso(true)
+    productos.map((producto, i) => {
+      console.log(producto.nombre)
+      const body = {
+        idTransaccion: 0,
+        idProducto: producto.idProducto,
+        idComprador: Number(usuario),
+        idVendedor: producto.idUsuario,
+        nombre: producto.nombre,
+        cantidad: 1,
+        precio: producto.precio
       }
-    );
-
+      realizarCompra(body).then(
+        (res) => {
+          console.log('BODY ', JSON.stringify(body))
+          console.log('RES ', JSON.stringify(res))
+          if (i===productos.length-1){
+          setDineroActual(dineroActual - precioTotal)
+          setCompraEnProceso(false)
+          setCompraRealizada(true) 
+          }
+        }
+      );
+    })
   };
 
   const cerrar = () => {
@@ -63,27 +67,30 @@ const ModalCarrito = (props) => {
               </Typography>
             </Box>
             {!compraRealizada && precioTotal && dineroActual ? (
-              productos.length === 0 ? <div>Tu carrito está vacío</div> 
-              :
-                productos.map((item) => (
-                  <div key={item.idProducto} className="row" style={{ "padding-bottom": "10px" }}>
-                    <div className="col-2 text-right" style={{ "display": "flex" }}>
-                      <div style={{ "align-items": "center", "display": "flex", "padding-right": "10px" }}>{item.nombre} ${item.precio.toFixed(2)}</div>
+              productos.length === 0 ? <div>Tu carrito está vacío</div>
+                : !compraEnProceso ?
+                  productos.map((item) => (
+                    <div key={item.idProducto} className="row" style={{ "padding-bottom": "10px" }}>
+                      <div className="col-2 text-right" style={{ "display": "flex" }}>
+                        <div style={{ "align-items": "center", "display": "flex", "padding-right": "10px" }}>{item.nombre} ${item.precio.toFixed(2)}</div>
+                      </div>
                     </div>
-                  </div>
-                ))
-            ) : (
-              <Box>
-                <Typography variant="h6" gutterBottom>
-                  {`Compra realizada! Su billetera ahora contiene $${dineroActual}`}
-                </Typography>
-              </Box>
-            )}
+                  ))
+                  :
+                  <div>Tu compra esta en proceso! Espera unos instantes</div>
+            ) :
+              (
+                <Box>
+                  <Typography variant="h6" gutterBottom>
+                    {`Compra realizada! Su billetera ahora contiene $${dineroActual}`}
+                  </Typography>
+                </Box>
+              )}
           </Box>
         </Box>
       </Grid>
       <DialogActions style={{ display: "flex", justifyContent: "center" }}>
-        {!compraRealizada && esMayor ? (
+        {!compraRealizada ? (
           <>
             <Button
               onClick={completarCompra}

@@ -52,7 +52,7 @@ const Productos = (props) => {
         <Filtros categorias={categorias} setProductos={setProductos}></Filtros>
         <GridProductos productos={productos} esComprable={true} setCartItems={agregarCarrito} ofertar={abrirModalSubasta}></GridProductos>
       </Grid>
-      <ModalCarrito productos={cartItems} open={openModalCarrito} setOpen={setOpenModalCarrito} dineroActual={dineroActual}></ModalCarrito>
+      <ModalCarrito productos={cartItems} open={openModalCarrito} setOpen={setOpenModalCarrito} dineroActual={dineroActual} setDineroActual={setDineroActual}></ModalCarrito>
       <ModalSubasta producto={productoSubasta} open={openModalSubasta} setOpen={setOpenModalSubasta} dineroActual={dineroActual}></ModalSubasta>
     </>
   );

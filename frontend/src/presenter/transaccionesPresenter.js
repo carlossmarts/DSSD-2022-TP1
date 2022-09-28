@@ -1,11 +1,11 @@
 import { useState } from "react"
 import axios from "axios";
 
-export const useTransaccionesPresenter = ()=>{
+export const useTransaccionesPresenter = () => {
 
     const [billetera, setBilletera] = useState(0);
 
-    const traerDineroEnBilletera = async (idUsuario)=>{
+    const traerDineroEnBilletera = async (idUsuario) => {
         try {
             const res = await axios.get(`https://localhost:7252/api/usuario?idUsuario=${idUsuario}`);
             const saldo = await res.data.usuario.saldoBilletera;
@@ -15,11 +15,11 @@ export const useTransaccionesPresenter = ()=>{
         }
     }
 
-    const actualizarBilletera = async (saldo, idUsuario)=>{
-        const body={
+    const actualizarBilletera = async (saldo, idUsuario) => {
+        const body = {
             idUsuario: idUsuario,
             saldo: saldo
-          }
+        }
         try {
             const res = await axios.put(`https://localhost:7252/api/usuario/saldo`, body);
             const saldo = await res.data.saldoBilletera;
@@ -28,8 +28,8 @@ export const useTransaccionesPresenter = ()=>{
             console.error(err)
         }
     }
-    
-    const realizarCompra = async (body)=>{
+
+    const realizarCompra = async (body) => {
         /* 
          body:{
             idTransaccion = 1;
@@ -42,8 +42,8 @@ export const useTransaccionesPresenter = ()=>{
          }
         */
         try {
-            //const res = await axios.post(`https://localhost:7252/api/billetera/compra`, body);
-            //const data = await res.data;
+            const res = await axios.post(`https://localhost:7252/api/billetera/compra`, body);
+            const data = await res.data;
             /*
             data= {
                 idProducto,
@@ -52,20 +52,19 @@ export const useTransaccionesPresenter = ()=>{
                 saldoRestante
             }
             */
-            //return data
-            return 200
+            return data
         } catch (err) {
             console.error(err)
         }
     }
 
-    const registrarOferta = async (body)=>{    
+    const registrarOferta = async (body) => {
         return 200
     }
 
     return {
         actualizarBilletera,
-        realizarCompra, 
+        realizarCompra,
         traerDineroEnBilletera,
         registrarOferta
     }
