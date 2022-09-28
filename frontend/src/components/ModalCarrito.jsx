@@ -41,10 +41,10 @@ const ModalCarrito = (props) => {
         (res) => {
           console.log('BODY ', JSON.stringify(body))
           console.log('RES ', JSON.stringify(res))
-          if (i===productos.length-1){
-          setDineroActual(dineroActual - precioTotal)
-          setCompraEnProceso(false)
-          setCompraRealizada(true) 
+          if (i === productos.length - 1) {
+            setDineroActual(dineroActual - precioTotal)
+            setCompraEnProceso(false)
+            setCompraRealizada(true)
           }
         }
       );
@@ -68,21 +68,28 @@ const ModalCarrito = (props) => {
             </Box>
             {!compraRealizada && precioTotal && dineroActual ? (
               productos.length === 0 ? <div>Tu carrito está vacío</div>
-                : !compraEnProceso ?
-                  productos.map((item) => (
-                    <div key={item.idProducto} className="row" style={{ "padding-bottom": "10px" }}>
-                      <div className="col-2 text-right" style={{ "display": "flex" }}>
-                        <div style={{ "align-items": "center", "display": "flex", "padding-right": "10px" }}>{item.nombre} ${item.precio.toFixed(2)}</div>
+                : !compraEnProceso ? (
+                  <>
+                    <Typography variant="h6" gutterBottom>
+                      {"Estas comprando:"}
+                    </Typography>
+                    <div></div>
+                    {productos.map((item) => (
+                      <div key={item.idProducto} className="row" style={{ "padding-bottom": "10px" }}>
+                        <div className="col-2 text-right" style={{ "display": "flex" }}>
+                          <div style={{ "align-items": "center", "display": "flex", "padding-right": "10px" }}>{item.nombre} ${item.precio.toFixed(2)}</div>
+                        </div>
                       </div>
-                    </div>
-                  ))
+                    ))}
+                    <div>{`Total a gastar $${precioTotal.toFixed(2)}`}</div>
+                  </>)
                   :
                   <div>Tu compra esta en proceso! Espera unos instantes</div>
             ) :
               (
                 <Box>
                   <Typography variant="h6" gutterBottom>
-                    {`Compra realizada! Su billetera ahora contiene $${dineroActual}`}
+                    {`Compra realizada! Su billetera ahora contiene $${dineroActual.toFixed(2)}`}
                   </Typography>
                 </Box>
               )}
