@@ -66,18 +66,14 @@ const ModalSubasta = (props) => {
                 {"RETROSTORE - Subastas"}
               </Typography>
             </Box>
-            {!ofertaRealizada && producto.precio && dineroActual ? (
+            {!ofertaRealizada ? (
               <>
                 <Box>
                   <Typography variant="h6">
-                    {`${producto.nombre}, precio base $${producto.precioBase.toFixed(
-                      2
-                    )}`}
+                    {`${producto.nombre}, precio base $${producto.precioBase}`}
                   </Typography>
                   <Typography variant="h6">
-                    {`El saldo en su billetera es de $${dineroActual.toFixed(
-                      2
-                    )}. `}
+                    {`El saldo en su billetera es de $${dineroActual}. `}
                     <Box sx={{ p: 2 }}>
                       <form>
                         <TextField
@@ -98,7 +94,7 @@ const ModalSubasta = (props) => {
             ) : (
               <Box>
                 <Typography variant="h6" gutterBottom>
-                  {`¡Oferta de $${oferta.toFixed(2)} realizada!`}
+                  {`¡Oferta de $${oferta} realizada!`}
                 </Typography>
               </Box>
             )}
