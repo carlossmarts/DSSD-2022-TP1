@@ -48,8 +48,8 @@ const MisCompras = () => {
       </Grid>
       <Grid>
         <Container sx={{ py: 3 }} maxWidth="md">
-          <Grid container spacing={4}>
-            {facturas
+          <Grid container spacing={4} >
+            {facturas.length!=0
               ? facturas.map((factura) => (
                   <Grid item key={factura} xs={12} sm={6} md={4}>
                     <Card sx={{ mt: 0, mb: 0 }}>
